@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>3 Peak Calling | SLX-16110-16111 Run Report (ChIP-Seq)</title>
+  <meta name="description" content="This is a report for Irving Aye’s `r params$seq_type’ results" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="3 Peak Calling | SLX-16110-16111 Run Report (ChIP-Seq)" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a report for Irving Aye’s `r params$seq_type’ results" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="3 Peak Calling | SLX-16110-16111 Run Report (ChIP-Seq)" />
+  
+  <meta name="twitter:description" content="This is a report for Irving Aye’s `r params$seq_type’ results" />
+  
+
+
+
+<meta name="date" content="2021-01-04" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="mapping.html"/>
+<link rel="next" href="peak-annotations.html"/>
+<script src="libs/header-attrs-2.4/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-1.5.2/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.16/datatables.js"></script>
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="libs/jszip-1.10.20/jszip.min.js"></script>
+<link href="libs/dt-ext-buttons-1.10.20/css/buttons.dataTables.min.css" rel="stylesheet" />
+<script src="libs/dt-ext-buttons-1.10.20/js/dataTables.buttons.min.js"></script>
+<script src="libs/dt-ext-buttons-1.10.20/js/buttons.flash.min.js"></script>
+<script src="libs/dt-ext-buttons-1.10.20/js/buttons.html5.min.js"></script>
+<script src="libs/dt-ext-buttons-1.10.20/js/buttons.colVis.min.js"></script>
+<script src="libs/dt-ext-buttons-1.10.20/js/buttons.print.min.js"></script>
+<link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Run Report</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Samples</a></li>
+<li class="chapter" data-level="2" data-path="mapping.html"><a href="mapping.html"><i class="fa fa-check"></i><b>2</b> Mapping</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="mapping.html"><a href="mapping.html#table-of-mapping-statistic"><i class="fa fa-check"></i><b>2.1</b> Table of mapping statistic</a></li>
+<li class="chapter" data-level="2.2" data-path="mapping.html"><a href="mapping.html#boxplots-of-mapping-staststic"><i class="fa fa-check"></i><b>2.2</b> Boxplots of mapping staststic</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="mapping.html"><a href="mapping.html#no.-of-sequencing-reads"><i class="fa fa-check"></i><b>2.2.1</b> No. of sequencing reads</a></li>
+<li class="chapter" data-level="2.2.2" data-path="mapping.html"><a href="mapping.html#no.-of-uniquely-mapped-reads"><i class="fa fa-check"></i><b>2.2.2</b> No. of uniquely mapped reads</a></li>
+<li class="chapter" data-level="2.2.3" data-path="mapping.html"><a href="mapping.html#unique-mapping-rate"><i class="fa fa-check"></i><b>2.2.3</b> Unique mapping rate</a></li>
+<li class="chapter" data-level="2.2.4" data-path="mapping.html"><a href="mapping.html#multi-mapping-rate"><i class="fa fa-check"></i><b>2.2.4</b> Multi mapping rate</a></li>
+<li class="chapter" data-level="2.2.5" data-path="mapping.html"><a href="mapping.html#total-mapping-rate"><i class="fa fa-check"></i><b>2.2.5</b> Total mapping rate</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="mapping.html"><a href="mapping.html#bigwig-files"><i class="fa fa-check"></i><b>2.3</b> BigWig files</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="calling.html"><a href="calling.html"><i class="fa fa-check"></i><b>3</b> Peak Calling</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="calling.html"><a href="calling.html#no.-of-peaks"><i class="fa fa-check"></i><b>3.1</b> No. of peaks</a></li>
+<li class="chapter" data-level="3.2" data-path="calling.html"><a href="calling.html#no.-of-peaks-by-the-consensus-level"><i class="fa fa-check"></i><b>3.2</b> No. of peaks by the consensus level</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="calling.html"><a href="calling.html#all-samples-n22"><i class="fa fa-check"></i><b>3.2.1</b> All samples (n=22)</a></li>
+<li class="chapter" data-level="3.2.2" data-path="calling.html"><a href="calling.html#fv-n5"><i class="fa fa-check"></i><b>3.2.2</b> FV (n=5)</a></li>
+<li class="chapter" data-level="3.2.3" data-path="calling.html"><a href="calling.html#fd-n5"><i class="fa fa-check"></i><b>3.2.3</b> FD (n=5)</a></li>
+<li class="chapter" data-level="3.2.4" data-path="calling.html"><a href="calling.html#mv-n6"><i class="fa fa-check"></i><b>3.2.4</b> MV (n=6)</a></li>
+<li class="chapter" data-level="3.2.5" data-path="calling.html"><a href="calling.html#md-n6"><i class="fa fa-check"></i><b>3.2.5</b> MD (n=6)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="calling.html"><a href="calling.html#consensus_peak"><i class="fa fa-check"></i><b>3.3</b> Consensus peaks across factors of interests</a></li>
+<li class="chapter" data-level="3.4" data-path="calling.html"><a href="calling.html#heatmap"><i class="fa fa-check"></i><b>3.4</b> Heatmap</a></li>
+<li class="chapter" data-level="3.5" data-path="calling.html"><a href="calling.html#pca"><i class="fa fa-check"></i><b>3.5</b> PCA</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="peak-annotations.html"><a href="peak-annotations.html"><i class="fa fa-check"></i><b>4</b> Peak Annotations</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="peak-annotations.html"><a href="peak-annotations.html#no.-of-peaks-by-group"><i class="fa fa-check"></i><b>4.1</b> No. of peaks by group</a></li>
+<li class="chapter" data-level="4.2" data-path="peak-annotations.html"><a href="peak-annotations.html#no.-of-peaks-by-chromosome"><i class="fa fa-check"></i><b>4.2</b> No. of peaks by chromosome</a></li>
+<li class="chapter" data-level="4.3" data-path="peak-annotations.html"><a href="peak-annotations.html#no.-of-genes-enrichred-in-peaks"><i class="fa fa-check"></i><b>4.3</b> No. of genes enrichred in peaks</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="peak-annotations.html"><a href="peak-annotations.html#non-intergenic-peaks-only"><i class="fa fa-check"></i><b>4.3.1</b> Non-intergenic peaks only</a></li>
+<li class="chapter" data-level="4.3.2" data-path="peak-annotations.html"><a href="peak-annotations.html#peaks-in-tss-2kb"><i class="fa fa-check"></i><b>4.3.2</b> Peaks in TSS (&lt;2kb)</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="peak-annotations.html"><a href="peak-annotations.html#genomic-feature-of-peaks"><i class="fa fa-check"></i><b>4.4</b> Genomic feature of peaks</a></li>
+<li class="chapter" data-level="4.5" data-path="peak-annotations.html"><a href="peak-annotations.html#distance-to-tss"><i class="fa fa-check"></i><b>4.5</b> Distance to TSS</a></li>
+<li class="chapter" data-level="4.6" data-path="peak-annotations.html"><a href="peak-annotations.html#peak-frequency-over-tss"><i class="fa fa-check"></i><b>4.6</b> Peak frequency over TSS</a></li>
+<li class="chapter" data-level="4.7" data-path="peak-annotations.html"><a href="peak-annotations.html#peak-heatmap-over-tss"><i class="fa fa-check"></i><b>4.7</b> Peak heatmap over TSS</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="diffbind.html"><a href="diffbind.html"><i class="fa fa-check"></i><b>5</b> Differential Binding Region</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="diffbind.html"><a href="diffbind.html#no.-of-dbr"><i class="fa fa-check"></i><b>5.1</b> No. of DBR</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="diffbind.html"><a href="diffbind.html#adjutedd-p-val0.05"><i class="fa fa-check"></i><b>5.1.1</b> adjutedd P-val&lt;0.05</a></li>
+<li class="chapter" data-level="5.1.2" data-path="diffbind.html"><a href="diffbind.html#adjutedd-p-val0.01"><i class="fa fa-check"></i><b>5.1.2</b> adjutedd P-val&lt;0.01:</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="diffbind.html"><a href="diffbind.html#list-of-dbr-deseq2"><i class="fa fa-check"></i><b>5.2</b> List of DBR (DESeq2)</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="diffbind.html"><a href="diffbind.html#male-mv-vs-md"><i class="fa fa-check"></i><b>5.2.1</b> Male (MV vs MD)</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="diffbind.html"><a href="diffbind.html#list-of-dbr-edger"><i class="fa fa-check"></i><b>5.3</b> List of DBR (edgeR)</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="diffbind.html"><a href="diffbind.html#female-fv-vs-fd"><i class="fa fa-check"></i><b>5.3.1</b> Female (FV vs FD)</a></li>
+<li class="chapter" data-level="5.3.2" data-path="diffbind.html"><a href="diffbind.html#male-mv-vs-md-1"><i class="fa fa-check"></i><b>5.3.2</b> Male (MV vs MD)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="dbr-annotation.html"><a href="dbr-annotation.html"><i class="fa fa-check"></i><b>6</b> DBR Annotation</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="dbr-annotation.html"><a href="dbr-annotation.html#no.-of-genes-enrichred-in-dbr-by-sex"><i class="fa fa-check"></i><b>6.1</b> No. of genes enrichred in DBR by sex</a></li>
+<li class="chapter" data-level="6.2" data-path="dbr-annotation.html"><a href="dbr-annotation.html#genomic-features"><i class="fa fa-check"></i><b>6.2</b> Genomic features</a></li>
+<li class="chapter" data-level="6.3" data-path="dbr-annotation.html"><a href="dbr-annotation.html#distance-to-tss-1"><i class="fa fa-check"></i><b>6.3</b> Distance to TSS</a></li>
+<li class="chapter" data-level="6.4" data-path="dbr-annotation.html"><a href="dbr-annotation.html#peak-frequency-over-tss-1"><i class="fa fa-check"></i><b>6.4</b> Peak frequency over TSS</a></li>
+<li class="chapter" data-level="6.5" data-path="dbr-annotation.html"><a href="dbr-annotation.html#peak-heatmap-over-tss-1"><i class="fa fa-check"></i><b>6.5</b> Peak heatmap over TSS</a></li>
+<li class="chapter" data-level="6.6" data-path="dbr-annotation.html"><a href="dbr-annotation.html#pathway-analysis"><i class="fa fa-check"></i><b>6.6</b> Pathway analysis</a>
+<ul>
+<li class="chapter" data-level="6.6.1" data-path="dbr-annotation.html"><a href="dbr-annotation.html#kegg"><i class="fa fa-check"></i><b>6.6.1</b> KEGG</a></li>
+<li class="chapter" data-level="6.6.2" data-path="dbr-annotation.html"><a href="dbr-annotation.html#reactome"><i class="fa fa-check"></i><b>6.6.2</b> Reactome</a></li>
+</ul></li>
+<li class="chapter" data-level="6.7" data-path="dbr-annotation.html"><a href="dbr-annotation.html#gene-ontology"><i class="fa fa-check"></i><b>6.7</b> Gene Ontology</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="diffbind-TSS.html"><a href="diffbind-TSS.html"><i class="fa fa-check"></i><b>7</b> Differential Binding Region (TSS only)</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="diffbind-TSS.html"><a href="diffbind-TSS.html#no.-of-dbr-1"><i class="fa fa-check"></i><b>7.1</b> No. of DBR</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="diffbind-TSS.html"><a href="diffbind-TSS.html#adjutedd-p-val0.05-1"><i class="fa fa-check"></i><b>7.1.1</b> adjutedd P-val&lt;0.05</a></li>
+<li class="chapter" data-level="7.1.2" data-path="diffbind-TSS.html"><a href="diffbind-TSS.html#adjutedd-p-val0.01-1"><i class="fa fa-check"></i><b>7.1.2</b> adjutedd P-val&lt;0.01:</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="diffbind-TSS.html"><a href="diffbind-TSS.html#list-of-dbr-edger-1"><i class="fa fa-check"></i><b>7.2</b> List of DBR (edgeR)</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="diffbind-TSS.html"><a href="diffbind-TSS.html#female-fv-vs-fd-1"><i class="fa fa-check"></i><b>7.2.1</b> Female (FV vs FD)</a></li>
+<li class="chapter" data-level="7.2.2" data-path="diffbind-TSS.html"><a href="diffbind-TSS.html#male-mv-vs-md-2"><i class="fa fa-check"></i><b>7.2.2</b> Male (MV vs MD)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a>
+<ul>
+<li class="chapter" data-level="7.3" data-path="references.html"><a href="references.html#sessioninfo"><i class="fa fa-check"></i><b>7.3</b> sessionInfo</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">SLX-16110-16111 Run Report (ChIP-Seq)</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="calling" class="section level1" number="3">
+<h1><span class="header-section-number">3</span> Peak Calling</h1>
+<blockquote>
+<p>Peak caller: <a href="https://github.com/macs3-project/MACS">MACS2</a></p>
+</blockquote>
+<div id="no.-of-peaks" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> No. of peaks</h2>
+<table>
+<caption>
+<span id="tab:calling-stat">Table 3.1: </span>Peak Calling Statistic
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+ID
+</th>
+<th style="text-align:left;">
+Tissue
+</th>
+<th style="text-align:left;">
+Factor
+</th>
+<th style="text-align:left;">
+Condition
+</th>
+<th style="text-align:left;">
+Replicate
+</th>
+<th style="text-align:left;">
+Caller
+</th>
+<th style="text-align:left;">
+Intervals
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+F1V-K27
+</td>
+<td style="text-align:left;">
+F
+</td>
+<td style="text-align:left;">
+FV
+</td>
+<td style="text-align:left;">
+V
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+macs
+</td>
+<td style="text-align:left;">
+69306
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+F1D-K27
+</td>
+<td style="text-align:left;">
+F
+</td>
+<td style="text-align:left;">
+FD
+</td>
+<td style="text-align:left;">
+D
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+macs
+</td>
+<td style="text-align:left;">
+66650
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+F2V-K27
+</td>
+<td style="text-align:left;">
+F
+</td>
+<td style="text-align:left;">
+FV
+</td>
+<td style="text-align:left;">
+V
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+macs
+</td>
+<td style="text-align:left;">
+60791
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+F2D-K27
+</td>
+<td style="text-align:left;">
+F
+</td>
+<td style="text-align:left;">
+FD
+</td>
+<td style="text-align:left;">
+D
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+macs
+</td>
+<td style="text-align:left;">
+52372
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+M1V-K27
+</td>
+<td style="text-align:left;">
+M
+</td>
+<td style="text-align:left;">
+MV
+</td>
+<td style="text-align:left;">
+V
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+macs
+</td>
+<td style="text-align:left;">
+24192
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+M1D-K27
+</td>
+<td style="text-align:left;">
+M
+</td>
+<td style="text-align:left;">
+MD
+</td>
+<td style="text-align:left;">
+D
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+macs
+</td>
+<td style="text-align:left;">
+15504
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+M2V-K27
+</td>
+<td style="text-align:left;">
+M
+</td>
+<td style="text-align:left;">
+MV
+</td>
+<td style="text-align:left;">
+V
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+macs
+</td>
+<td style="text-align:left;">
+41065
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+M2D-K27
+</td>
+<td style="text-align:left;">
+M
+</td>
+<td style="text-align:left;">
+MD
+</td>
+<td style="text-align:left;">
+D
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+macs
+</td>
+<td style="text-align:left;">
+105386
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+M3V-K27
+</td>
+<td style="text-align:left;">
+M
+</td>
+<td style="text-align:left;">
+MV
+</td>
+<td style="text-align:left;">
+V
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+macs
+</td>
+<td style="text-align:left;">
+48587
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+M3D-K27
+</td>
+<td style="text-align:left;">
+M
+</td>
+<td style="text-align:left;">
+MD
+</td>
+<td style="text-align:left;">
+D
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+macs
+</td>
+<td style="text-align:left;">
+34566
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+F3V-K27
+</td>
+<td style="text-align:left;">
+F
+</td>
+<td style="text-align:left;">
+FV
+</td>
+<td style="text-align:left;">
+V
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+macs
+</td>
+<td style="text-align:left;">
+63952
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+F3D-K27
+</td>
+<td style="text-align:left;">
+F
+</td>
+<td style="text-align:left;">
+FD
+</td>
+<td style="text-align:left;">
+D
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+macs
+</td>
+<td style="text-align:left;">
+58508
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+F4V-K27
+</td>
+<td style="text-align:left;">
+F
+</td>
+<td style="text-align:left;">
+FV
+</td>
+<td style="text-align:left;">
+V
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:left;">
+macs
+</td>
+<td style="text-align:left;">
+48809
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+F4D-K27
+</td>
+<td style="text-align:left;">
+F
+</td>
+<td style="text-align:left;">
+FD
+</td>
+<td style="text-align:left;">
+D
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:left;">
+macs
+</td>
+<td style="text-align:left;">
+49146
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+F5V-K27
+</td>
+<td style="text-align:left;">
+F
+</td>
+<td style="text-align:left;">
+FV
+</td>
+<td style="text-align:left;">
+V
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+macs
+</td>
+<td style="text-align:left;">
+67283
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+F5D-K27
+</td>
+<td style="text-align:left;">
+F
+</td>
+<td style="text-align:left;">
+FD
+</td>
+<td style="text-align:left;">
+D
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+macs
+</td>
+<td style="text-align:left;">
+81183
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+M4V-K27
+</td>
+<td style="text-align:left;">
+M
+</td>
+<td style="text-align:left;">
+MV
+</td>
+<td style="text-align:left;">
+V
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:left;">
+macs
+</td>
+<td style="text-align:left;">
+44974
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+M4D-K27
+</td>
+<td style="text-align:left;">
+M
+</td>
+<td style="text-align:left;">
+MD
+</td>
+<td style="text-align:left;">
+D
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:left;">
+macs
+</td>
+<td style="text-align:left;">
+30621
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+M5V-K27
+</td>
+<td style="text-align:left;">
+M
+</td>
+<td style="text-align:left;">
+MV
+</td>
+<td style="text-align:left;">
+V
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+macs
+</td>
+<td style="text-align:left;">
+63240
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+M5D-K27
+</td>
+<td style="text-align:left;">
+M
+</td>
+<td style="text-align:left;">
+MD
+</td>
+<td style="text-align:left;">
+D
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+macs
+</td>
+<td style="text-align:left;">
+56788
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+M6V-K27
+</td>
+<td style="text-align:left;">
+M
+</td>
+<td style="text-align:left;">
+MV
+</td>
+<td style="text-align:left;">
+V
+</td>
+<td style="text-align:left;">
+6
+</td>
+<td style="text-align:left;">
+macs
+</td>
+<td style="text-align:left;">
+33459
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+M6D-K27
+</td>
+<td style="text-align:left;">
+M
+</td>
+<td style="text-align:left;">
+MD
+</td>
+<td style="text-align:left;">
+D
+</td>
+<td style="text-align:left;">
+6
+</td>
+<td style="text-align:left;">
+macs
+</td>
+<td style="text-align:left;">
+21873
+</td>
+</tr>
+</tbody>
+</table>
+<div class="figure" style="text-align: center"><span id="fig:calling-stat-fig1"></span>
+<img src="SLX-16110-16111_files/figure-html/calling-stat-fig1-1.png" alt="No. of peaks" width="672" />
+<p class="caption">
+Figure 3.1: No. of peaks
+</p>
+</div>
+</div>
+<div id="no.-of-peaks-by-the-consensus-level" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> No. of peaks by the consensus level</h2>
+<div id="all-samples-n22" class="section level3" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> All samples (n=22)</h3>
+<pre><code>##  [1] 174207  93244  70263  57900  50135  44492  40147  36562  33491  30812  28340  26287  24287  22414  20615  18942
+## [17]  17346  15670  14086  12260  10124   7183</code></pre>
+<div class="figure" style="text-align: center"><span id="fig:peaks-by-consensus-level1"></span>
+<img src="SLX-16110-16111_files/figure-html/peaks-by-consensus-level1-1.png" alt="No of peaks by the consensus level" width="672" />
+<p class="caption">
+Figure 3.2: No of peaks by the consensus level
+</p>
+</div>
+</div>
+<div id="fv-n5" class="section level3" number="3.2.2">
+<h3><span class="header-section-number">3.2.2</span> FV (n=5)</h3>
+<pre><code>## [1] 109753  56763  40397  30654  22337</code></pre>
+<div class="figure" style="text-align: center"><span id="fig:peaks-by-consensus-level-FV"></span>
+<img src="SLX-16110-16111_files/figure-html/peaks-by-consensus-level-FV-1.png" alt="No of peaks by the consensus level (FV)" width="672" />
+<p class="caption">
+Figure 3.3: No of peaks by the consensus level (FV)
+</p>
+</div>
+</div>
+<div id="fd-n5" class="section level3" number="3.2.3">
+<h3><span class="header-section-number">3.2.3</span> FD (n=5)</h3>
+<pre><code>## [1] 112006  56721  39287  29251  21073</code></pre>
+<div class="figure" style="text-align: center"><span id="fig:peaks-by-consensus-level-FD"></span>
+<img src="SLX-16110-16111_files/figure-html/peaks-by-consensus-level-FD-1.png" alt="No of peaks by the consensus level (FD)" width="672" />
+<p class="caption">
+Figure 3.4: No of peaks by the consensus level (FD)
+</p>
+</div>
+</div>
+<div id="mv-n6" class="section level3" number="3.2.4">
+<h3><span class="header-section-number">3.2.4</span> MV (n=6)</h3>
+<pre><code>## [1] 90724 44395 30836 23140 17519 12094</code></pre>
+<div class="figure" style="text-align: center"><span id="fig:peaks-by-consensus-level-MV"></span>
+<img src="SLX-16110-16111_files/figure-html/peaks-by-consensus-level-MV-1.png" alt="No of peaks by the consensus level (MV)" width="672" />
+<p class="caption">
+Figure 3.5: No of peaks by the consensus level (MV)
+</p>
+</div>
+</div>
+<div id="md-n6" class="section level3" number="3.2.5">
+<h3><span class="header-section-number">3.2.5</span> MD (n=6)</h3>
+<pre><code>## [1] 112725  46575  26461  18232  12965   8200</code></pre>
+<div class="figure" style="text-align: center"><span id="fig:peaks-by-consensus-level-MD"></span>
+<img src="SLX-16110-16111_files/figure-html/peaks-by-consensus-level-MD-1.png" alt="No of peaks by the consensus level (MD)" width="672" />
+<p class="caption">
+Figure 3.6: No of peaks by the consensus level (MD)
+</p>
+</div>
+</div>
+</div>
+<div id="consensus_peak" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> Consensus peaks across factors of interests</h2>
+<ul>
+<li>A peak should be supported by <strong>at least 2 samples</strong> within each of the factor group (e.g. FD, FV)
+<div id="htmlwidget-bc596b3340eda8eac586" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-bc596b3340eda8eac586">{"x":{"filter":"none","caption":"<caption>No of consensus peaks<\/caption>","data":[["1","2","3","4"],["F:V","F:D","M:V","M:D"],["F","F","M","M"],["FV","FD","MV","MD"],["V","D","V","D"],["1-2-3-4-5","1-2-3-4-5","1-2-3-4-5-6","1-2-3-4-5-6"],["macs","macs","macs","macs"],["56763","56721","44395","46575"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>ID<\/th>\n      <th>Tissue<\/th>\n      <th>Factor<\/th>\n      <th>Condition<\/th>\n      <th>Replicate<\/th>\n      <th>Caller<\/th>\n      <th>Intervals<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":10,"scrollX":true,"dom":"Bfrtip","buttons":["copy","csv","excel"],"order":[],"autoWidth":false,"orderClasses":false,"columnDefs":[{"orderable":false,"targets":0}]}},"evals":[],"jsHooks":[]}</script></li>
+</ul>
+<pre><code>## [1] 109753  56763  40397  30654  22337</code></pre>
+<ul>
+<li><strong>Final number of merged peaks: 71258</strong></li>
+<li>This number of peaks were used for <a href="diffbind.html#diffbind">differential binding region analysis (DBR)</a></li>
+</ul>
+</div>
+<div id="heatmap" class="section level2" number="3.4">
+<h2><span class="header-section-number">3.4</span> Heatmap</h2>
+<div class="figure" style="text-align: center"><span id="fig:peak-heatmap1"></span>
+<img src="SLX-16110-16111_files/figure-html/peak-heatmap1-1.png" alt="Heatmap based on the affinity matrix (aka. count-table)" width="672" />
+<p class="caption">
+Figure 3.7: Heatmap based on the affinity matrix (aka. count-table)
+</p>
+</div>
+</div>
+<div id="pca" class="section level2" number="3.5">
+<h2><span class="header-section-number">3.5</span> PCA</h2>
+<div class="figure" style="text-align: center"><span id="fig:peak-pca1"></span>
+<img src="SLX-16110-16111_files/figure-html/peak-pca1-1.png" alt="PCA plot based on the affinity matrix (aka. count-table)" width="672" />
+<p class="caption">
+Figure 3.8: PCA plot based on the affinity matrix (aka. count-table)
+</p>
+</div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="mapping.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="peak-annotations.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["SLX-16110-16111.pdf", "SLX-16110-16111.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

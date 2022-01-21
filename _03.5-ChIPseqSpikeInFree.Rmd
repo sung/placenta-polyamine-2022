@@ -1,0 +1,33 @@
+# ChIPseqSpikeInFree 
+
+> Based on [`ChIPseqSpikeInFree`](https://github.com/stjude/ChIPseqSpikeInFree)
+
+- Results avaible [here](ChIPseqSpikeInFree)
+- Scaling factors (or normalisation factors) of males [here](ChIPseqSpikeInFree/Male_boxplot.pdf)
+- Scaling factors (or normalisation factors) of females [here](ChIPseqSpikeInFree/Female_boxplot.pdf)
+- Read distribution of males [here](ChIPseqSpikeInFree/Male_distribution.pdf)
+- Read distribution of females [here](ChIPseqSpikeInFree/Female_distribution.pdf)
+
+```{r ChIPseqSpikeInFree, echo=T, eval=F}
+library(ChIPseqSpikeInFree) # tested on R 3.6.1
+
+project.dir<-file.path('~/results/SLX-16110-16111.Homo_sapiens.v1')
+dt.samples<-fread(file.path(project.dir,'Meta/samples.diffbind.csv'))
+dt.samples[1:3]
+male.meta<-dt.samples[Tissue=="M",.(ID=bamReads,GROUP=Factor,ANTIBODY="H3K27ac")]
+female.meta<-dt.samples[Tissue=="F",.(ID=bamReads,GROUP=Factor,ANTIBODY="H3K27ac")]
+male.bams<-male.meta$ID
+female.bams<-female.meta$ID
+
+male.meta$ID<-basename(male.meta$ID)
+female.meta$ID<-basename(female.meta$ID)
+
+male.meta.file=file.path(project.dir,'ChIPseqSpikeInFree/Meta/male.meta.txt')
+fwrite(male.meta,file=male.meta.file,sep="\t")
+female.meta.file=file.path(project.dir,'ChIPseqSpikeInFree/Meta/female.meta.txt')
+fwrite(female.meta,female.meta.file,sep="\t")
+
+ChIPseqSpikeInFree(bamFiles = male.bams, chromFile = "hg38", metaFile = male.meta.file, prefix = "Male", ncores=16)
+ChIPseqSpikeInFree(bamFiles = female.bams, chromFile = "hg38", metaFile = female.meta.file, prefix = "Female", ncores=16)
+
+```

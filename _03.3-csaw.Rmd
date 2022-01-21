@@ -1,0 +1,136 @@
+# Differential Binding Region - casw {#diffbind}
+
+> **Based** on 10k-bp windows (aka de-novel approach without peak information)
+>
+> Software package used: [casw](https://bioconductor.org/packages/3.12/workflows/html/csawUsersGuide.html)
+>
+> [`Background normalisation`](https://bioconductor.org/packages/3.12/bioc/vignettes/DiffBind/inst/doc/DiffBind.pdf#page=38) method using `DiffBind3`
+>
+> References: [casw paper][https://f1000research.com/articles/4-1080/v2] & [vignette](http://bioconductor.org/packages/release/workflows/vignettes/chipseqDB/inst/doc/cbp.html)
+
+```{r csaw-prep}
+# Prep
+library(csaw)
+
+dt.samples[Tissue=="M",.(SampleID,Tissue,Factor,Condition,Replicate,bamReads)]
+(li.samples<-split(dt.samples, dt.samples$Tissue))
+(li.bams<-lapply(li.samples, function(x) x$bamReads))
+
+blacklist<-rtracklayer::import(config$blacklist)
+param <- readParam(minq=config$MAPQ, discard=blacklist)
+
+# Computing the average fragment length
+x <- correlateReads(dt.samples$bamReads, param=reform(param, dedup=TRUE))
+frag.len <- maximizeCcf(x)
+frag.len # 123
+
+# Counting reads into windows
+li.win.data<-lapply(li.bams, windowCounts, param=param, width=150, ext=config$FR.size, BPPARAM=MulticoreParam(32))
+li.win.data[["F"]]
+li.win.data[["M"]]
+lapply(li.win.data,dim)
+lapply(li.win.data, function(i) metadata(i))
+
+if(TRUE){
+    # Normalization for composition biases
+    li.bins<-lapply(li.bams, windowCounts, bin=TRUE, width=10000, param=param, BPPARAM=MulticoreParam(32))
+    li.win.data<-lapply(names(li.bams), function(i){normFactors(li.bins[[i]], se.out=li.win.data[[i]])})
+    names(li.win.data)<-names(li.bams)
+
+}else{
+    # 
+    li.bins<-lapply(li.bams, windowCounts, bin=TRUE, width=2000, param=param, BPPARAM=MulticoreParam(32))
+}
+
+lapply(li.bins,dim)
+lapply(li.bins, function(i) metadata(i))
+lapply(li.bins, function(i) colData(i))
+
+lapply(li.win.data,dim)
+lapply(li.win.data, function(i) metadata(i))
+lapply(li.win.data, function(i) assay(i)[1:10,])
+lapply(li.win.data, function(i) colData(i))
+
+
+# Filtering of low-abundance windows
+li.filter.stat <- lapply(names(li.bams), function(i) filterWindowsGlobal(li.win.data[[i]], li.bins[[i]]))
+names(li.filter.stat)<-names(li.bams)
+
+li.filter.stat[['M']] %>% names
+lapply(li.filter.stat, function(i) length(i$filter))
+lapply(li.filter.stat, function(i) i$abundances[1:10])
+lapply(li.filter.stat, function(i) i$back.abundances[1:10])
+lapply(li.filter.stat, function(i) i$filter[1:10])
+
+min.fc <- 3
+li.keep<-lapply(li.filter.stat, function(i) i$filter>log2(min.fc) )
+lapply(li.keep, summary)
+
+li.filtered.data <- lapply(names(li.bams), function(i) li.win.data[[i]][li.keep[[i]],])
+names(li.filtered.data)<-names(li.bams)
+lapply(li.filtered.data, dim) # ~1M
+
+if(FALSE){
+    # Normalizing for sample-specific trended biases
+    li.filtered.data<-lapply(li.filtered.data, normOffsets)
+    li.offsets<-lapply(li.filtered.data, assay, "offset" )
+    head(li.offsets[["M"]])
+}
+
+# Statistical modelling of biological variability
+library(edgeR)
+li.y <- lapply(li.filtered.data, asDGEList)
+lapply(li.y, summary)
+
+lapply(li.samples, function(x) levels(factor(x$Factor)))
+li.design<-lapply(li.samples, function(x) {
+                      my.factor<-factor(x$Factor)
+                      my.design<-model.matrix(~0+my.factor)
+                      colnames(my.design) <- levels(my.factor)
+                      my.design
+})
+
+li.y <- mclapply(names(li.bams), function(i) estimateDisp(li.y[[i]], li.design[[i]]), mc.cores=2)
+names(li.y)<-names(li.bams)
+lapply(li.y, function(i) summary(i$trended.dispersion))
+plotBCV(li.y[["F"]])
+plotBCV(li.y[["M"]])
+
+li.fit <- mclapply(names(li.bams), function(i) glmQLFit(li.y[[i]], li.design[[i]], robust=TRUE), mc.cores=2)
+names(li.fit)<-names(li.bams)
+lapply(li.fit, function(i) summary(i$df.prior))
+plotQLDisp(li.fit[["F"]])
+plotQLDisp(li.fit[["M"]])
+
+plotMDS(cpm(li.y[["F"]], log=TRUE), top=10000, labels=li.samples[["F"]]$Factor,col=c("red", "blue")[as.integer(factor(li.samples[["F"]]$Factor))])
+plotMDS(cpm(li.y[["M"]], log=TRUE), top=10000, labels=li.samples[["M"]]$Factor,col=c("red", "blue")[as.integer(factor(li.samples[["M"]]$Factor))])
+
+# Testing for DB
+lapply(li.samples, function(x) levels(factor(x$Factor)))
+
+li.contrast<-list()
+li.contrast[["F"]] <- makeContrasts(FD-FV, levels=li.design[["F"]])
+li.contrast[["M"]] <- makeContrasts(MD-MV, levels=li.design[["M"]])
+
+li.res<-list()
+li.res[["F"]] <- glmQLFTest(li.fit[["F"]], contrast=li.contrast[["F"]])
+li.res[["M"]] <- glmQLFTest(li.fit[["M"]], contrast=li.contrast[["M"]])
+
+li.merged<-list()
+li.merged[["F"]] <- mergeResults(li.filtered.data[["F"]], li.res[["F"]]$table, tol=100,merge.args=list(max.width=5000))
+li.merged[["M"]] <- mergeResults(li.filtered.data[["M"]], li.res[["M"]]$table, tol=100,merge.args=list(max.width=5000))
+
+lapply(li.merged, function(x) x$regions)
+lapply(li.merged, function(x) x$combined)
+lapply(li.merged, function(x) x$best)
+
+lapply(li.merged, function(x){
+    tabcom <- x$combined
+    is.sig <- tabcom$FDR <= 0.5
+    summary(is.sig)
+})
+
+
+```
+
+

@@ -1,0 +1,8 @@
+book_filename: "SLX-16110-16111"
+output_dir: "docs5"
+delete_merged_file: true
+rmd_file: ["index.Rmd","01-mapping.Rmd","02-calling.Rmd","02.5-peak-annotation.Rmd","03-DiffBind.Rmd","06-references.Rmd"]
+language:
+  ui:
+    #chapter_name: "Chapter "
+    chapter_name: ""

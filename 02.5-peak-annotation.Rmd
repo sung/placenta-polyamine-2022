@@ -1,0 +1,145 @@
+# Peak Annotations
+
+> Based on the consensus peaks (see [here](#consensus_peak))
+>
+> Software used: [ChIPseeker](https://www.bioconductor.org/packages/release/bioc/html/ChIPseeker.html) & [deepTools](https://github.com/deeptools/deepTools)
+
+```{r consensus_peak-anno1, echo=F}
+#data.table(dbo.con$peaks[[1]])
+if(all(colnames(dbo.con$peaks[[1]]) == paste0("V",c(1:4)))){
+    dbo.con$peaks<-lapply(dbo.con$peaks, setnames,c("V1","V2","V3","V4"),c("chr","start","end","score"))
+}
+gl.peak[["con"]]<-lapply(dbo.con$peaks,makeGRangesFromDataFrame,keep.extra.columns=T)
+names(gl.peak[["con"]])<-dba.show(dbo.con)$Factor
+#gl.peak[["con"]][[1]]
+li.peakAnno[['con']]<-lapply(gl.peak[["con"]], ChIPseeker::annotatePeak, tssRegion=c(-2e3, 2e3), TxDb=txdb, annoDb="org.Hs.eg.db", verbose=F) # list of 'csAnno'
+dl.peakAnno[['con']]<-lapply(li.peakAnno[['con']], as.data.table)
+group.type<-"con"
+
+li.peakAnno[['merged']]<-ChIPseeker::annotatePeak(dba.peakset(dbo.con,bRetrieve=T), tssRegion=c(-2e3, 2e3), TxDb=txdb, annoDb="org.Hs.eg.db", verbose=F)
+dl.peakAnno[['merged']]<-as.data.table(li.peakAnno[['merged']])[order(-(F.V+F.D+M.V+M.D))]
+#dl.peakAnno[['merged']]<-dl.peakAnno[['merged']][order(-(F.V+F.D+M.V+M.D))]
+fwrite(dl.peakAnno[['merged']], file="RData/final.merged.peak.anno.csv.gz")
+#dl.peakAnno[['merged']][F.V==0 & F.D==0 & M.D==0]
+```
+
+- Below shows top 10 peaks (based on the p-values of each peak)
+```{r coaniopts_peak-anno2, echo=F}
+DT::datatable(
+    dl.peakAnno[['merged']][1:10]
+    ,caption="Top 10 peaks"
+)
+```
+
+```{r peak-con-table-FD, eval=F}
+lapply(dl.peakAnno[['con']], nrow)
+nrow(dl.peakAnno[['merged']])
+DT::datatable(
+              dl.peakAnno[['con']][["FD"]][order(-score)][1:5]
+)
+```
+
+- Annotated peaks are available to download from [here](RData/final.merged.peak.anno.csv.gz)
+
+## No. of peaks by group
+
+```{r consensus-peak-venn1, fig.cap="Venn Diagram of peak overlaps (all samples)"}
+dba.plotVenn(dbo.con,dbo.con$mask$Consensus)
+
+## below to get consensus across the four groups
+#dba.overlap(dbo.con,dbo.con$mask$Consensus)
+#dba.peakset(dbo.con,1:4,minOverlap=4,bRetrieve=T)
+#dba.peakset(dbo.con,dbo.con$mask$Consensus,minOverlap=4,bRetrieve=T)
+```
+
+```{r consensus-peak-venn2, fig.cap="Venn Diagram of peak overlaps (female only)"}
+dba.plotVenn(dbo.con,dbo.con$mask$F)
+
+## below to get consensus across the two groups (FV and FD) 
+#dba.peakset(dbo.con,dbo.con$mask$F,minOverlap=1,bRetrieve=T)
+```
+
+```{r consensus-peak-venn3, fig.cap="Venn Diagram of peak overlaps (male only)"}
+dba.plotVenn(dbo.con,dbo.con$mask$M)
+```
+
+## No. of peaks by chromosome 
+```{r peak-con-chr}
+# No. of peak by chr
+knitr::kable(
+    rbindlist(
+        lapply(names(dl.peakAnno[[group.type]]), function(i) dl.peakAnno[[group.type]][[i]][,.N,seqnames][,group:=i])
+            ) %>% dcast.data.table(seqnames~group, value.var="N",fill=0)
+    ,caption="No. of peaks by chromosome"
+) %>% kable_styling(full_width = F)
+```
+
+## No. of genes enrichred in peaks
+
+### Non-intergenic peaks only
+```{r peak-no-group1, fig.cap="Venn diagram showing the number of enriched genes"}
+# No. of peak by encirhed genes 
+li.genes= lapply(li.peakAnno[[group.type]], function(i) as.data.table(i)[annotation!="Distal Intergenic",.N,ENSEMBL]$ENSEMBL)
+ChIPseeker::vennplot(li.genes)
+```
+
+### Peaks in TSS (<2kb)
+```{r peak-no-group2, fig.cap="Venn diagram showing the number of enriched genes"}
+# No. of peak by encirhed genes 
+li.genes.p= lapply(li.peakAnno[[group.type]], function(i) as.data.table(i)[grepl("Promoter",annotation),.N,ENSEMBL]$ENSEMBL)
+ChIPseeker::vennplot(li.genes.p)
+```
+
+## Genomic feature of peaks
+```{r peak-gf-group1}
+# % of peak by features
+knitr::kable(
+    lapply(names(li.peakAnno[[group.type]]), function(i) data.table(li.peakAnno[[group.type]][[i]]@annoStat)[,.(group=i,Feature,Frequency=round(Frequency,2))]) %>% rbindlist %>% dcast.data.table(Feature~group,value.var="Frequency")
+    ,caption="% of genomic features"
+) %>% kable_styling(full_width = F)
+```
+
+```{r peak-gf-group2}
+# No. of peak by features
+knitr::kable(
+    lapply(names(li.peakAnno[[group.type]]), function(i) 
+           cbind(
+                 li.peakAnno[[group.type]][[i]]@annoStat,
+                 `Num`=li.peakAnno[[group.type]][[i]]@annoStat[,2]/100 * li.peakAnno[[group.type]][[i]]@peakNum,
+                 `group`=i
+            )
+    ) %>% rbindlist %>% dcast.data.table(Feature~group,value.var="Num")
+    ,
+    caption="No of peaks by genomic features"
+) %>% kable_styling(full_width = F)
+```
+
+```{r peak-gf-group3, fig.cap="Genomic feautres of peaks"}
+plotAnnoBar(li.peakAnno[[group.type]])
+```
+
+## Distance to TSS
+```{r peak-dist-group1, fig.cap="Distance to TSS"}
+plotDistToTSS(li.peakAnno[[group.type]])
+```
+
+## Peak frequency over TSS
+
+```{r peak-freq-group1, fig.cap="Peak frequency over TSS (<2kb)", message=FALSE}
+p1<-plotAvgProf2(gl.peak[[group.type]][c("FD","FV")], TxDb=txdb, upstream=2e3,downstream=2e3)
+p2<-plotAvgProf2(gl.peak[[group.type]][c("MD","MV")], TxDb=txdb, upstream=2e3,downstream=2e3)
+cowplot::plot_grid(p1+coord_cartesian(ylim=c(0,6.5e-4))+theme(legend.position="top"),
+                   p2+coord_cartesian(ylim=c(0,6.5e-4))+theme(legend.position="top"),nrow=1)
+```
+
+```{r peak-freq-group2, fig.cap="Peak frequency over TSS (<5kb)", message=FALSE}
+p3<-plotAvgProf2(gl.peak[[group.type]][c("FD","FV")], TxDb=txdb, upstream=5e3,downstream=5e3)
+p4<-plotAvgProf2(gl.peak[[group.type]][c("MD","MV")], TxDb=txdb, upstream=5e3,downstream=5e3)
+cowplot::plot_grid(p3+coord_cartesian(ylim=c(0,5.5e-4))+theme(legend.position="top"),
+                   p4+coord_cartesian(ylim=c(0,5.5e-4))+theme(legend.position="top"),nrow=1)
+```
+
+## Peak heatmap over TSS
+```{r peak-heatmap-group1, fig.cap="Peak heatmap"}
+peakHeatmap(gl.peak[[group.type]], TxDb=txdb, upstream=2e3,downstream=2e3,verbose=F)
+```

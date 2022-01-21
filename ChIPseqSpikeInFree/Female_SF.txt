@@ -1,0 +1,11 @@
+ID	GROUP	ANTIBODY	COLOR	QC	TURNS	SF
+SLX-16110-16111.i701_i502.bowtie2.sorted.uniq.bam	FV	H3K27ac	blue	pass	0.55,0.4066,8.3,0.9626	1.1
+SLX-16110-16111.i701_i503.bowtie2.sorted.uniq.bam	FD	H3K27ac	turquoise	pass	0.6,0.4595,7.95,0.9631	1.15
+SLX-16110-16111.i701_i507.bowtie2.sorted.uniq.bam	FV	H3K27ac	blue	pass	0.6,0.3928,9.6,0.9596	1.25
+SLX-16110-16111.i701_i508.bowtie2.sorted.uniq.bam	FD	H3K27ac	turquoise	pass	0.65,0.4799,8.8,0.9625	1.33
+SLX-16110-16111.i704_i502.bowtie2.sorted.uniq.bam	FV	H3K27ac	blue	pass	0.7,0.4665,8.05,0.9629	1.17
+SLX-16110-16111.i704_i503.bowtie2.sorted.uniq.bam	FD	H3K27ac	turquoise	pass	0.7,0.4709,8.65,0.9648	1.27
+SLX-16110-16111.i704_i507.bowtie2.sorted.uniq.bam	FV	H3K27ac	blue	pass	0.7,0.4841,8.05,0.9627	1.21
+SLX-16110-16111.i704_i508.bowtie2.sorted.uniq.bam	FD	H3K27ac	turquoise	pass	0.6,0.4226,7.45,0.9629	1
+SLX-16110-16111.i705_i502.bowtie2.sorted.uniq.bam	FV	H3K27ac	blue	pass	0.65,0.4662,9.5,0.9596	1.41
+SLX-16110-16111.i705_i503.bowtie2.sorted.uniq.bam	FD	H3K27ac	turquoise	pass	0.65,0.4524,9.85,0.9601	1.43

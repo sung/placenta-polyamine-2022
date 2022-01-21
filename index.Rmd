@@ -1,0 +1,67 @@
+--- 
+title: "`r params$SLX` Run Report (`r params$seq_type`)"
+#author: "Sung Gong"
+author: | 
+    [Sung Gong](https://www.obgyn.cam.ac.uk/staff/research-staff/sung-gong/){target="_blank"}
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+output_dir: "docs5"
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: no 
+description: "This is a report for `r params$owner`'s `r params$seq_type' results"
+params:
+    owner: Irving Aye
+    SLX: SLX-16110-16111
+    seq_type: ChIP-Seq
+---
+
+```{r setup, include=FALSE, message=FALSE, warning=FALSE}
+system.time(source("local.R"))
+if(!exists('dbo')){init_DiffBind()} # load 'dbo'
+stopifnot(exists('dbo'))
+#if(!exists('dbo.group')){init_DiffBind(dt.groups,"group")} # load 'dbo.group'
+#stopifnot(exists('dbo.group'))
+if(!exists('dbo.con')){init_DiffBind_con()} # load 'dbo.con'
+stopifnot(exists('dbo.con'))
+if(!exists('dbo.cnt')){init_DiffBind_cnt()} # load 'dbo.cnt'
+stopifnot(exists('dbo.cnt'))
+if(!exists('li.cnt')){init_DiffBind_diff()} # load 'li.diff'
+stopifnot(exists('li.diff'))
+
+## No. of peak
+df.dbo<-dba.show(dbo); df.dbo$Intervals<-as.numeric(df.dbo$Intervals)
+
+## mapping stat
+mapping.file<-file.path(project.dir,'Meta','mapping.stat.csv')
+dt.mapping<-fread(mapping.file)[order(Barcode)]
+df.dbo.mapping<-merge(df.dbo, dt.mapping, by.x="ID", by.y="SampleName")
+
+## for peak annotation later
+gl.peak<-list() # list of GRanges
+li.peakAnno<-list()
+dl.peakAnno<-list()
+
+##
+knitr::opts_chunk$set(cache=FALSE, echo = FALSE, message=FALSE, warning=FALSE, fig.align="center") # set global options
+options(DT.options = list(pageLength = 10, 
+                          scrollX=TRUE,
+                          dom = 'Bfrtip',
+                          buttons = c('copy', 'csv', 'excel')))
+```
+
+# Samples
+
+```{r sample-info}
+#DT::datatable(dba.show(dbo))
+dt.meta.samples<-fread(file.path(project.dir,paste0('Meta/samples.csv')),header=F,col.names=c("Barcode","SampleName","Treatment","Sex","Condition","Factor"))
+DT::datatable(dt.meta.samples, caption="Sample Information",extensions='Buttons')
+```
+
+```{r include=FALSE,eval=F}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown'
+), 'packages.bib')
+```

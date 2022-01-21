@@ -1,0 +1,21 @@
+
+## Per-group (pulled analysis)
+> Individual samples were pulled (i.e. merged), separately for input and treatment, then peaks were called.
+> This is **more sensitive** approach (therefore more peaks) as it increases the depth of sequencing reads.
+> And this is **less stringent** selection of peaks.
+
+###  No. of peaks
+```{r peak-group-no1}
+#dba.show(dbo.group)
+knitr:: kable(dba.show(dbo.group),caption='Peak Calling Statistic (pulled analysis)')
+```
+
+```{r peak-group-no2, fig.caption="No. of peaks"}
+foo<-dba.show(dbo.group); foo$Intervals<-as.numeric(foo$Intervals)
+ggplot(foo, aes(Factor, Intervals)) + geom_bar(stat="identity",width=.4,alpha=.7) + theme_bw()
+```
+
+```{r peak-group-no3, fig.cap="Venn Diagram of peak overlaps"}
+dba.plotVenn(dbo.group, dbo.group$mask$All)
+```
+

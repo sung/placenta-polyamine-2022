@@ -1,0 +1,69 @@
+# Mapping {#mapping}
+
+> Mapper: [bowtie2](https://github.com/BenLangmead/bowtie2)
+
+## Table of mapping statistic
+```{r mapping-stat1, echo=F}
+DT::datatable(
+              dt.mapping # from index.Rmd
+            ,extensions="Buttons",
+            caption='Mapping statistic')
+```
+
+- NB, only uniqely mapped reads (i.e. excluding multi-mapped reads) were used in further analysis
+- NB, one sample (M3V-INP) removed from the analysis 
+
+## Boxplots of mapping staststic 
+
+### No. of sequencing reads
+```{r mapping-stat2, echo=F, fig.cap="No. of reads"}
+ggplot(merge(dt.meta.samples,dt.mapping), aes(Factor,`No. of Read`)) +
+    geom_boxplot(outlier.shape=NA,alpha=.7) +
+    geom_jitter(width=.1,size=3,alpha=.5) +
+    facet_wrap(~Treatment) +theme_bw()
+
+```
+
+### No. of uniquely mapped reads
+```{r mapping-stat2a, echo=F, fig.cap="No. of unique mapped reads"}
+ggplot(merge(dt.meta.samples,dt.mapping), aes(Factor,`uniquely mapped`)) +
+    geom_boxplot(outlier.shape=NA,alpha=.7) +
+    geom_jitter(width=.1,size=3,alpha=.5) +
+    ylab("No. of unique mapped reads") +
+    facet_wrap(~Treatment) +theme_bw()
+
+```
+
+### Unique mapping rate
+```{r mapping-stat3, echo=F, fig.cap="Unique mapping rate"}
+ggplot(merge(dt.meta.samples,dt.mapping), aes(Factor,`Unique mapping rate`)) +
+    geom_boxplot(outlier.shape=NA,alpha=.7) +
+    geom_jitter(width=.1,size=3,alpha=.5) +
+    facet_wrap(~Treatment) +theme_bw()
+
+```
+
+### Multi mapping rate
+```{r mapping-stat4, echo=F, fig.cap="Multi mapping rate"}
+ggplot(merge(dt.meta.samples,dt.mapping), aes(Factor,`Total mapping Rate`-`Unique mapping rate`)) +
+    geom_boxplot(outlier.shape=NA,alpha=.7) +
+    geom_jitter(width=.1,size=3,alpha=.5) +
+    ylab("Multi mapping rate") +
+    facet_wrap(~Treatment) +theme_bw()
+
+```
+
+### Total mapping rate
+```{r mapping-stat5, echo=F, fig.cap="Total mapping rate"}
+ggplot(merge(dt.meta.samples,dt.mapping), aes(Factor,`Total mapping Rate`)) +
+    geom_boxplot(outlier.shape=NA,alpha=.7) +
+    geom_jitter(width=.1,size=3,alpha=.5) +
+    facet_wrap(~Treatment) +theme_bw()
+
+```
+
+## BigWig files
+- Note, each individual BAM files were merged (i.e. samtools merge file1 file2 ...) by groups (FV, FD, MV, and MD).
+- Therefore, there are 4 bigwig files.
+- You can download from [here](https://universityofcambridgecloud-my.sharepoint.com/:f:/g/personal/ssg29_cam_ac_uk/EjXqx_Ng1aNKs_evUYmMDoQB9mWk4SFIYtIWkpu9g_D99g?e=FjsQvE).
+- To visualize, download [igv](https://software.broadinstitute.org/software/igv/download) then import files above.

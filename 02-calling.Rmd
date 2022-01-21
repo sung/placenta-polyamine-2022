@@ -1,0 +1,142 @@
+# Peak Calling {#calling}
+
+> Peak caller: [MACS2](https://github.com/macs3-project/MACS)
+
+## No. of peaks
+```{r calling-stat}
+knitr:: kable(dba.show(dbo),caption='Peak Calling Statistic')
+```
+
+```{r calling-stat-fig1, fig.cap="No. of peaks"}
+ggplot(df.dbo, aes(Factor, Intervals)) + 
+geom_boxplot(width=.3,outlier.shape=NA,alpha=.7) + 
+geom_jitter(width=.1, size=4,alpha=.5) +
+ylab("No. of peaks") + theme_bw()
+```
+
+```{r calling-stat-fig2, fig.cap="No. of peaks (per million mapped read)"}
+df.dbo.mapping<-merge(df.dbo, dt.mapping, by.x="ID", by.y="SampleName")
+ggplot(df.dbo.mapping, aes(Factor, Intervals/`uniquely mapped`*1e+6)) + 
+geom_boxplot(width=.3,outlier.shape=NA,alpha=.7) + 
+geom_jitter(width=.1, size=4,alpha=.5) + 
+ggsignif::geom_signif(comparisons = list(c("FD","FV"),c("MD","MV")),size=.9,textsize=5.5) +
+ylab("No. of peaks\n(per million mapped read)") + theme_bw()
+```
+
+```{r calling-stat-fig3, fig.cap="No. of peak in the promoter regions"}
+if(!file.exists("RData/dt.peak.num.csv")){
+    gl.peak[["sample"]]<-lapply(dbo$peaks,makeGRangesFromDataFrame,keep.extra.columns=T)
+    names(gl.peak[["sample"]])<-dba.show(dbo)$ID
+    sapply(gl.peak[['sample']],length)
+    li.peakAnno[['sample']]<-lapply(gl.peak[["sample"]], ChIPseeker::annotatePeak, tssRegion=c(-2e3, 2e3), TxDb=txdb, annoDb="org.Hs.eg.db", verbose=F) # list of 'csAnno'
+    li.peakAnno[['sample']]
+    dl.peakAnno[['sample']]<-lapply(li.peakAnno[['sample']], as.data.table)
+    li.peak.chr=lapply(li.peakAnno[['sample']], function(i) as.data.table(i)[,.N,seqnames])
+    li.peak.promo=lapply(li.peakAnno[['sample']], function(i) as.data.table(i)[grepl("Promoter",annotation),.N,seqnames])
+
+    dt.peak.num<-data.table(
+        `ID`=dba.show(dbo)$ID,
+        `TSS_peak`=sapply(li.peak.promo,function(i) i[,sum(N)]), # No. of TSS peak
+        `TSS_chrX_peak`=sapply(li.peak.promo,function(i) i[seqnames=="X",sum(N)]), # No. of chrX TSS peak
+        `TSS_autosomal_peak`=sapply(li.peak.promo,function(i) i[!seqnames%in%c("X","Y"),sum(N)]), # No. of autosomal TSS peak
+        `chrX_peak`=sapply(li.peak.chr,function(i) i[seqnames=="X",sum(N)]), # No. of chrX peak
+        `autosomal_peak`=sapply(li.peak.chr,function(i) i[!seqnames%in%c("X","Y"),sum(N)]) # No. of autosomal peak
+        )
+    fwrite(dt.peak.num, file="RData/dt.peak.num.csv")
+}else{
+    dt.peak.num<-fread("RData/dt.peak.num.csv")
+}
+
+ggplot(merge(df.dbo.mapping,dt.peak.num), aes(Factor, TSS_peak/`uniquely mapped`*1e+6)) + 
+geom_boxplot(width=.3,outlier.shape=NA,alpha=.7) + 
+geom_jitter(width=.1, size=4,alpha=.5) +
+ggsignif::geom_signif(comparisons = list(c("FD","FV"),c("MD","MV")),size=.9,textsize=5.5) +
+ylab("No. of peaks in promoter\n(per million mapped read)") + theme_bw()
+
+if(FALSE){
+    ggplot(merge(df.dbo.mapping,dt.peak.num), aes(Factor, TSS_chrX_peak/`uniquely mapped`*1e+6)) + 
+        geom_boxplot(width=.3,outlier.shape=NA,alpha=.7) + 
+        ylab("No. of peaks in chrX promoter\n(per million read)") +
+        geom_jitter(width=.1, size=4,alpha=.5) + theme_bw()
+
+    ggplot(merge(df.dbo.mapping,dt.peak.num), aes(Factor, TSS_autosomal_peak/`uniquely mapped`*1e+6)) + 
+        geom_boxplot(width=.3,outlier.shape=NA,alpha=.7) + 
+        ylab("No. of peaks in autosomal promoter (per million read)") +
+        geom_jitter(width=.1, size=4,alpha=.5) + theme_bw()
+
+    ggplot(merge(df.dbo.mapping,dt.peak.num), aes(Factor, chrX_peak/`uniquely mapped`*1e+6)) + 
+        geom_boxplot(width=.3,outlier.shape=NA,alpha=.7) + 
+        ylab("No. of peaks in chrX\n(per million read)") +
+        geom_jitter(width=.1, size=4,alpha=.5) + theme_bw()
+
+    ggplot(merge(df.dbo.mapping,dt.peak.num), aes(Factor, autosomal_peak/`uniquely mapped`*1e+6)) + 
+        geom_boxplot(width=.3,outlier.shape=NA,alpha=.7) + 
+        ylab("No. of peaks in autosomes\n(per million read)") +
+        geom_jitter(width=.1, size=4,alpha=.5) + theme_bw()
+}
+
+```
+
+## No. of peaks by the consensus level 
+
+### All samples (n=`r nrow(df.dbo)`)
+```{r peaks-by-consensus-level1, fig.cap="No of peaks by the consensus level"}
+print(olap.rate<-dba.overlap(dbo,mode=DBA_OLAP_RATE)) #  No. of peaks by minOverlap (1..)
+plot(olap.rate,type='b',ylab='# peaks', xlab='Overlap at least this many peaksets')
+```
+
+### FV (n=`r nrow(df.dbo[df.dbo$Factor=="FV",])`)
+```{r peaks-by-consensus-level-FV, fig.cap="No of peaks by the consensus level (FV)"}
+print(olap.rate<-dba.overlap(dbo,dbo$masks$FV,mode=DBA_OLAP_RATE)) #  No. of peaks by minOverlap (1..)
+plot(olap.rate,type='b',ylab='# peaks', xlab='Overlap at least this many peaksets')
+```
+
+### FD (n=`r nrow(df.dbo[df.dbo$Factor=="FD",])`)
+```{r peaks-by-consensus-level-FD, fig.cap="No of peaks by the consensus level (FD)"}
+print(olap.rate<-dba.overlap(dbo,dbo$masks$FD,mode=DBA_OLAP_RATE)) #  No. of peaks by minOverlap (1..)
+plot(olap.rate,type='b',ylab='# peaks', xlab='Overlap at least this many peaksets')
+```
+
+### MV (n=`r nrow(df.dbo[df.dbo$Factor=="MV",])`)
+```{r peaks-by-consensus-level-MV, fig.cap="No of peaks by the consensus level (MV)"}
+print(olap.rate<-dba.overlap(dbo,dbo$masks$MV,mode=DBA_OLAP_RATE)) #  No. of peaks by minOverlap (1..)
+plot(olap.rate,type='b',ylab='# peaks', xlab='Overlap at least this many peaksets')
+```
+
+### MD (n=`r nrow(df.dbo[df.dbo$Factor=="MD",])`)
+```{r peaks-by-consensus-level-MD, fig.cap="No of peaks by the consensus level (MD)"}
+print(olap.rate<-dba.overlap(dbo,dbo$masks$MD,mode=DBA_OLAP_RATE)) #  No. of peaks by minOverlap (1..)
+plot(olap.rate,type='b',ylab='# peaks', xlab='Overlap at least this many peaksets')
+```
+
+## Consensus peaks across factors of interests {#consensus_peak}
+- A peak should be supported by **at least `r config$minOverlap` samples** within each of the factor group (e.g. FD, FV)
+```{r consensus-peak-table1}
+DT::datatable(dba.show(dbo.con), caption="No of consensus peaks")
+
+print(olap.rate<-dba.overlap(dbo,dbo$masks$FV,mode=DBA_OLAP_RATE)) #  No. of peaks by minOverlap (1..)
+```
+
+- **Final number of merged peaks: `r dbo.cnt$totalMerged`**
+- This number of peaks were used for [differential binding region analysis (DBR)](#diffbind)
+
+## Fraction of Read in Peaks (FRiP)
+- The proportion of reads that overlap a peak in the consensus peakset.
+- It can be used to indicate which samples show more enrichment overall.
+```{r frip1}
+ggplot(dba.show(dbo.cnt), aes(Factor, FRiP)) + 
+geom_boxplot(width=.3,outlier.shape=NA,alpha=.7) + 
+geom_jitter(width=.1, size=4,alpha=.5) +
+ggsignif::geom_signif(comparisons = list(c("FD","FV"),c("MD","MV")),size=.9,textsize=5.5) +
+ylab("Fraction of Read in Peak") + theme_bw()
+```
+
+## Heatmap
+```{r peak-heatmap1, fig.cap="Heatmap based on the affinity matrix (aka. count-table)"}
+dba.plotHeatmap(dbo.cnt,main=paste("Based on",dbo.cnt$totalMerged,"merged peaks"))
+```
+
+## PCA
+```{r peak-pca1, fig.cap="PCA plot based on the affinity matrix (aka. count-table)"}
+dba.plotPCA(dbo.cnt, attributes=DBA_FACTOR, label=DBA_ID) # based on binding affinity matrix
+```

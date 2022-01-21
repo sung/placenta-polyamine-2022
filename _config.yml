@@ -1,0 +1,12 @@
+SLX: SLX-16110-16111
+species: Homo_sapiens
+ver: v1
+FR.size: 148
+ref: hg38
+MAPQ: 10
+minOverlap: 2
+blacklist: "~/data/genome/Homo_sapiens/Ensembl/GRCh38/Annotation/GRCh38.blacklist.bed"
+promoter: 
+  up: 2e3
+  down: 2e3
+AnalysisMethod: DBA_EDGER

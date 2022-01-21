@@ -1,0 +1,133 @@
+# Differential Binding Region (MD vs MV; n=5 each) {#diffbind-md-vs-mv-n-10}
+
+> Based on `r dbo.cnt$totalMerge` consensus peaks (see [here](#consensus_peak))
+>
+> Software package used: [DiffBind](https://bioconductor.org/packages/release/bioc/html/DiffBind.html)
+>
+> Both **M2D** and **M2V** were removed from the analysis
+
+> [`Background normalisation`](https://bioconductor.org/packages/3.12/bioc/vignettes/DiffBind/inst/doc/DiffBind.pdf#page=38) method using `DiffBind3`
+
+```{r diffbind3-bg-norm-m10, echo=T,message=T}
+li.diff
+li.diff[['bg']][["male-n10"]]<-dba(dbo.cnt,dbo.cnt$masks$M & !dbo.cnt$mask$Replicate.2) # isa DBA
+
+li.diff[['bg']]['male-n10']<-lapply(li.diff[['bg']]['male-n10'], dba.normalize, method=DBA_ALL_METHODS,normalize=DBA_NORM_NATIVE,library=DBA_LIBSIZE_FULL,background=TRUE)
+li.diff[['bg']]['male-n10']<-lapply(li.diff[['bg']]['male-n10'], dba.contrast, design="~Replicate+Factor")
+li.diff[['bg']]['male-n10']<-lapply(li.diff[['bg']]['male-n10'], dba.analyze, method=DBA_ALL_METHODS)
+
+lapply(li.diff[['bg']]['male-n10'], dba.show, bContrasts=TRUE)
+lapply(li.diff[['bg']]['male-n10'], dba.report, method=DBA_ALL_METHODS,bDB=T,bGain=T,bLoss=T)
+lapply(li.diff[['bg']]['male-n10'], dba.normalize, bRetrieve=T,method=DBA_ALL_METHODS)
+
+```
+## No. of DBR
+### adjutedd P-val<0.05
+```{r diff-bind-num1-m10}
+knitr::kable(dba.show(li.diff[['bg']][['male-n10']],bContrasts=T),caption="Number of differential binding regions")
+```
+
+```{r diff-bind-venn1-m10, fig.cap="DBR between edgeR & DESeq2 (MD vs MV)"}
+print(li.diff.res<-lapply(li.diff[['bg']]['male-n10'], dba.report,method=DBA_ALL_METHODS,bDB=TRUE,bAll=TRUE)) # isa DBA
+dba.plotVenn(li.diff.res[["male-n10"]],1:2, main="",sub="")
+```
+
+```{r diff-bind-pca1-m10, fig.cap="PCA based on DBR (MD vs MV)"}
+dba.plotPCA(li.diff[['bg']][["male-n10"]], attributes=DBA_FACTOR, label=DBA_ID) 
+```
+
+### adjutedd P-val<0.01:
+```{r diff-bind-num2-m-m10}
+knitr::kable(
+             dba.show(li.diff[['bg']][['male-n10']],bContrasts=T,th=.01)
+             ,caption="Number of differential binding regions"
+)
+```
+
+## DBR from DESeq2
+```{r dbr-annotation-deseq2-m-m10}
+fwrite(data.table(dba.report(li.diff[['bg']][['male-n10']],th=1, method=DBA_DESEQ2, DataType=DBA_DATA_FRAME,bCounts=T))[order(Chr,Start)],file="RData/DBR_analysis_unfiltered_male_n10<-DESeq2.csv.gz")
+
+gl.dbr.DESeq2.n10<-lapply(li.diff[['bg']]['male-n10'], dba.report, method=DBA_DESEQ2, DataType=DBA_DATA_GRANGES)
+li.peakAnno[['dbr']][['DESeq2']]['male-n10']<-lapply(gl.dbr.DESeq2.n10, ChIPseeker::annotatePeak, tssRegion=c(-2e3, 2e3), TxDb=txdb, annoDb="org.Hs.eg.db", verbose=F) # list of 'csAnno'
+```
+- Unfiltered list of DBR: [MD vs MF (n=5 each)](RData/DBR_analysis_unfiltered_male_n10_DESeq2.csv.gz)
+
+### Normalisation factors
+```{r dbr-norm-factor-deseq2-m-m10, fig.cap="Normalisation factors by group"}
+df.norm<-
+    cbind(dba.show(li.diff[['bg']][['male-n10']]),
+            `Norm factor`=li.diff[['bg']][['male-n10']][['norm']][['DESeq2']]$norm.facs)
+
+ggplot(df.norm, aes(Condition, `Norm factor`)) + 
+geom_boxplot(width=.3,outlier.shape=NA,alpha=.7) + 
+geom_jitter(width=.1, size=4,alpha=.5) + 
+facet_wrap(~Tissue) +
+ggsignif::geom_signif(comparison=list(c("D","V")),size=.9,textsize=5.5) +
+ylab("Normalisation factor") + theme_bw()
+
+```
+
+### Male (MD vs MV)
+```{r diff-bind-list-deseq2-m-m10}
+DT::datatable(
+              data.frame(li.peakAnno[['dbr']][['DESeq2']][['male-n10']]@anno)
+              ,extensions="Buttons",
+              rownames=F,
+              colnames=c('Chr'='seqnames'),
+              caption="DBR of MD vs MV (DESeq2; FDR<0.05)",
+              options=list(pageLength=5)
+)
+```
+
+```{r plotMA-male-deseq2-fig1-m10, fig.cap="MA plot (DESeq2)"}
+dba.plotMA(li.diff[['bg']][["male-n10"]], method=DBA_DESEQ2,th=0.05,bXY=F,bSmooth=F,dotSize=1.5) 
+```
+
+```{r plotVol-male-deseq2-fig1-m10, fig.cap="Volcano plot (DESeq2)"}
+dba.plotVolcano(li.diff[['bg']][["male-n10"]], method=DBA_DESEQ2, dotSize=1.5,th=0.05)
+```
+
+## DBR from edgeR
+```{r dbr-annotation1-m10}
+fwrite(data.table(dba.report(li.diff[['bg']][['male-n10']],th=1, method=DBA_EDGER, DataType=DBA_DATA_FRAME,bCounts=F))[order(Chr,Start)],file="RData/DBR_analysis_unfiltered_male_n10_edgeR.csv.gz")
+
+gl.dbr.edgeR.n10<-lapply(li.diff[['bg']]['male-n10'], dba.report, method=DBA_EDGER, DataType=DBA_DATA_GRANGES)
+li.peakAnno[['dbr']][['edgeR']]['male-n10']<-lapply(gl.dbr.edgeR.n10, ChIPseeker::annotatePeak, tssRegion=c(-2e3, 2e3), TxDb=txdb, annoDb="org.Hs.eg.db", verbose=F) # list of 'csAnno'
+```
+
+### Normalisation factors
+```{r dbr-norm-factor-edger-m10, fig.cap="Normalisation factors by group"}
+df.norm<-cbind(dba.show(li.diff[['bg']][['male']]),
+            `Norm factor`=li.diff[['bg']][['male']][['norm']][['edgeR']]$norm.facs)
+
+ggplot(df.norm, aes(Condition, `Norm factor`)) + 
+geom_boxplot(width=.3,outlier.shape=NA,alpha=.7) + 
+geom_jitter(width=.1, size=4,alpha=.5) + 
+facet_wrap(~Tissue) +
+ggsignif::geom_signif(comparison=list(c("D","V")),size=.9,textsize=5.5) +
+ylab("Normalisation factor") + theme_bw()
+
+```
+
+### Male (MD vs MV)
+```{r diff-bind-list-m-m10}
+DT::datatable(
+              data.frame(li.peakAnno[['dbr']][['edgeR']][['male-n10']]@anno)
+              ,extensions="Buttons",
+              rownames=F,
+              colnames=c('Chr'='seqnames'),
+              caption="DBR of MD vs MV (edgeR; FDR<0.05)",
+              options=list(pageLength=5)
+)
+```
+
+```{r plotMA-male-edgeR-fig1-m10, fig.cap="MA plot (edgeR)"}
+dba.plotMA(li.diff[['bg']][["male-n10"]], method=DBA_EDGER,th=0.05,bXY=F,bSmooth=F,dotSize=1.5,bNormalized=T)
+```
+
+```{r plotVol-male-edgeR-fig1-m10, fig.cap="Volcano plot (edgeR)"}
+dba.plotVolcano(li.diff[['bg']][["male-n10"]], method=DBA_EDGER, dotSize=1.5, th=0.05, fold=log2(2))
+```
+
+- Unfiltered list of DBR: [MD vs MF (n=5 each)](RData/DBR_analysis_unfiltered_male_n10_edgeR.csv.gz)

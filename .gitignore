@@ -1,0 +1,8 @@
+*.swp
+.Rhistory
+.DS_Store
+RData/DiffBind2
+RData/DiffBind3.0.11
+RData/DiffBind3.0.13/li.diff.RData
+ChIPseqSpikeInFree/Female_rawCounts.txt
+ChIPseqSpikeInFree/Male_rawCounts.txt

@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>5 Differential Binding Region - DiffBind | SLX-16110-16111 Run Report (ChIP-Seq)</title>
+  <meta name="description" content="This is a report for Irving Aye’s `r params$seq_type’ results" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="5 Differential Binding Region - DiffBind | SLX-16110-16111 Run Report (ChIP-Seq)" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a report for Irving Aye’s `r params$seq_type’ results" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="5 Differential Binding Region - DiffBind | SLX-16110-16111 Run Report (ChIP-Seq)" />
+  
+  <meta name="twitter:description" content="This is a report for Irving Aye’s `r params$seq_type’ results" />
+  
+
+
+
+<meta name="date" content="2021-02-16" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="peak-annotations.html"/>
+<link rel="next" href="references.html"/>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="libs/jquery-3.5.1/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.17/datatables.js"></script>
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="libs/jszip-1.10.20/jszip.min.js"></script>
+<link href="libs/dt-ext-buttons-1.10.20/css/buttons.dataTables.min.css" rel="stylesheet" />
+<script src="libs/dt-ext-buttons-1.10.20/js/dataTables.buttons.min.js"></script>
+<script src="libs/dt-ext-buttons-1.10.20/js/buttons.flash.min.js"></script>
+<script src="libs/dt-ext-buttons-1.10.20/js/buttons.html5.min.js"></script>
+<script src="libs/dt-ext-buttons-1.10.20/js/buttons.colVis.min.js"></script>
+<script src="libs/dt-ext-buttons-1.10.20/js/buttons.print.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Run Report</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Samples</a></li>
+<li class="chapter" data-level="2" data-path="mapping.html"><a href="mapping.html"><i class="fa fa-check"></i><b>2</b> Mapping</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="mapping.html"><a href="mapping.html#table-of-mapping-statistic"><i class="fa fa-check"></i><b>2.1</b> Table of mapping statistic</a></li>
+<li class="chapter" data-level="2.2" data-path="mapping.html"><a href="mapping.html#boxplots-of-mapping-staststic"><i class="fa fa-check"></i><b>2.2</b> Boxplots of mapping staststic</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="mapping.html"><a href="mapping.html#no.-of-sequencing-reads"><i class="fa fa-check"></i><b>2.2.1</b> No. of sequencing reads</a></li>
+<li class="chapter" data-level="2.2.2" data-path="mapping.html"><a href="mapping.html#no.-of-uniquely-mapped-reads"><i class="fa fa-check"></i><b>2.2.2</b> No. of uniquely mapped reads</a></li>
+<li class="chapter" data-level="2.2.3" data-path="mapping.html"><a href="mapping.html#unique-mapping-rate"><i class="fa fa-check"></i><b>2.2.3</b> Unique mapping rate</a></li>
+<li class="chapter" data-level="2.2.4" data-path="mapping.html"><a href="mapping.html#multi-mapping-rate"><i class="fa fa-check"></i><b>2.2.4</b> Multi mapping rate</a></li>
+<li class="chapter" data-level="2.2.5" data-path="mapping.html"><a href="mapping.html#total-mapping-rate"><i class="fa fa-check"></i><b>2.2.5</b> Total mapping rate</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="mapping.html"><a href="mapping.html#bigwig-files"><i class="fa fa-check"></i><b>2.3</b> BigWig files</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="calling.html"><a href="calling.html"><i class="fa fa-check"></i><b>3</b> Peak Calling</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="calling.html"><a href="calling.html#no.-of-peaks"><i class="fa fa-check"></i><b>3.1</b> No. of peaks</a></li>
+<li class="chapter" data-level="3.2" data-path="calling.html"><a href="calling.html#no.-of-peaks-by-the-consensus-level"><i class="fa fa-check"></i><b>3.2</b> No. of peaks by the consensus level</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="calling.html"><a href="calling.html#all-samples-n22"><i class="fa fa-check"></i><b>3.2.1</b> All samples (n=22)</a></li>
+<li class="chapter" data-level="3.2.2" data-path="calling.html"><a href="calling.html#fv-n5"><i class="fa fa-check"></i><b>3.2.2</b> FV (n=5)</a></li>
+<li class="chapter" data-level="3.2.3" data-path="calling.html"><a href="calling.html#fd-n5"><i class="fa fa-check"></i><b>3.2.3</b> FD (n=5)</a></li>
+<li class="chapter" data-level="3.2.4" data-path="calling.html"><a href="calling.html#mv-n6"><i class="fa fa-check"></i><b>3.2.4</b> MV (n=6)</a></li>
+<li class="chapter" data-level="3.2.5" data-path="calling.html"><a href="calling.html#md-n6"><i class="fa fa-check"></i><b>3.2.5</b> MD (n=6)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="calling.html"><a href="calling.html#consensus_peak"><i class="fa fa-check"></i><b>3.3</b> Consensus peaks across factors of interests</a></li>
+<li class="chapter" data-level="3.4" data-path="calling.html"><a href="calling.html#fraction-of-read-in-peaks-frip"><i class="fa fa-check"></i><b>3.4</b> Fraction of Read in Peaks (FRiP)</a></li>
+<li class="chapter" data-level="3.5" data-path="calling.html"><a href="calling.html#heatmap"><i class="fa fa-check"></i><b>3.5</b> Heatmap</a></li>
+<li class="chapter" data-level="3.6" data-path="calling.html"><a href="calling.html#pca"><i class="fa fa-check"></i><b>3.6</b> PCA</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="peak-annotations.html"><a href="peak-annotations.html"><i class="fa fa-check"></i><b>4</b> Peak Annotations</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="peak-annotations.html"><a href="peak-annotations.html#no.-of-peaks-by-group"><i class="fa fa-check"></i><b>4.1</b> No. of peaks by group</a></li>
+<li class="chapter" data-level="4.2" data-path="peak-annotations.html"><a href="peak-annotations.html#no.-of-peaks-by-chromosome"><i class="fa fa-check"></i><b>4.2</b> No. of peaks by chromosome</a></li>
+<li class="chapter" data-level="4.3" data-path="peak-annotations.html"><a href="peak-annotations.html#no.-of-genes-enrichred-in-peaks"><i class="fa fa-check"></i><b>4.3</b> No. of genes enrichred in peaks</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="peak-annotations.html"><a href="peak-annotations.html#non-intergenic-peaks-only"><i class="fa fa-check"></i><b>4.3.1</b> Non-intergenic peaks only</a></li>
+<li class="chapter" data-level="4.3.2" data-path="peak-annotations.html"><a href="peak-annotations.html#peaks-in-tss-2kb"><i class="fa fa-check"></i><b>4.3.2</b> Peaks in TSS (&lt;2kb)</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="peak-annotations.html"><a href="peak-annotations.html#genomic-feature-of-peaks"><i class="fa fa-check"></i><b>4.4</b> Genomic feature of peaks</a></li>
+<li class="chapter" data-level="4.5" data-path="peak-annotations.html"><a href="peak-annotations.html#distance-to-tss"><i class="fa fa-check"></i><b>4.5</b> Distance to TSS</a></li>
+<li class="chapter" data-level="4.6" data-path="peak-annotations.html"><a href="peak-annotations.html#peak-frequency-over-tss"><i class="fa fa-check"></i><b>4.6</b> Peak frequency over TSS</a></li>
+<li class="chapter" data-level="4.7" data-path="peak-annotations.html"><a href="peak-annotations.html#peak-heatmap-over-tss"><i class="fa fa-check"></i><b>4.7</b> Peak heatmap over TSS</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="diffbind.html"><a href="diffbind.html"><i class="fa fa-check"></i><b>5</b> Differential Binding Region - DiffBind</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="diffbind.html"><a href="diffbind.html#no.-of-dbr"><i class="fa fa-check"></i><b>5.1</b> No. of DBR</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="diffbind.html"><a href="diffbind.html#adjutedd-p-val0.05"><i class="fa fa-check"></i><b>5.1.1</b> adjutedd P-val&lt;0.05</a></li>
+<li class="chapter" data-level="5.1.2" data-path="diffbind.html"><a href="diffbind.html#adjutedd-p-val0.01"><i class="fa fa-check"></i><b>5.1.2</b> adjutedd P-val&lt;0.01:</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="diffbind.html"><a href="diffbind.html#genomic-feature-of-dbrs"><i class="fa fa-check"></i><b>5.2</b> Genomic feature of DBRs</a></li>
+<li class="chapter" data-level="5.3" data-path="diffbind.html"><a href="diffbind.html#dbr-from-deseq2"><i class="fa fa-check"></i><b>5.3</b> DBR from DESeq2</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="diffbind.html"><a href="diffbind.html#normalisation-factors"><i class="fa fa-check"></i><b>5.3.1</b> Normalisation factors</a></li>
+<li class="chapter" data-level="5.3.2" data-path="diffbind.html"><a href="diffbind.html#male-md-vs-mv"><i class="fa fa-check"></i><b>5.3.2</b> Male (MD vs MV)</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="diffbind.html"><a href="diffbind.html#dbr-from-edger"><i class="fa fa-check"></i><b>5.4</b> DBR from edgeR</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="diffbind.html"><a href="diffbind.html#normalisation-factors-1"><i class="fa fa-check"></i><b>5.4.1</b> Normalisation factors</a></li>
+<li class="chapter" data-level="5.4.2" data-path="diffbind.html"><a href="diffbind.html#male-md-vs-mv-1"><i class="fa fa-check"></i><b>5.4.2</b> Male (MD vs MV)</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="diffbind.html"><a href="diffbind.html#normalisation-parameters"><i class="fa fa-check"></i><b>5.5</b> Normalisation parameters</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a>
+<ul>
+<li class="chapter" data-level="5.6" data-path="references.html"><a href="references.html#sessioninfo"><i class="fa fa-check"></i><b>5.6</b> sessionInfo</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">SLX-16110-16111 Run Report (ChIP-Seq)</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="diffbind" class="section level1" number="5">
+<h1><span class="header-section-number">5</span> Differential Binding Region - DiffBind</h1>
+<blockquote>
+<p>Based on 71231 consensus peaks (see <a href="calling.html#consensus_peak">here</a>)</p>
+<p>Software package used: <a href="https://bioconductor.org/packages/release/bioc/html/DiffBind.html">DiffBind</a></p>
+<p><a href="https://bioconductor.org/packages/3.12/bioc/vignettes/DiffBind/inst/doc/DiffBind.pdf#page=38"><code>Background normalisation</code></a> method using <code>DiffBind3</code></p>
+</blockquote>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="diffbind.html#cb11-1" aria-hidden="true" tabindex="-1"></a>li.diff<span class="ot">&lt;-</span><span class="fu">list</span>()</span>
+<span id="cb11-2"><a href="diffbind.html#cb11-2" aria-hidden="true" tabindex="-1"></a>li.diff[[<span class="st">&#39;bg&#39;</span>]][[<span class="st">&quot;female&quot;</span>]]<span class="ot">&lt;-</span><span class="fu">dba</span>(dbo.cnt,dbo.cnt<span class="sc">$</span>masks<span class="sc">$</span>F) <span class="co"># isa DBA</span></span>
+<span id="cb11-3"><a href="diffbind.html#cb11-3" aria-hidden="true" tabindex="-1"></a>li.diff[[<span class="st">&#39;bg&#39;</span>]][[<span class="st">&quot;male&quot;</span>]]<span class="ot">&lt;-</span> <span class="fu">dba</span>(dbo.cnt,dbo.cnt<span class="sc">$</span>masks<span class="sc">$</span>M) <span class="co"># isa DBA</span></span>
+<span id="cb11-4"><a href="diffbind.html#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="diffbind.html#cb11-5" aria-hidden="true" tabindex="-1"></a>li.diff[[<span class="st">&#39;bg&#39;</span>]]<span class="ot">&lt;-</span><span class="fu">lapply</span>(li.diff[[<span class="st">&#39;bg&#39;</span>]], dba.normalize, <span class="at">method=</span>DBA_ALL_METHODS,<span class="at">normalize=</span>DBA_NORM_NATIVE,<span class="at">library=</span>DBA_LIBSIZE_FULL,<span class="at">background=</span><span class="cn">TRUE</span>)</span>
+<span id="cb11-6"><a href="diffbind.html#cb11-6" aria-hidden="true" tabindex="-1"></a>li.diff[[<span class="st">&#39;bg&#39;</span>]]<span class="ot">&lt;-</span><span class="fu">lapply</span>(li.diff[[<span class="st">&#39;bg&#39;</span>]], dba.contrast, <span class="at">design=</span><span class="st">&quot;~Replicate+Factor&quot;</span>)</span>
+<span id="cb11-7"><a href="diffbind.html#cb11-7" aria-hidden="true" tabindex="-1"></a>li.diff[[<span class="st">&#39;bg&#39;</span>]]<span class="ot">&lt;-</span><span class="fu">lapply</span>(li.diff[[<span class="st">&#39;bg&#39;</span>]], dba.analyze, <span class="at">method=</span>DBA_ALL_METHODS)</span>
+<span id="cb11-8"><a href="diffbind.html#cb11-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-9"><a href="diffbind.html#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(li.diff[[<span class="st">&#39;bg&#39;</span>]], dba.show, <span class="at">bContrasts=</span><span class="cn">TRUE</span>)</span>
+<span id="cb11-10"><a href="diffbind.html#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(li.diff[[<span class="st">&#39;bg&#39;</span>]][<span class="fu">c</span>(<span class="st">&#39;male&#39;</span>)], dba.report, <span class="at">method=</span>DBA_ALL_METHODS,<span class="at">bDB=</span>T,<span class="at">bGain=</span>T,<span class="at">bLoss=</span>T)</span>
+<span id="cb11-11"><a href="diffbind.html#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(li.diff[[<span class="st">&#39;bg&#39;</span>]], dba.normalize, <span class="at">bRetrieve=</span>T,<span class="at">method=</span>DBA_ALL_METHODS)[[<span class="st">&quot;female&quot;</span>]]</span></code></pre></div>
+<div id="no.-of-dbr" class="section level2" number="5.1">
+<h2><span class="header-section-number">5.1</span> No. of DBR</h2>
+<div id="adjutedd-p-val0.05" class="section level3" number="5.1.1">
+<h3><span class="header-section-number">5.1.1</span> adjutedd P-val&lt;0.05</h3>
+<table>
+<caption>
+<span id="tab:diff-bind-num1">Table 5.1: </span>Number of differential binding regions
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Factor
+</th>
+<th style="text-align:left;">
+Group
+</th>
+<th style="text-align:left;">
+Samples
+</th>
+<th style="text-align:left;">
+Group2
+</th>
+<th style="text-align:left;">
+Samples2
+</th>
+<th style="text-align:left;">
+DB.edgeR
+</th>
+<th style="text-align:left;">
+DB.DESeq2
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Factor
+</td>
+<td style="text-align:left;">
+FD
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+FV
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Factor
+</td>
+<td style="text-align:left;">
+MD
+</td>
+<td style="text-align:left;">
+6
+</td>
+<td style="text-align:left;">
+MV
+</td>
+<td style="text-align:left;">
+6
+</td>
+<td style="text-align:left;">
+213
+</td>
+<td style="text-align:left;">
+147
+</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="diffbind.html#cb12-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lapply</span>(li.diff[[<span class="st">&#39;bg&#39;</span>]][<span class="fu">c</span>(<span class="st">&#39;male&#39;</span>)], dba.report, <span class="at">method=</span>DBA_ALL_METHODS,<span class="at">bDB=</span>T,<span class="at">bGain=</span>T,<span class="at">bLoss=</span>T)</span></code></pre></div>
+<pre><code>## $male
+## 6 Samples, 246 sites in matrix:
+##    Contrast Direction DB Method Intervals
+## 1 MD vs. MV       All DB  edgeR       213
+## 2 MD vs. MV      Gain DB  edgeR        21
+## 3 MD vs. MV      Loss DB  edgeR       192
+## 4 MD vs. MV       All DB DESeq2       147
+## 5 MD vs. MV      Gain DB DESeq2        10
+## 6 MD vs. MV      Loss DB DESeq2       137</code></pre>
+<pre><code>## $male
+## 2 Samples, 246 sites in matrix:
+##    Contrast Direction DB Method Intervals
+## 1 MD vs. MV       All DB  edgeR       213
+## 2 MD vs. MV       All DB DESeq2       147</code></pre>
+<div class="figure" style="text-align: center"><span id="fig:diff-bind-venn1"></span>
+<img src="SLX-16110-16111_files/figure-html/diff-bind-venn1-1.png" alt="DBR between edgeR &amp; DESeq2 (MD vs MV)" width="672" />
+<p class="caption">
+Figure 5.1: DBR between edgeR &amp; DESeq2 (MD vs MV)
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:diff-bind-pca1"></span>
+<img src="SLX-16110-16111_files/figure-html/diff-bind-pca1-1.png" alt="PCA based on DBR (MD vs MV)" width="672" />
+<p class="caption">
+Figure 5.2: PCA based on DBR (MD vs MV)
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:diff-bind-pca2"></span>
+<img src="SLX-16110-16111_files/figure-html/diff-bind-pca2-1.png" alt="PCA based on DBR (FD vs FV)" width="672" />
+<p class="caption">
+Figure 5.3: PCA based on DBR (FD vs FV)
+</p>
+</div>
+</div>
+<div id="adjutedd-p-val0.01" class="section level3" number="5.1.2">
+<h3><span class="header-section-number">5.1.2</span> adjutedd P-val&lt;0.01:</h3>
+<table>
+<caption>
+<span id="tab:diff-bind-num2">Table 5.2: </span>Number of differential binding regions
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Factor
+</th>
+<th style="text-align:left;">
+Group
+</th>
+<th style="text-align:left;">
+Samples
+</th>
+<th style="text-align:left;">
+Group2
+</th>
+<th style="text-align:left;">
+Samples2
+</th>
+<th style="text-align:left;">
+DB.edgeR
+</th>
+<th style="text-align:left;">
+DB.DESeq2
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Factor
+</td>
+<td style="text-align:left;">
+FD
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+FV
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Factor
+</td>
+<td style="text-align:left;">
+MD
+</td>
+<td style="text-align:left;">
+6
+</td>
+<td style="text-align:left;">
+MV
+</td>
+<td style="text-align:left;">
+6
+</td>
+<td style="text-align:left;">
+51
+</td>
+<td style="text-align:left;">
+28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="genomic-feature-of-dbrs" class="section level2" number="5.2">
+<h2><span class="header-section-number">5.2</span> Genomic feature of DBRs</h2>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:dbr-gf-group1">Table 5.3: </span>% of genomic features
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Feature
+</th>
+<th style="text-align:right;">
+DESeq2
+</th>
+<th style="text-align:right;">
+edgeR
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Promoter (&lt;=1kb)
+</td>
+<td style="text-align:right;">
+24.489796
+</td>
+<td style="text-align:right;">
+30.516432
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Promoter (1-2kb)
+</td>
+<td style="text-align:right;">
+6.802721
+</td>
+<td style="text-align:right;">
+9.859155
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3’ UTR
+</td>
+<td style="text-align:right;">
+5.442177
+</td>
+<td style="text-align:right;">
+4.225352
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1st Exon
+</td>
+<td style="text-align:right;">
+2.040816
+</td>
+<td style="text-align:right;">
+1.877934
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Other Exon
+</td>
+<td style="text-align:right;">
+2.721088
+</td>
+<td style="text-align:right;">
+3.755869
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1st Intron
+</td>
+<td style="text-align:right;">
+10.204082
+</td>
+<td style="text-align:right;">
+7.981221
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Other Intron
+</td>
+<td style="text-align:right;">
+17.687075
+</td>
+<td style="text-align:right;">
+15.962441
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Downstream (&lt;=300)
+</td>
+<td style="text-align:right;">
+2.040816
+</td>
+<td style="text-align:right;">
+1.408451
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Distal Intergenic
+</td>
+<td style="text-align:right;">
+28.571429
+</td>
+<td style="text-align:right;">
+24.413145
+</td>
+</tr>
+</tbody>
+</table>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:dbr-gf-group2">Table 5.4: </span>No of peaks by genomic features
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Feature
+</th>
+<th style="text-align:right;">
+DESeq2
+</th>
+<th style="text-align:right;">
+edgeR
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Promoter (&lt;=1kb)
+</td>
+<td style="text-align:right;">
+36
+</td>
+<td style="text-align:right;">
+65
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Promoter (1-2kb)
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+21
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3’ UTR
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1st Exon
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Other Exon
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1st Intron
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+17
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Other Intron
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:right;">
+34
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Downstream (&lt;=300)
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Distal Intergenic
+</td>
+<td style="text-align:right;">
+42
+</td>
+<td style="text-align:right;">
+52
+</td>
+</tr>
+</tbody>
+</table>
+<div class="figure" style="text-align: center"><span id="fig:dbr-gf-group3"></span>
+<img src="SLX-16110-16111_files/figure-html/dbr-gf-group3-1.png" alt="Genomic feautres of peaks" width="672" />
+<p class="caption">
+Figure 5.4: Genomic feautres of peaks
+</p>
+</div>
+</div>
+<div id="dbr-from-deseq2" class="section level2" number="5.3">
+<h2><span class="header-section-number">5.3</span> DBR from DESeq2</h2>
+<ul>
+<li>Unfiltered list of DBR: <a href="RData/DBR_analysis_unfiltered_male_DESeq2.csv.gz">MD vs MF</a></li>
+</ul>
+<div id="normalisation-factors" class="section level3" number="5.3.1">
+<h3><span class="header-section-number">5.3.1</span> Normalisation factors</h3>
+<div class="figure" style="text-align: center"><span id="fig:dbr-norm-factor-deseq2"></span>
+<img src="SLX-16110-16111_files/figure-html/dbr-norm-factor-deseq2-1.png" alt="Normalisation factors by group" width="672" />
+<p class="caption">
+Figure 5.5: Normalisation factors by group
+</p>
+</div>
+</div>
+<div id="male-md-vs-mv" class="section level3" number="5.3.2">
+<h3><span class="header-section-number">5.3.2</span> Male (MD vs MV)</h3>
+<div id="htmlwidget-ed1bac00c087946afde5" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-ed1bac00c087946afde5">{"x":{"filter":"none","extensions":["Buttons"],"caption":"<caption>DBR of MD vs MV (DESeq2; FDR&lt;0.05)<\/caption>","data":[["16","19","4","16","2","2","14","20","14","2","16","17","16","1","19","2","12","11","9","8","4","1","2","21","6","8","19","1","1","1","1","17","11","15","10","20","2","13","10","1","22","2","1","14","4","6","2","2","20","20","9","16","X","5","6","1","12","17","2","1","21","1","16","10","3","5","16","2","4","10","20","4","17","13","16","2","7","3","22","16","13","X","9","9","2","16","17","19","11","19","20","11","2","4","8","6","17","7","X","2","3","13","4","7","17","9","5","4","2","19","13","16","9","15","2","18","6","22","17","9","12","16","17","6","10","16","11","9","8","12","1","11","16","15","3","10","3","4","1","9","7","4","7","11","11","7","5"],[70699599,48338600,8473132,55655508,20184352,217335920,105472651,57265107,105485670,101409848,12209824,40915550,85356766,28530543,1584011,101411159,108628540,100634785,89752841,22208248,6723121,39936237,10331278,44957534,39279410,66521411,33267355,56190295,156461593,29225167,175308177,41942484,20018852,90819420,46307538,36831188,62381517,44403878,72297269,177589220,45514042,64622562,22827042,103068304,186078524,10381254,232620793,75612753,17594980,49279592,129472056,85517808,153411435,141835446,33192401,212484665,57188176,55320559,71466142,119479787,44959094,41372965,67398841,30420253,16801228,55918594,67694296,219575919,6689095,110454943,38125203,61200156,41497816,110950340,4297066,128286798,130366050,196130776,35589451,81523382,28754858,105908582,124134499,89748821,128291800,25226802,47813671,48473492,75157110,41297311,50272846,22192412,160968552,8196257,95067387,35368221,72713143,151695592,153489027,218316594,169996358,113584197,37666337,139035028,41940063,89756075,168268723,8471078,69798519,1070976,102799157,75271796,121324358,58526886,20496326,75207864,37705042,21027282,28247240,38193826,110038171,3144030,80855615,158910634,95564605,67391010,16980961,121583425,102768009,122929094,10903453,76786506,75094868,100734882,128320796,5466760,25725322,57163802,31385588,38017138,151684557,8557059,47487346,64419041,76589637,151719276,141714807],[70701462,48339706,8474558,55658019,20186896,217336666,105476138,57267010,105488276,101410663,12210236,40916939,85359868,28530918,1586667,101412366,108629539,100635491,89755208,22210860,6723841,39937221,10331800,44958855,39280126,66521903,33267782,56190573,156462014,29225897,175308804,41942804,20019140,90821032,46308654,36832449,62382299,44405192,72298120,177589563,45516942,64623038,22828648,103069071,186079038,10382137,232621429,75614106,17595522,49279984,129472580,85519228,153411853,141836776,33193499,212486975,57190419,55320829,71467304,119480411,44960335,41374598,67400657,30420531,16802548,55918941,67695090,219576163,6690706,110455347,38127393,61203302,41498109,110950850,4297370,128288474,130366454,196131007,35589682,81524663,28755116,105909330,124134996,89749397,128294751,25227047,47814977,48475432,75157952,41297790,50274422,22193907,160969121,8197134,95069453,35368880,72713417,151697460,153489491,218317789,169996914,113585682,37667112,139036438,41940521,89758475,168269483,8472981,69798897,1071562,102800947,75272606,121326170,58528116,20498374,75210057,37706031,21029279,28248335,38194091,110039029,3144272,80856184,158913021,95566243,67396338,16981763,121583825,102769358,122930208,10904359,76787698,75096664,100735258,128321388,5467015,25725895,57164157,31385850,38017611,151686843,8561366,47487680,64420115,76590329,151719854,141716450],[1864,1107,1427,2512,2545,747,3488,1904,2607,816,413,1390,3103,376,2657,1208,1000,707,2368,2613,721,985,523,1322,717,493,428,279,422,731,628,321,289,1613,1117,1262,783,1315,852,344,2901,477,1607,768,515,884,637,1354,543,393,525,1421,419,1331,1099,2311,2244,271,1163,625,1242,1634,1817,279,1321,348,795,245,1612,405,2191,3147,294,511,305,1677,405,232,232,1282,259,749,498,577,2952,246,1307,1941,843,480,1577,1496,570,878,2067,660,275,1869,465,1196,557,1486,776,1411,459,2401,761,1904,379,587,1791,811,1813,1231,2049,2194,990,1998,1096,266,859,243,570,2388,1639,5329,803,401,1350,1115,907,1193,1797,377,593,256,574,356,263,474,2287,4308,335,1075,693,579,1644],["*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*"],[5.69427487957179,4.92351455865312,5.92274853520107,6.56969673917231,6.43923084193416,3.90271344786072,6.78035118143581,6.49302007010635,6.2024581967757,4.20265592849001,2.73349196047198,4.58519666235785,6.58892371974664,2.82444425657603,6.80973987486512,4.76228461801385,4.41422662257934,3.65166176211124,5.97405286344725,6.8508118801523,3.41269166581842,4.15457617786543,2.10164372137624,4.96800629503368,4.06469810119937,2.96030471471167,2.3033280206674,2.1617245233784,2.58248584237884,3.17705801165542,3.29942920346358,2.73803518021878,2.39253804343468,5.43854208779275,5.10325294075663,4.59526737145837,3.55294431317509,5.31787547382572,4.65473264401925,2.47287544280111,7.13691623633748,2.71709197896368,5.69239837372841,4.17206189869519,2.22555719877072,3.81231470033828,3.79069070240096,4.57135971912828,3.18452821974501,1.75528022323622,3.09659146933525,5.29028062046567,2.41935471595899,4.87942401195572,4.1374319771666,6.2503435961931,6.04560839499521,2.54391159381294,5.79567800096315,3.6413105771487,4.87651953986561,5.15740275676881,5.67577464509917,2.04538171735801,4.34837268474022,2.44428206290874,3.17318653551195,2.3886257056224,5.92907407902304,2.42726429635497,6.20825832788014,6.63574472371197,2.29207346848331,2.798198611405,3.31187740938856,5.66362374124783,3.06058382255552,1.92843837783217,2.19896261644467,4.26612321611222,2.05539564066853,4.10118441012533,3.320212018387,3.96336412587075,7.13937642330487,2.13653882287966,5.27045410429535,6.05149266669456,4.43138149047923,3.10898810695798,5.15275143195302,5.15750951319628,3.79782849367119,3.77225999843294,6.20337918908561,3.45078615090849,1.67088596626384,5.90585314917082,2.36106157654267,4.31737339579062,3.05861021272177,5.84764265988516,3.48709087118689,5.7040773388756,2.92380380726615,6.30604610578763,3.9149741343144,6.04301806965819,2.43683467701244,3.63794912269468,5.9363851120301,3.6267636143927,5.84082073169345,4.4147938306584,6.58773267830863,6.97855269642479,4.55480646250331,5.6886574975732,4.65647893954887,1.9603731066225,4.05531267522861,2.24588484826607,2.81605813799112,5.91175500980998,5.66848255511217,7.74650426255513,4.37480136206757,3.30807050914062,4.80105116876643,4.14955325956217,4.60110648178121,4.67564783725812,5.66010230533494,2.95769980334489,3.7072039225957,2.52469216285573,2.88802047513484,3.07598538764926,1.7050010096522,2.38878742035459,6.68132573724373,7.5561277332915,2.00433392262802,4.78312297911379,3.31183221375212,3.57172661843438,4.91574614547914],[4.98524537468255,4.06203433734155,5.27510109130571,6.1100264662713,5.91316260676533,2.48004261535346,6.34433065879544,5.98712179779493,5.67819049976799,3.05721963480803,0,3.66901540954196,6.08088813178822,0.0710489723922306,6.41796372160419,3.86364642516146,3.42573063966525,2.2728338252937,5.45405006879229,6.48238630091479,1.62984678680128,2.93545366855471,0,4.19944383867415,2.92892745277401,0.995752551630262,0,0,0.157384507489126,1.54673704898384,1.82566857469189,0.858667809625291,0,4.82557609101195,4.48457486838203,3.69172027311931,2.22734955223861,4.71328456872259,5.15640708687151,0,6.81039913945355,1.02347035385039,5.15933496044401,3.28551538360683,3.14808986886458,2.66314243259002,2.72233101115525,3.82517196198598,1.71821810862733,2.75528022323622,1.29382826273726,4.69080590930911,3.30003650602935,4.20766147155485,4.70708025918714,5.82158191361135,5.61058026288512,0.401941172960194,5.3145853357845,2.51421603945519,4.22981769290849,4.51702868407611,5.17483726090341,0,3.46596552898876,0.171721727879704,1.79991148867822,0.122491251798689,5.49428610041305,0.106718079230462,5.79599143007346,6.28705282775297,0,0.883670308767502,2.02244109517211,5.20564602790296,1.53453160722095,0,0,3.46008539306827,0,3.17383065686044,2.10325103693587,3.02492753228799,6.80960614054098,0,4.71392482777349,5.56243037929151,3.66510571552215,1.64006479816902,4.57692295484956,5.55073735292313,2.72472392985877,2.73957091703776,5.79850903627201,2.22888215103471,0,5.47105808867656,0.103240428663974,3.49924037152587,1.72673011473363,5.36644545597086,2.39641748896503,5.23352501013519,1.01481834293307,5.93465580298468,4.5412008474444,5.6564293562385,0.548108327113385,2.51512209261085,5.49271227904986,4.21163226659753,5.40085014825297,3.64785343963238,6.26675016429657,6.60671348873137,5.03833557560945,5.25044059088923,3.9536034925979,0,3.25744637050508,0.0561927115872165,0.975128270823817,5.52027605810368,5.24470791284604,7.48963095676224,3.65487510990303,2.15469074644541,4.18605437457499,3.18288232020407,3.88880344590172,4.00386182206051,5.18094968546898,1.4585742726503,2.67569097218162,0.587646423303199,1.40038516273522,3.76541845746625,0,0.104044681590876,6.31069348656329,7.27379550901407,0,4.05093345797328,1.97269852847436,2.44495230384559,4.29503355639209],[6.16756149075606,5.45918179553944,6.36813586470091,6.91775639873452,6.82389438552111,4.60490898359304,7.11472414724587,6.86683889717641,6.5861630903853,4.83301204164277,3.62242214825694,5.14110132712526,6.96390279561072,3.7132935000456,7.11752898032944,5.31181302496794,4.9953339751756,4.3436147692813,6.35547968720994,7.14403238849435,4.18617344590207,4.80575979248456,3.07880061890642,5.46676562739655,4.69221925822892,3.76252380434192,3.24593325370008,3.11008752150466,3.44150392836501,3.92292664620608,4.01308757570428,3.52730296535488,3.29006995143083,5.86738010194218,5.53485728358727,5.14659065357244,4.23193143055817,5.74262793080493,3.87912885066008,3.36827218670117,7.40300188743248,3.47484075687241,6.08076898615692,4.71713336456244,0,4.44376002173827,4.3977384321504,5.0607209267662,3.89654571294968,0,3.87343233925029,5.71251984714427,0,5.33597859047737,3.18242277870314,6.58044396794745,6.37939924679079,3.37045387421695,6.15583457440759,4.26626598601167,5.32146338441377,5.59936785222901,6.04689018662971,2.95569274890574,4.89190660586682,3.2866879120148,3.8638146296989,3.23028799835993,6.26272396665806,3.27510757919917,6.52852150431781,6.9163497493845,3.14649476632046,3.59291918519701,3.98171072923372,6.01071558332391,3.7854730977723,2.8328612369322,3.06185519454337,4.78016921246964,2.96296325957342,4.66109520175539,3.97080385742019,4.52720752605555,7.40761537157616,3.0408221799596,5.67106205239515,6.41607849474578,4.92918979956276,3.82158230054878,5.56320014141315,4.61520146613085,4.4063585351883,4.36795631039585,6.51917230343197,4.10272961293191,2.63410959647184,6.23950719422953,3.20175641330984,4.83623536418348,3.73915942877639,6.20785757938124,4.10105417117018,6.05831705721179,3.71767494747811,6.6011376455422,2.78358911467594,6.34760366533704,3.2275688897092,4.26163516151743,6.27522550170521,2.62704512331772,6.1775044316262,4.91287877143979,6.85013635240606,7.27392699306237,3.82225918425826,6.02431655703321,5.12704545039638,2.81426571121036,4.56607285801311,3.07841180345736,3.59918635280874,6.21936108065796,5.9956276497131,7.96447973330533,4.85286355382595,3.94073815687728,5.2308745507775,4.72323274553034,5.07583319891136,5.13221315417524,6.01917488746001,3.67686768238162,4.30251960968297,3.32282509993081,3.60470716758653,1.70769623423873,2.63227222124857,3.23259283008463,6.97593946829022,7.79214796252695,2.8599590520245,5.26649806771276,3.99417364499971,4.19658694589327,5.34833187652713],[-1.03804154690102,-1.20749465445305,-0.970928964452326,-0.718711152634784,-0.818090027391552,-1.62241613111466,-0.67854082697353,-0.784814354416143,-0.790035778928535,-1.395504459437,-1.89585728101192,-1.27610465981259,-0.777728561711586,-1.87673826560945,-0.625127305081618,-1.14520037140304,-1.2627540048555,-1.54930794053568,-0.805164092374844,-0.57867793486876,-1.59198294028492,-1.44397270694393,-1.29384427562922,-1.01818543017875,-1.36567145157507,-1.63997394100734,-1.42568785638162,-1.26368647895984,-1.43270894018949,-1.45990760261361,-1.45420212028847,-1.45622195556062,-1.31961417585331,-0.873229644823851,-0.840383211323002,-1.11394195567375,-1.33187075720919,-0.875210486363921,0.975097166567659,-1.25848406981876,-0.517523937167818,-1.3108524812742,-0.719907148096882,-1.10869049835476,0.990046920862856,-1.22999439137548,-1.19782988660057,-0.950785139309573,-1.32807823977417,0.636919853035109,-1.3046126726406,-0.781882842610024,1.06948152060904,-0.875821253003653,1.14824070088846,-0.607634792344639,-0.632807029905871,-1.05682578989482,-0.699223790252891,-1.17726034912325,-0.823446305398519,-0.843490453067818,-0.676807496903922,-0.798568721955956,-1.07425227686029,-1.05825109874802,-1.23046421879858,-0.976359664060837,-0.625650542513494,-1.04547532167716,-0.587511966935249,-0.539272862158224,-0.941415560398704,-1.15119214061794,-1.1932898754519,-0.645630567410608,-1.20880162892647,-0.665530708069289,-0.931583986973382,-1.02955675705894,-0.847506822536788,-1.01311733399822,-1.147684896397,-1.03819710774145,-0.50922950456066,-0.864647926326871,-0.735346076706299,-0.657355314797255,-0.921954609391921,-1.15667445337855,-0.761214479135396,0.812754410524429,-1.06983799373388,-1.05036521119579,-0.587345365831371,-1.10820358666392,-0.510181374520066,-0.624581256443544,-0.933822702699513,-1.01898230954907,-1.11686502776376,-0.645240771846925,-1.08062731532268,-0.631998972057115,-1.06147985243265,-0.553817431909071,1.05849915029673,-0.568481966506151,-0.863906913855989,-1.0302463576029,-0.608389342210704,1.04354677876033,-0.623290853033562,-0.89466541768372,-0.495241001807062,-0.515103459472592,0.853724692733678,-0.59887044751896,-0.865051296485859,-0.571755160163706,-0.999729261972315,-0.718604996038092,-1.00923130102034,-0.565970465416406,-0.599702625305701,-0.402578626898186,-0.856820542510832,-1.03405494618704,-0.759322106784349,-0.962141779917013,-0.823523428798279,-0.790291730657796,-0.659439184102152,-1.00537775821194,-0.958914491325498,-0.818018335342621,-1.0174473875986,1.02537853394798,-0.458575871800004,-0.831327487732244,-0.530925607532112,-0.427171883588689,-0.559753075256152,-0.81665850494787,-1.00947712160541,-0.990557459636471,-0.747175794795539],[1.07379152539817e-08,5.10038497821963e-08,7.61849970814978e-08,1.1245924802738e-07,1.2077275118107e-07,1.34986620700791e-07,1.57925711233222e-07,1.71175189797933e-07,2.17607437899502e-07,4.65983377054159e-07,4.66954879337955e-07,4.70712929377253e-07,6.28681530156577e-07,6.79266553398281e-07,7.93399616429966e-07,9.66625984396347e-07,1.28026047373445e-06,1.39243440450552e-06,1.56234986402067e-06,1.8798481841776e-06,2.03735488495395e-06,2.04373519974584e-06,2.41563966039985e-06,2.85346750533222e-06,2.98054510945151e-06,2.99059257196097e-06,3.20872186883654e-06,4.49585355138326e-06,5.9891071821926e-06,7.22998261508638e-06,7.24374852330537e-06,7.71534785225438e-06,9.99069999433181e-06,1.02085083971893e-05,1.04340728809372e-05,1.14479392667566e-05,1.17654129786634e-05,1.20290598360798e-05,1.20809496008888e-05,1.24067362857693e-05,1.28489669995442e-05,1.35224529730894e-05,1.43729139537839e-05,1.46097483709617e-05,1.55542264051346e-05,1.64637896807519e-05,1.65783227986879e-05,1.86379922799595e-05,1.91135275033502e-05,2.06984315548842e-05,2.12957611499792e-05,2.25214193816826e-05,2.27683102288318e-05,2.49457751263809e-05,2.6204131093333e-05,2.69017289780908e-05,2.76781244780867e-05,2.83182876258718e-05,2.84231239106391e-05,2.91024705249169e-05,2.99112297914659e-05,3.1260393536351e-05,3.18382855328452e-05,3.22884128482929e-05,3.25630508003755e-05,3.35736328931563e-05,3.38358094378177e-05,3.45562090057865e-05,3.47378874596767e-05,3.51498041065638e-05,3.53743196236647e-05,3.71484934182625e-05,3.73380655488338e-05,3.74203963201131e-05,3.79984443442401e-05,3.82175560461613e-05,3.86784682907841e-05,3.90688641517187e-05,3.93398420909385e-05,3.95975395009559e-05,4.12073029520702e-05,4.37811802000637e-05,4.41317820986114e-05,4.46203311436722e-05,4.66054002031819e-05,4.78686794254885e-05,4.82471788288592e-05,4.83291470682027e-05,4.98123145058257e-05,5.12962674169772e-05,5.20282048479214e-05,5.29057477157207e-05,5.54391105663505e-05,5.71832003854622e-05,5.79490821009115e-05,5.88796623981715e-05,5.93023662800785e-05,5.95007434441316e-05,6.00129281511483e-05,6.12486432085575e-05,6.38361199710679e-05,6.50717418498618e-05,6.60915779485477e-05,6.77802521242708e-05,7.12401948777667e-05,7.31305848566949e-05,7.42546689210284e-05,7.59237375781246e-05,7.74960227691856e-05,7.76515850413137e-05,7.86249650733593e-05,7.86617437278267e-05,7.91241299043032e-05,7.95075876766574e-05,7.95226852209711e-05,8.5216462718737e-05,8.57322208341573e-05,8.64606126088585e-05,8.84677450992564e-05,8.89126310440657e-05,8.98235890242401e-05,9.04698532476574e-05,9.14285511884327e-05,9.25602723432886e-05,9.46653507337788e-05,9.49061973106677e-05,9.50098640075229e-05,9.89309056990433e-05,9.96638371917229e-05,0.000100364093596178,0.000100366762869633,0.000100549571026816,0.000101164835447818,0.000101638056533618,0.000103831891332129,0.000103910887541175,0.00010428160278707,0.000104690244675856,0.000105752775023829,0.000106556626845419,0.000107432063804741,0.000111473553918628,0.000112128825301443,0.000113400419882998,0.000114015742786289,0.000116076975683457,0.000118106122354582],[0.000660736139323257,0.00131661536922953,0.00131661536922953,0.00131661536922953,0.00131661536922953,0.00131661536922953,0.00131661536922953,0.00131661536922953,0.00148778205291889,0.00241369822361421,0.00241369822361421,0.00241369822361421,0.0029757431227019,0.00298552205930403,0.003254683906519,0.00371746229361628,0.00463401574884129,0.00476003701180213,0.00505979337804127,0.00571623445663458,0.00571623445663458,0.00571623445663458,0.00646267631406017,0.00707769741271056,0.00707769741271056,0.00707769741271056,0.00731267713907847,0.00988011987775951,0.0127078528359261,0.0143783734801468,0.0143783734801468,0.014835890606024,0.0183439944737917,0.0183439944737917,0.0183439944737917,0.0190609505587562,0.0190609505587562,0.0190609505587562,0.0190609505587562,0.019085592596806,0.0192837923508037,0.019811359495074,0.0204314010570542,0.0204314010570542,0.0212688491863811,0.0217045518462057,0.0217045518462057,0.0238927412283906,0.0240022997523193,0.0254727317773338,0.0256939621733661,0.0264340081756737,0.0264340081756737,0.028425710756511,0.0293167054284738,0.0295597158787297,0.029643391247345,0.029643391247345,0.029643391247345,0.0298460386468285,0.0301725852911192,0.030456942476404,0.030456942476404,0.030456942476404,0.030456942476404,0.030456942476404,0.030456942476404,0.030456942476404,0.030456942476404,0.030456942476404,0.030456942476404,0.030456942476404,0.030456942476404,0.030456942476404,0.030456942476404,0.030456942476404,0.030456942476404,0.030456942476404,0.030456942476404,0.030456942476404,0.0313038144759227,0.032685986145995,0.032685986145995,0.032685986145995,0.0337384716553222,0.0337936068925877,0.0337936068925877,0.0337936068925877,0.0344393387470446,0.0350712580329873,0.0351807860319466,0.0353853192846896,0.036681019252465,0.0373007627063092,0.0373007627063092,0.0373007627063092,0.0373007627063092,0.0373007627063092,0.0373007627063092,0.0376881276255217,0.0388913660413834,0.0392554852083093,0.0394836219991066,0.0401030985957957,0.0417487896325106,0.0424523045093114,0.0425501686061045,0.0425501686061045,0.0425501686061045,0.0425501686061045,0.0425501686061045,0.0425501686061045,0.0425501686061045,0.0425501686061045,0.0425501686061045,0.0450862786072957,0.0450862786072957,0.0450862786072957,0.0455921743836208,0.0455921743836208,0.0456301760646566,0.0456301760646566,0.0457388052055108,0.0459315422427386,0.046033401275393,0.046033401275393,0.046033401275393,0.0466723472588293,0.0466723472588293,0.0466723472588293,0.0466723472588293,0.0466723472588293,0.0466723472588293,0.0466723472588293,0.0466804697510106,0.0466804697510106,0.0466804697510106,0.0466804697510106,0.0468150036369874,0.0468339208548511,0.0468838098021072,0.0482491119389769,0.0482491119389769,0.0483843496611637,0.0483843496611637,0.0489216749639054,0.0494382586860171],["Promoter (&lt;=1kb)","Intron (ENST00000293261.8/55260, intron 6 of 7)","Promoter (&lt;=1kb)","Promoter (&lt;=1kb)","Distal Intergenic","Promoter (&lt;=1kb)","Promoter (&lt;=1kb)","Promoter (&lt;=1kb)","Promoter (&lt;=1kb)","3' UTR","Intron (ENST00000566228.6/92017, intron 14 of 20)","Distal Intergenic","Exon (ENST00000637419.1/23199, exon 2 of 3)","Promoter (1-2kb)","Promoter (&lt;=1kb)","Intron (ENST00000428343.6/731220, intron 8 of 11)","Exon (ENST00000664158.1/ENST00000664158.1, exon 1 of 3)","Distal Intergenic","Distal Intergenic","3' UTR","Distal Intergenic","Distal Intergenic","Promoter (1-2kb)","Promoter (&lt;=1kb)","Distal Intergenic","Distal Intergenic","Distal Intergenic","Intron (ENST00000641611.1/ENST00000641611.1, intron 3 of 7)","Downstream (1-2kb)","Promoter (1-2kb)","Intron (ENST00000569593.1/ENST00000569593.1, intron 1 of 4)","Intron (ENST00000377540.6/83538, intron 7 of 11)","Intron (ENST00000360655.8/89797, intron 11 of 37)","Distal Intergenic","3' UTR","Intron (ENST00000237536.9/140710, intron 2 of 14)","Distal Intergenic","Promoter (&lt;=1kb)","Distal Intergenic","Intron (ENST00000663166.1/ENST00000663166.1, intron 1 of 4)","Promoter (&lt;=1kb)","Distal Intergenic","Intron (ENST00000544305.5/2048, intron 3 of 6)","Distal Intergenic","Exon (ENST00000296795.7/7098, exon 3 of 5)","Distal Intergenic","Intron (ENST00000409613.5/80303, intron 1 of 3)","Distal Intergenic","Intron (ENST00000246069.12/11034, intron 1 of 3)","Promoter (&lt;=1kb)","Distal Intergenic","Intron (ENST00000637419.1/23199, intron 2 of 2)","Distal Intergenic","Distal Intergenic","Promoter (&lt;=1kb)","Distal Intergenic","Promoter (&lt;=1kb)","Promoter (1-2kb)","Promoter (&lt;=1kb)","Distal Intergenic","Promoter (&lt;=1kb)","Promoter (1-2kb)","Exon (ENST00000565726.2/29800, exon 5 of 12)","Distal Intergenic","Promoter (&lt;=1kb)","Intron (ENST00000396834.6/133396, intron 17 of 17)","Intron (ENST00000602377.1/81577, intron 1 of 2)","Distal Intergenic","Promoter (&lt;=1kb)","Intron (ENST00000609514.1/ENST00000609514.1, intron 1 of 3)","3' UTR","Promoter (&lt;=1kb)","Downstream (2-3kb)","Intron (ENST00000652145.1/ENST00000652145.1, intron 2 of 2)","Distal Intergenic","Promoter (1-2kb)","Intron (ENST00000461828.5/93979, intron 9 of 11)","Distal Intergenic","Distal Intergenic","Intron (ENST00000537098.7/80790, intron 1 of 20)","Distal Intergenic","3' UTR","Distal Intergenic","Distal Intergenic","Promoter (1-2kb)","Intron (ENST00000566125.5/343, intron 4 of 5)","Promoter (1-2kb)","Promoter (&lt;=1kb)","Promoter (&lt;=1kb)","Promoter (&lt;=1kb)","Promoter (1-2kb)","Promoter (&lt;=1kb)","Distal Intergenic","Intron (ENST00000510763.5/54436, intron 1 of 3)","Exon (ENST00000501164.2/105375650, exon 2 of 2)","Intron (ENST00000360694.8/5467, intron 2 of 7)","Intron (ENST00000255559.7/201266, intron 7 of 9)","Intron (ENST00000287878.9/51422, intron 3 of 15)","Intron (ENST00000370210.3/55559, intron 1 of 5)","Exon (ENST00000494954.1/ENST00000494954.1, exon 1 of 2)","3' UTR","Promoter (&lt;=1kb)","Promoter (&lt;=1kb)","Promoter (&lt;=1kb)","Intron (ENST00000377540.6/83538, intron 7 of 11)","Distal Intergenic","Promoter (&lt;=1kb)","Promoter (&lt;=1kb)","Intron (ENST00000477632.5/307, intron 3 of 11)","Promoter (&lt;=1kb)","Promoter (&lt;=1kb)","Distal Intergenic","Promoter (&lt;=1kb)","Intron (ENST00000356113.10/3990, intron 3 of 10)","Downstream (1-2kb)","Promoter (&lt;=1kb)","Distal Intergenic","3' UTR","Promoter (&lt;=1kb)","Distal Intergenic","Promoter (1-2kb)","Promoter (&lt;=1kb)","Intron (ENST00000574767.5/57521, intron 11 of 11)","Intron (ENST00000643288.2/100130967, intron 3 of 4)","Distal Intergenic","Promoter (&lt;=1kb)","Intron (ENST00000531066.6/144100, intron 3 of 26)","Intron (ENST00000394340.7/153090, intron 1 of 5)","Distal Intergenic","3' UTR","Distal Intergenic","Intron (ENST00000533752.1/25987, intron 1 of 1)","Promoter (&lt;=1kb)","Intron (ENST00000559755.1/ENST00000559755.1, intron 1 of 2)","Intron (ENST00000254730.11/60678, intron 4 of 6)","Distal Intergenic","Intron (ENST00000489271.5/55768, intron 1 of 2)","Intron (ENST00000499667.6/255130, intron 1 of 4)","Distal Intergenic","Intron (ENST00000540557.1/6461, intron 1 of 11)","Intron (ENST00000287878.9/51422, intron 3 of 15)","Exon (ENST00000503981.1/ENST00000503981.1, exon 1 of 3)","Intron (ENST00000311160.14/64759, intron 3 of 30)","Distal Intergenic","Distal Intergenic","Intron (ENST00000287878.9/51422, intron 3 of 15)","Distal Intergenic"],[16,19,4,16,2,2,14,20,14,2,16,17,16,1,19,2,12,11,9,8,4,1,2,21,6,8,19,1,1,1,1,17,11,15,10,20,2,13,10,1,22,2,1,14,4,6,2,2,20,20,9,16,23,5,6,1,12,17,2,1,21,1,16,10,3,5,16,2,4,10,20,4,17,13,16,2,7,3,22,16,13,23,9,9,2,16,17,19,11,19,20,11,2,4,8,6,17,7,23,2,3,13,4,7,17,9,5,4,2,19,13,16,9,15,2,18,6,22,17,9,12,16,17,6,10,16,11,9,8,12,1,11,16,15,3,10,3,4,1,9,7,4,7,11,11,7,5],[70687442,48333276,8473307,55655604,20204002,217284025,105472962,57168753,105486317,101345550,12129697,40929676,85306226,28531935,1576640,101421383,108622829,100687288,89701651,22198416,6716174,39955112,10330163,44958246,39299001,66494544,33299934,56414935,156404253,29216037,175391428,41935298,20022556,90808771,46297404,36828597,62500218,44401528,72274019,177700524,45517345,64607335,22800240,102932380,186081611,10404502,232633604,75646783,17613678,49280319,129476946,85555967,153418322,141862885,33162681,212432991,57187369,55318953,71466699,119507198,44958246,41375004,67394425,30434021,16802651,55941523,67675900,219572310,6687448,110497907,38128461,61201258,41500982,110965704,4314761,128268690,130363441,196142525,35606764,81533902,28700717,105948438,124015397,89701651,128268690,25216947,47816266,48472721,75157071,41298490,50275670,22193176,161136908,8199290,95072914,35342614,72647109,151557201,153494980,218323173,169985129,113584721,37634887,139025706,41935298,89701651,168229584,8470926,69807978,1071221,102799322,75228187,121326582,58541748,20499571,75195113,37655723,21028718,28247444,37915898,110036215,3144219,80801640,158895217,95311773,67394425,16854894,121598268,102805517,122940207,10946475,76784148,75095144,100849561,128336904,5454381,25718944,57179145,31365891,37588413,151557201,8578325,47424159,64449074,76545948,151557201,141653402],[70700245,48342991,8475965,55702346,20223388,217336618,105479694,57266641,105488785,101387503,12527397,40936390,85306325,28535905,1585307,101435106,108632078,100993941,89719670,22201482,6717664,39969968,10427616,44976973,39314419,66496494,33302534,56415966,156456613,29223549,175406364,41937041,20118603,90815629,46310499,36839402,62506195,44405720,72274635,177710330,45518786,64616556,22896478,103057549,186085024,10407928,232682776,75647693,17619817,49280409,129504274,85654346,153426481,141866202,33192499,212435033,57192969,55321143,71686763,119511602,44976973,41375669,67396257,30461833,17011084,55947594,67685612,219575711,6690519,110511533,38133760,62078335,41501911,110990579,4339597,128290196,130368730,196160405,35615713,81533966,28718970,105956593,124033301,89719670,128290196,25228932,47816924,48476276,75169241,41301646,50279795,22283357,161236187,8241103,95072993,35428178,72725614,151735993,153509546,218346791,169992721,113633285,37665381,139036042,41937041,89719670,168269415,8493531,69810902,1086628,102875991,75268053,121332662,58548572,20501311,75209139,37699306,21032549,28248289,38069227,110038006,3147088,80805632,158910352,95561414,67396257,17013342,121678782,102809566,122944672,10947870,76795932,75105336,100860037,128341788,5456530,25730550,57205510,31376850,38068687,151735993,8619749,47481285,64451657,76550006,151735993,141682230],[12804,9716,2659,46743,19387,52594,6733,97889,2469,41954,397701,6715,100,3971,8668,13724,9250,306654,18020,3067,1491,14857,97454,18728,15419,1951,2601,1032,52361,7513,14937,1744,96048,6859,13096,10806,5978,4193,617,9807,1442,9222,96239,125170,3414,3427,49173,911,6140,91,27329,98380,8160,3318,29819,2043,5601,2191,220065,4405,18728,666,1833,27813,208434,6072,9713,3402,3072,13627,5300,877078,930,24876,24837,21507,5290,17881,8950,65,18254,8156,17905,18020,21507,11986,659,3556,12171,3157,4126,90182,99280,41814,80,85565,78506,178793,14567,23619,7593,48565,30495,10337,1744,18020,39832,22606,2925,15408,76670,39867,6081,6825,1741,14027,43584,3832,846,153330,1792,2870,3993,15136,249642,1833,158449,80515,4050,4466,1396,11785,10193,10477,4885,2150,11607,26366,10960,480275,178793,41425,57127,2584,4059,178793,28829],[2,2,1,1,2,2,1,2,1,2,1,2,2,1,2,2,2,1,1,1,1,1,1,1,2,1,2,1,2,2,2,1,1,1,1,2,2,2,1,1,1,1,1,2,1,1,1,1,2,1,1,1,1,2,2,1,1,1,1,1,1,2,2,1,1,2,2,1,2,1,2,1,2,1,1,2,1,1,2,1,2,1,1,1,2,1,2,1,1,1,1,1,1,1,1,1,2,2,1,1,1,1,2,2,1,1,2,1,1,1,1,2,1,1,2,2,2,2,1,2,1,1,2,1,2,2,2,1,1,2,2,1,1,1,1,1,2,1,2,2,2,1,2,1,1,2,2],["55697","55260","152992","6530","6382","729582","1397","655","1396","200407","92017","25984","100847022","1104","53615","731220","6404","143872","100129066","649","55330","84879","3241","85395","89822","254778","1050","105378744","10485","51102","7143","83538","89797","641","195977","140710","200728","400128","54541","101928778","2192","339807","2048","9578","7098","109729173","80303","9801","6238","100113393","100506190","23199","139735","5097","1302","29937","4035","3131","8291","3283","85395","101929901","29800","1326","23228","3572","81577","3623","339988","1847","7052","23284","3860","104355135","84662","9394","93979","401109","4151","102465840","283537","203447","9355","100129066","9394","343","114881","9266","11309","11100","100506115","203859","10010","54436","100422964","5467","201266","51422","633","25953","7095","7027","768211","92092","83538","100129066","101927862","152992","307","23526","100533467","9564","2934","3990","107985856","284273","266727","6545","23614","6461","88455","197350","101928855","100130967","10580","29800","144100","153090","401472","23457","148345","25987","84937","105369201","60678","10276","55768","255130","2170","6461","51422","8532","64759","100996455","56946","51422","64411"],["ENST00000536184.6","ENST00000600816.1","ENST00000511149.1","ENST00000568943.5","ENST00000482879.5","ENST00000654616.1","ENST00000483017.7","ENST00000395863.8","ENST00000496700.5","ENST00000324768.6","ENST00000564791.5","ENST00000584517.1","ENST00000583199.1","ENST00000429051.1","ENST00000592012.5","ENST00000492238.1","ENST00000228463.6","ENST00000298815.13","ENST00000444374.1","ENST00000522332.1","ENST00000320776.5","ENST00000420632.6","ENST00000622018.4","ENST00000479127.5","ENST00000373231.9","ENST00000488582.1","ENST00000498907.3","ENST00000451914.2","ENST00000673141.1","ENST00000464915.1","ENST00000422274.2","ENST00000585530.1","ENST00000533917.5","ENST00000560821.1","ENST00000614267.1","ENST00000463491.1","ENST00000335390.6","ENST00000660135.1","ENST00000471240.1","ENST00000427173.1","ENST00000450975.1","ENST00000417695.2","ENST00000465676.1","ENST00000361246.7","ENST00000512264.1","ENST00000645232.1","ENST00000264059.8","ENST00000493686.1","ENST00000468428.1","ENST00000410433.1","ENST00000653047.1","ENST00000635906.1","ENST00000338647.6","ENST00000511044.1","ENST00000374708.8","ENST00000472389.1","ENST00000554118.1","ENST00000575307.1","ENST00000410020.8","ENST00000531340.5","ENST00000479127.5","ENST00000429109.1","ENST00000566075.1","ENST00000542547.5","ENST00000460467.1","ENST00000523039.5","ENST00000602627.1","ENST00000243786.3","ENST00000499502.2","ENST00000369583.4","ENST00000469269.1","ENST00000512091.6","ENST00000475217.1","ENST00000440735.2","ENST00000262366.7","ENST00000463963.1","ENST00000479492.1","ENST00000662916.1","ENST00000401702.5","ENST00000620068.1","ENST00000380814.4","ENST00000540278.1","ENST00000488674.2","ENST00000444374.1","ENST00000463963.1","ENST00000219660.6","ENST00000580808.1","ENST00000467412.1","ENST00000527180.5","ENST00000600493.1","ENST00000622604.4","ENST00000324559.8","ENST00000259075.6","ENST00000245105.8","ENST00000636546.1","ENST00000311565.4","ENST00000579988.1","ENST00000652075.1","ENST00000331595.9","ENST00000258362.7","ENST00000470355.1","ENST00000475254.5","ENST00000512114.1","ENST00000275766.2","ENST00000585530.1","ENST00000444374.1","ENST00000655017.1","ENST00000531038.5","ENST00000468815.1","ENST00000543365.5","ENST00000639132.1","ENST00000393422.6","ENST00000373806.1","ENST00000560664.1","ENST00000441870.1","ENST00000322342.4","ENST00000515437.5","ENST00000403586.5","ENST00000583761.1","ENST00000377707.4","ENST00000553246.1","ENST00000575497.5","ENST00000570335.1","ENST00000608817.2","ENST00000306402.10","ENST00000566075.1","ENST00000529213.1","ENST00000489314.1","ENST00000522715.1","ENST00000545373.1","ENST00000468348.1","ENST00000525167.1","ENST00000579084.1","ENST00000557962.1","ENST00000483569.1","ENST00000484741.1","ENST00000489271.5","ENST00000515865.1","ENST00000482018.1","ENST00000540557.1","ENST00000652075.1","ENST00000514302.5","ENST00000415929.5","ENST00000316124.3","ENST00000531793.1","ENST00000652075.1","ENST00000239440.9"],[0,3285,0,0,36492,0,0,0,0,-22345,80127,19451,-50441,-1017,0,22740,2539,-51797,51190,9832,6947,-17891,1115,0,34293,26867,34752,-224362,-4980,-1618,97560,7186,-3416,10649,10134,6953,123896,528,23250,-110961,-403,15227,26802,-10755,-2573,-22365,-12175,-32677,24295,-335,-4366,-36739,-6469,29426,0,51674,807,1606,0,-26787,848,1071,-2584,-13490,-103,28653,-8684,3609,0,-42560,6367,0,3802,-14854,-17391,1722,2609,-11518,26031,-9239,-35888,-39108,119102,47170,-1604,9855,1947,771,39,-700,-1248,0,-167787,-2156,-3461,25607,12197,38533,-5489,-5384,11229,0,-956,0,4765,54424,0,152,-9081,0,0,-3743,-412,-13632,2937,0,-5736,3270,0,-124599,1956,0,-49983,15417,-3191,0,31579,-14443,-36159,14464,43511,2358,0,-114303,-15516,12379,4655,-14988,-8738,51076,49150,-16959,-6061,-28959,43689,16139,-32577],["ENSG00000103043","ENSG00000161558","ENSG00000155275","ENSG00000103546","ENSG00000115884",null,"ENSG00000182809","ENSG00000101144","ENSG00000213145","ENSG00000175874","ENSG00000048471","ENSG00000108244","ENSG00000266307","ENSG00000180198","ENSG00000071655","ENSG00000196460","ENSG00000110876","ENSG00000165895","ENSG00000237372","ENSG00000168487","ENSG00000186222","ENSG00000168389","ENSG00000115756","ENSG00000160256","ENSG00000124780","ENSG00000169085","ENSG00000245848","ENSG00000223956","ENSG00000125462","ENSG00000116353","ENSG00000116147","ENSG00000204815","ENSG00000166833","ENSG00000197299","ENSG00000274209","ENSG00000149639","ENSG00000186889","ENSG00000237361","ENSG00000168209","ENSG00000236720","ENSG00000077942","ENSG00000233694","ENSG00000133216","ENSG00000198752","ENSG00000164342","ENSG00000285278","ENSG00000115468","ENSG00000115364","ENSG00000125844","ENSG00000222365",null,"ENSG00000131149","ENSG00000189420","ENSG00000156453","ENSG00000204248","ENSG00000117691","ENSG00000123384","ENSG00000108924","ENSG00000135636","ENSG00000203857","ENSG00000160256","ENSG00000229901","ENSG00000159714","ENSG00000107968","ENSG00000154822","ENSG00000134352","ENSG00000141098","ENSG00000123999","ENSG00000246526","ENSG00000138166","ENSG00000198959","ENSG00000150471","ENSG00000171401",null,"ENSG00000126603","ENSG00000136720","ENSG00000158525","ENSG00000224652","ENSG00000198125","ENSG00000277255","ENSG00000139508","ENSG00000123572","ENSG00000106689","ENSG00000237372","ENSG00000136720","ENSG00000103375","ENSG00000006025","ENSG00000105443","ENSG00000137491","ENSG00000105323","ENSG00000224397","ENSG00000171714","ENSG00000136560","ENSG00000125089","ENSG00000283522","ENSG00000112033","ENSG00000133195","ENSG00000106617","ENSG00000182492","ENSG00000127838","ENSG00000008952","ENSG00000198176","ENSG00000181826","ENSG00000146858","ENSG00000204815","ENSG00000237372","ENSG00000253978","ENSG00000155275","ENSG00000196975","ENSG00000180448","ENSG00000270181","ENSG00000050820","ENSG00000148180","ENSG00000166035",null,"ENSG00000180011","ENSG00000112139","ENSG00000099960","ENSG00000265060","ENSG00000107338","ENSG00000076513","ENSG00000228146","ENSG00000262833","ENSG00000203711","ENSG00000095637","ENSG00000159714","ENSG00000166689","ENSG00000136848",null,"ENSG00000150967","ENSG00000175262","ENSG00000182704","ENSG00000186187","ENSG00000272808","ENSG00000132394","ENSG00000173848","ENSG00000151092","ENSG00000245067","ENSG00000121769","ENSG00000107338","ENSG00000106617","ENSG00000109625","ENSG00000136205","ENSG00000181908","ENSG00000158636","ENSG00000106617","ENSG00000120318"],["VAC14","TMEM143","TRMT44","SLC6A2","SDC1","DIRC3","CRIP2","BMP7","CRIP1","CREG2","SNX29","KRT23","MIR5093","RCC1","MBD3","RFX8","SELPLG","ARHGAP42","UNQ6494","BMP1","BLOC1S4","MFSD2A","HPCAL1","FAM207A","KCNK17","VXN","CEBPA","LINC01767","MIR9-1HG","MECR","TNR","TTC25","NAV2","BLM","ANTXRL","SOGA1","TMEM17","TUSC8","DDIT4","LINC01741","FBLN1","LINC02579","EPHB2","CDC42BPB","TLR3","TFAP2A-AS2","EFHD1","MRPL19","RRBP1","SNORD12B","LINC00963","GSE1","ZFP92","PCDH1","COL11A2","NENF","LRP1","HLF","DYSF","HSD3B1","FAM207A","FOXO6-AS1","ZDHHC1","MAP3K8","PLCL2","IL6ST","GFOD2","INHA","LINC02481","DUSP5","TGM2","ADGRL3","KRT13","LINC00431","GLIS2","HS6ST1","CPA5","LINC00885","MB","MIR7854","SLC46A3","NRK","LHX2","UNQ6494","HS6ST1","AQP8","OSBPL7","CYTH2","SLCO2B1","HNRNPUL1","PELATON","ANO5","TANK","SH3TC1","MIR3150A","PPARD","SLC39A11","PRKAG2","BGN","PNKD","SEC62","TFDP1","RELL1","ZC3HAV1L","TTC25","UNQ6494","CTB-178M22.2","TRMT44","ANXA4","ARHGAP45","BIVM-ERCC5","BCAR1","GSN","LIPC","LOC107985856","ZADH2","MDGA1","SLC7A4","PPY2P","SHB","ANKRD13A","CASP16P","LOC101928855","C6orf99","SORBS1","ZDHHC1","PLEKHA7","DAB2IP","GASAL1","ABCB9","C1orf127","TSKU","ZNRF1","LOC105369201","EEFSEC","NET1","NGLY1","IGFBP7-AS1","FABP3","SHB","PRKAG2","CPZ","TNS3","LINC02724","EMSY","PRKAG2","ARAP3"],["VAC14 component of PIKFYVE complex","transmembrane protein 143","tRNA methyltransferase 44 homolog","solute carrier family 6 member 2","syndecan 1","disrupted in renal carcinoma 3","cysteine rich protein 2","bone morphogenetic protein 7","cysteine rich protein 1","cellular repressor of E1A stimulated genes 2","sorting nexin 29","keratin 23","microRNA 5093","regulator of chromosome condensation 1","methyl-CpG binding domain protein 3","regulatory factor X8","selectin P ligand","Rho GTPase activating protein 42","uncharacterized LOC100129066","bone morphogenetic protein 1","biogenesis of lysosomal organelles complex 1 subunit 4","major facilitator superfamily domain containing 2A","hippocalcin like 1","family with sequence similarity 207 member A","potassium two pore domain channel subfamily K member 17","vexin","CCAAT enhancer binding protein alpha","long intergenic non-protein coding RNA 1767","MIR9-1 host gene","mitochondrial trans-2-enoyl-CoA reductase","tenascin R","tetratricopeptide repeat domain 25","neuron navigator 2","BLM RecQ like helicase","ANTXR like","suppressor of glucose, autophagy associated 1","transmembrane protein 17","tumor suppressor candidate 8","DNA damage inducible transcript 4","long intergenic non-protein coding RNA 1741","fibulin 1","long intergenic non-protein coding RNA 2579","EPH receptor B2","CDC42 binding protein kinase beta","toll like receptor 3","TFAP2A antisense RNA 2","EF-hand domain family member D1","mitochondrial ribosomal protein L19","ribosome binding protein 1","small nucleolar RNA, C/D box 12B","long intergenic non-protein coding RNA 963","Gse1 coiled-coil protein","ZFP92 zinc finger protein","protocadherin 1","collagen type XI alpha 2 chain","neudesin neurotrophic factor","LDL receptor related protein 1","HLF transcription factor, PAR bZIP family member","dysferlin","hydroxy-delta-5-steroid dehydrogenase, 3 beta- and steroid delta-isomerase 1","family with sequence similarity 207 member A","FOXO6 antisense RNA 1","zinc finger DHHC-type containing 1","mitogen-activated protein kinase kinase kinase 8","phospholipase C like 2","interleukin 6 signal transducer","glucose-fructose oxidoreductase domain containing 2","inhibin subunit alpha","long intergenic non-protein coding RNA 2481","dual specificity phosphatase 5","transglutaminase 2","adhesion G protein-coupled receptor L3","keratin 13","long intergenic non-protein coding RNA 431","GLIS family zinc finger 2","heparan sulfate 6-O-sulfotransferase 1","carboxypeptidase A5","long intergenic non-protein coding RNA 885","myoglobin","microRNA 7854","solute carrier family 46 member 3","Nik related kinase","LIM homeobox 2","uncharacterized LOC100129066","heparan sulfate 6-O-sulfotransferase 1","aquaporin 8","oxysterol binding protein like 7","cytohesin 2","solute carrier organic anion transporter family member 2B1","heterogeneous nuclear ribonucleoprotein U like 1","plaque enriched lncRNA in atherosclerotic and inflammatory bowel macrophage regulation","anoctamin 5","TRAF family member associated NFKB activator","SH3 domain and tetratricopeptide repeats 1","microRNA 3150a","peroxisome proliferator activated receptor delta","solute carrier family 39 member 11","protein kinase AMP-activated non-catalytic subunit gamma 2","biglycan","PNKD metallo-beta-lactamase domain containing","SEC62 homolog, preprotein translocation factor","transcription factor Dp-1","RELT like 1","zinc finger CCCH-type containing, antiviral 1 like","tetratricopeptide repeat domain 25","uncharacterized LOC100129066","uncharacterized LOC101927862","tRNA methyltransferase 44 homolog","annexin A4","Rho GTPase activating protein 45","BIVM-ERCC5 readthrough","BCAR1 scaffold protein, Cas family member","gelsolin","lipase C, hepatic type","uncharacterized LOC107985856","zinc binding alcohol dehydrogenase domain containing 2","MAM domain containing glycosylphosphatidylinositol anchor 1","solute carrier family 7 member 4","pancreatic polypeptide 2, pseudogene","SH2 domain containing adaptor protein B","ankyrin repeat domain 13A","caspase 16, pseudogene","uncharacterized LOC101928855","chromosome 6 putative open reading frame 99","sorbin and SH3 domain containing 1","zinc finger DHHC-type containing 1","pleckstrin homology domain containing A7","DAB2 interacting protein","growth arrest associated lncRNA 1","ATP binding cassette subfamily B member 9","chromosome 1 open reading frame 127","tsukushi, small leucine rich proteoglycan","zinc and ring finger 1","uncharacterized LOC105369201","eukaryotic elongation factor, selenocysteine-tRNA specific","neuroepithelial cell transforming 1","N-glycanase 1","IGFBP7 antisense RNA 1","fatty acid binding protein 3","SH2 domain containing adaptor protein B","protein kinase AMP-activated non-catalytic subunit gamma 2","carboxypeptidase Z","tensin 3","long intergenic non-protein coding RNA 2724","EMSY transcriptional repressor, BRCA2 interacting","protein kinase AMP-activated non-catalytic subunit gamma 2","ArfGAP with RhoGAP domain, ankyrin repeat and PH domain 3"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Chr<\/th>\n      <th>start<\/th>\n      <th>end<\/th>\n      <th>width<\/th>\n      <th>strand<\/th>\n      <th>Conc<\/th>\n      <th>Conc_MD<\/th>\n      <th>Conc_MV<\/th>\n      <th>Fold<\/th>\n      <th>p.value<\/th>\n      <th>FDR<\/th>\n      <th>annotation<\/th>\n      <th>geneChr<\/th>\n      <th>geneStart<\/th>\n      <th>geneEnd<\/th>\n      <th>geneLength<\/th>\n      <th>geneStrand<\/th>\n      <th>geneId<\/th>\n      <th>transcriptId<\/th>\n      <th>distanceToTSS<\/th>\n      <th>ENSEMBL<\/th>\n      <th>SYMBOL<\/th>\n      <th>GENENAME<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"scrollX":true,"dom":"Bfrtip","buttons":["copy","csv","excel"],"columnDefs":[{"className":"dt-right","targets":[1,2,3,5,6,7,8,9,10,12,13,14,15,16,19]}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+<div class="figure" style="text-align: center"><span id="fig:plotMA-male-deseq2-fig1"></span>
+<img src="SLX-16110-16111_files/figure-html/plotMA-male-deseq2-fig1-1.png" alt="MA plot (DESeq2)" width="672" />
+<p class="caption">
+Figure 5.6: MA plot (DESeq2)
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:plotVol-male-deseq2-fig1"></span>
+<img src="SLX-16110-16111_files/figure-html/plotVol-male-deseq2-fig1-1.png" alt="Volcano plot (DESeq2)" width="672" />
+<p class="caption">
+Figure 5.7: Volcano plot (DESeq2)
+</p>
+</div>
+</div>
+</div>
+<div id="dbr-from-edger" class="section level2" number="5.4">
+<h2><span class="header-section-number">5.4</span> DBR from edgeR</h2>
+<ul>
+<li>Unfiltered list of DBR: <a href="RData/DBR_analysis_unfiltered_male_edgeR.csv.gz">MD vs MF</a></li>
+</ul>
+<div id="normalisation-factors-1" class="section level3" number="5.4.1">
+<h3><span class="header-section-number">5.4.1</span> Normalisation factors</h3>
+<div class="figure" style="text-align: center"><span id="fig:dbr-norm-factor-edger"></span>
+<img src="SLX-16110-16111_files/figure-html/dbr-norm-factor-edger-1.png" alt="Normalisation factors by group" width="672" />
+<p class="caption">
+Figure 5.8: Normalisation factors by group
+</p>
+</div>
+</div>
+<div id="male-md-vs-mv-1" class="section level3" number="5.4.2">
+<h3><span class="header-section-number">5.4.2</span> Male (MD vs MV)</h3>
+<div id="htmlwidget-f09443f62d1c112f5092" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-f09443f62d1c112f5092">{"x":{"filter":"none","extensions":["Buttons"],"caption":"<caption>DBR of MD vs MV (edgeR; FDR&lt;0.05)<\/caption>","data":[["16","4","19","19","15","1","2","21","13","9","17","2","16","20","14","20","1","16","11","10","20","16","12","1","22","17","2","5","2","2","1","1","16","16","11","16","10","19","13","7","6","14","17","20","21","3","11","2","7","2","9","2","7","13","2","6","12","1","5","4","8","19","1","1","4","9","9","X","12","19","7","8","11","5","5","1","5","11","14","4","6","16","4","11","5","1","11","22","1","10","9","17","2","9","1","12","19","15","12","14","2","11","11","9","16","15","14","9","12","7","8","10","22","1","2","2","20","3","2","6","1","1","3","6","14","1","4","3","2","1","5","9","9","2","3","7","6","20","17","20","8","13","17","12","19","15","9","16","13","10","9","12","9","11","10","1","2","7","19","17","2","4","13","X","7","18","12","17","2","16","1","6","5","9","19","5","2","11","16","7","2","2","19","2","7","22","9","10","3","2","6","4","12","1","17","9","9","17","16","9","2","3","19","2","2","14","3","7","9","17","1","7","22"],[70699599,8473132,48338600,6210102,90819420,41372965,101411159,44957534,44403878,89752841,40915550,20184352,85356766,57265107,105485670,36831188,39936237,12209824,22192412,46307538,50272846,85517808,108628540,22827042,36465334,47813671,217335920,141835446,101409848,71466142,28530543,1064043,75094868,55655508,64419041,67398841,72297269,48473492,113584197,155313109,39279410,105472651,28247240,49279592,44959094,16801228,100634785,10331278,139035028,75612753,121324358,128286798,151695592,102799157,218316594,33192401,57188176,24413081,141714807,6723121,66521411,33267355,156461593,246682705,6689095,127437127,93058202,153411435,47750778,1584011,98399963,102768009,921399,142626029,150111108,164641139,141816120,16986098,49585302,186078524,37705042,81523382,8506470,75306560,168268723,212484665,76786506,21027282,10903453,95564605,124813464,41942484,189483533,129472056,177589220,47752807,33252627,100728546,131867602,103068304,158456887,75157110,20018852,130834644,85369802,58526886,105479879,92738861,122929094,47484350,95067387,71963942,30332255,175308177,128322016,64622562,38125203,49418934,48419804,154509443,56190295,212463484,190345473,10381254,105467450,29225167,8471078,190371345,62381517,25889241,39625709,129478585,38195912,128301657,193907386,76424660,158910634,38137545,21296865,17594980,22208248,109242740,55320559,110038171,57946828,75109080,72148904,85365845,73061346,113959104,131608655,57183367,89756075,16980961,110454943,18926710,46963651,151684557,1580154,79019782,219575919,152996122,110950340,105908582,5592149,75207864,52247780,41497816,232620793,67694296,119479787,17281369,55918594,89745056,19486297,172453709,128291800,119084865,22374775,151692652,128284828,191636001,41297311,119425918,157400101,30634681,94950662,110835577,14202314,232624005,106546455,61200156,104671860,231703160,27296051,114803486,89748821,41940063,66927772,34072636,112137752,184561568,48472009,75578705,160968552,50060149,185554179,130366050,70412371,69759997,91915383,97001342,45514042],[70701462,8474558,48339706,6224583,90821032,41374598,101412366,44958855,44405192,89755208,40916939,20186896,85359868,57267010,105488276,36832449,39937221,12210236,22193907,46308654,50274422,85519228,108629539,22828648,36466793,47814977,217336666,141836776,101410663,71467304,28530918,1064778,75096664,55658019,64420115,67400657,72298120,48475432,113585682,155313774,39280126,105476138,28248335,49279984,44960335,16802548,100635491,10331800,139036438,75614106,121326170,128288474,151697460,102800947,218317789,33193499,57190419,24413776,141716450,6723841,66521903,33267782,156462014,246684200,6690706,127438452,93059463,153411853,47752622,1586667,98401114,102769358,922953,142627962,150112279,164642886,141817521,16988467,49586401,186079038,37706031,81524663,8507926,75307799,168269483,212486975,76787698,21029279,10904359,95566243,124814493,41942804,189484308,129472580,177589563,47754241,33254246,100729260,131868863,103069071,158458111,75157952,20019140,130836268,85372015,58528116,105480821,92739980,122930208,47486240,95069453,71965006,30333557,175308804,128322901,64623038,38127393,49420583,48420776,154510619,56190573,212465947,190347202,10382137,105468694,29225897,8472981,190372595,62382299,25890441,39625874,129479999,38198199,128303413,193909506,76425722,158913021,38139131,21298404,17595522,22210860,109244755,55320829,110039029,57947719,75110949,72150182,85366751,73062776,113960806,131609729,57184939,89758475,16981763,110455347,18928742,46964677,151686843,1581814,79021441,219576163,152997285,110950850,105909330,5592741,75210057,52249489,41498109,232621429,67695090,119480411,17282262,55918941,89747554,19488032,172455179,128294751,119085139,22375624,151693468,128286678,191637548,41297790,119428219,157400916,30635563,94952028,110836695,14203542,232624661,106548738,61203302,104673044,231704381,27296574,114804732,89749397,41940521,66928755,34073679,112138883,184563425,48473343,75580588,160969121,50062728,185554587,130366454,70413749,69762151,91916562,97002957,45516942],[1864,1427,1107,14482,1613,1634,1208,1322,1315,2368,1390,2545,3103,1904,2607,1262,985,413,1496,1117,1577,1421,1000,1607,1460,1307,747,1331,816,1163,376,736,1797,2512,1075,1817,852,1941,1486,666,717,3488,1096,393,1242,1321,707,523,1411,1354,1813,1677,1869,1791,1196,1099,2244,696,1644,721,493,428,422,1496,1612,1326,1262,419,1845,2657,1152,1350,1555,1934,1172,1748,1402,2370,1100,515,990,1282,1457,1240,761,2311,1193,1998,907,1639,1030,321,776,525,344,1435,1620,715,1262,768,1225,843,289,1625,2214,1231,943,1120,1115,1891,2067,1065,1303,628,886,477,2191,1650,973,1177,279,2464,1730,884,1245,731,1904,1251,783,1201,166,1415,2288,1757,2121,1063,2388,1587,1540,543,2613,2016,271,859,892,1870,1279,907,1431,1703,1075,1573,2401,803,405,2033,1027,2287,1661,1660,245,1164,511,749,593,2194,1710,294,637,795,625,894,348,2499,1736,1471,2952,275,850,817,1851,1548,480,2302,816,883,1367,1119,1229,657,2284,3147,1185,1222,524,1247,577,459,984,1044,1132,1858,1335,1884,570,2580,409,405,1379,2155,1180,1616,2901],["*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*"],[5.90855021997979,6.12807482572643,5.09735270256332,10.2617153738166,5.64689687640742,5.28982516592267,4.90111181677551,5.19058561416332,5.54696545902287,6.17029583831453,4.84492972405772,6.67592778474147,6.79345291312244,6.72156792196296,6.41238678578184,4.81332010955144,4.31512888282522,2.72218989164645,5.57547055033736,5.35663314001033,5.35516310980101,5.48365401300098,4.50910950980822,5.94296675388468,5.55715413437829,5.47384541798558,3.98948769678407,5.12216298277836,4.34591372788545,6.03451816439651,2.86470872039286,3.41528841911742,5.87511899341994,6.82920713001364,4.98554129073384,5.90180415807616,5.03706186883682,6.2965593741739,6.11405212156706,3.67204425411295,4.2344934808842,6.98913513223913,4.87943936685167,2.58496250739248,5.11595173929609,4.63504707541598,3.86059950703392,2.16284744099118,5.9423319257994,4.76450543718822,6.05920001343508,5.87970565329126,6.09782758968573,6.1560471154278,4.61215844772864,4.49337164647331,6.27461534614914,5.27109302192282,5.10763591739693,3.46816447094869,3.0627432784988,2.32541993930434,2.5464431398843,5.51381386166386,6.19327719777847,5.18786569172888,5.83349172873402,3.04013211696222,5.84443879425262,7.05235187187929,5.58921844896436,5.01196828202106,5.8358120800679,5.34928079552654,5.51096113478268,5.65174787818653,5.15954427157163,6.50616987401688,5.62465049122509,2.64616814170815,4.90809883381833,4.47491154675683,5.49494663249221,4.86309245485813,4.38384294174653,6.48413069223063,4.90574982642112,5.91139361464866,4.82476386554376,5.92955767870271,4.46095628222051,2.72203749720232,4.61890436483849,3.27185104134812,2.56929896015329,5.7645395374067,5.14627833432969,4.23042886415122,5.20438427619447,4.31384365449548,5.68109625615237,4.69591763512099,2.51845602553831,6.09379759876558,6.19873121318257,4.62004769096645,5.16408684761163,5.60366331430756,4.38452275390836,5.75284235258161,6.50226433910488,5.43538367055872,5.47515123611646,3.53006804064507,5.92839317738984,3.22181982996369,6.47286075082131,5.74696209557387,4.92719855399499,5.87334382045922,2.18673865649303,6.13019580163917,5.01408044208647,4.02912870009279,5.23805784538893,3.29130211365783,6.28333081822658,4.81625417879561,3.81066454386381,5.90506456096236,1.62449087295934,5.60581647100566,6.12766526518485,6.03029088811292,5.64104885881467,5.2430187767251,6.17516095528904,5.53140876535598,6.11047411587069,3.3360371602064,7.10273781167096,5.34714189104725,2.78584810596178,4.36088693761199,5.98651780557191,5.58190502937917,5.63254442096004,4.96740520927519,5.080237769833,5.47050931960797,4.89740317836885,5.58643356496377,6.55935145414793,4.5849626992863,2.66148324536374,6.29050503689004,4.5743761325006,6.92744541057632,6.18381029274551,5.77790477686625,2.44688507112473,5.75880014287585,2.79835586274898,4.2574545946231,2.85907905557875,7.23946597874747,5.66550849318047,2.57122518967449,3.95367020101706,3.4157393310127,3.8483571404727,5.24975126618208,2.43994774768262,6.52716875243458,5.50328531375345,5.97127340417541,7.36938916319352,4.35276723530647,5.27646067666903,4.91051784937238,5.96918491755342,5.43065285009157,3.31032588746921,6.12088211202279,5.08246663769551,4.95786233522426,5.43229671282166,5.35749452449729,5.10375153095628,5.54063090731476,5.50872551688372,6.87607114301967,4.62492249985543,5.28417557132363,2.98258871893823,4.72867926461877,4.14321751227185,2.9173937029389,4.57590488802005,4.7502246724944,5.59141532480014,7.19765007874523,5.61985899248657,5.48532058666595,3.96433352613849,6.27418159418139,2.76387087836711,3.25168159593048,4.7849668807871,5.3923840276564,4.78190390293427,5.34576008113793,7.38416948354166],[5.68069065382755,5.92154745523253,4.60599510116175,10.4791326947376,5.38661490988858,4.88988325171894,4.43987358811987,4.83243633216048,5.34041107643815,6.0050112455611,4.57506447071085,6.55789678140737,6.61663827785512,6.65258052973915,6.25665148019265,4.44395561222643,3.56366816558667,0,6.19317641119765,5.20576021744634,5.14627583120871,5.25332107269225,4.00275279675926,5.89864857612837,5.4244464148915,5.25412385944497,3.19833132718011,4.92819133675976,3.80333394831583,5.9694423829491,1.22534995770218,4.33516684929635,5.75464041527341,6.78508077010683,4.77001843812106,5.8069908478099,5.66959257626495,6.24178041943932,6.11132635724621,2.61460830104348,3.72593835147385,6.93086802540725,4.6078482884191,3.58496250072116,4.98773381599422,4.23550767152819,3.14142166552003,0,5.89577209914576,4.34556298717522,5.98403536627341,5.7970520818098,5.99749209038439,6.18465084191428,4.32490047103426,5.15816651479338,6.16042858250314,5.1712756797219,4.84381825692468,2.32042611425252,1.70341800169715,0,0.0306199234444171,5.50165649333842,6.21023634285288,5.03150618940845,6.40867527055827,3.96641271393996,5.80914061421291,7.04945871058715,6.16519068990832,4.81778709657579,5.77999666485857,5.26137570861795,5.49730903243851,5.65430416296432,5.04522968463242,6.52170225428802,5.62140871768688,3.59114854174798,5.51580652150436,4.19262993892148,5.39025298210031,4.50962298266387,5.15036858688942,6.45025223612559,4.6585256623736,5.8221594204136,4.50681589005285,5.96178881453978,3.99843967034971,0.773070183012686,4.37940231186241,2.28249267378281,0.291875161507846,5.78433284980649,4.99539555691671,3.61592431755701,4.99141100934703,3.85113056847482,6.24819934391043,4.48236778571033,0.783766616305695,6.10146395260615,6.170458629218,4.28428636594567,5.01011065555424,5.56229573932549,3.90828628748974,5.6727544992041,6.54928038416969,5.38516512858546,5.43341556175709,2.82713458579119,6.47328141438111,1.30413659005056,6.47935974762133,5.6657494584467,4.72340118537177,5.84605468452593,0,6.15063413476697,4.96461471875455,3.3335328763417,5.13655882078503,2.30965824718623,6.26888016107191,4.70091925884186,3.2943574016515,5.91842470050371,0,5.62671974645531,6.14002507771105,5.98570855103774,5.6599578899433,5.11738693186152,6.19884146808047,5.51810122460337,6.04747670481474,2.36170874216752,7.11784572121692,5.34894245321664,1.09276935151771,4.04539960690876,6.00468559817273,5.49877979214115,5.6527037071217,4.85691873101259,4.9731784596815,5.40830731785754,4.70046453401147,5.44746332745487,6.57972127136124,4.33478144746523,1.06144274923722,6.26965483172518,4.32958753060022,6.96237013428149,6.12836121780281,5.81751614923501,0.82025084254006,5.78849958194745,1.06690017092053,3.88465140282607,3.77347487081656,7.29566507667919,5.56725171353444,0.239755560335616,3.4925096213425,2.63181369479526,3.28980456530235,5.83447890619335,0.417508801872548,6.47813782885413,5.43790133547201,6.51047148001307,7.38936364067099,4.10971556009738,5.90831544333065,4.68550249845146,5.91877213415941,5.49004104300543,2.29981259719199,6.13847221886589,4.97412380719888,5.58589354085122,5.40461366425385,5.35662760804679,5.01127280907705,5.60551046407448,5.54726595196206,6.90006942764845,4.40738336129379,5.27005532103619,3.86445000580803,4.48537165598651,3.76235136092553,1.72159337050565,4.28951843346888,4.58504710307586,5.59427885762936,7.72060827870103,5.55715413776775,5.53004841146391,3.52119100223054,6.34239834441343,3.69194059770817,2.45241642456752,4.7126243934058,5.46890842039424,4.64149019611968,5.38589238299984,7.43894912237336],[6.10528210317651,6.30870556329911,5.46320715198484,10.0056174109126,5.86732004964993,5.60261950628874,5.25006645394931,5.47727192711788,5.72761685062648,6.31857582817789,5.07218159620089,6.78502835575059,6.95094412204873,6.78740644758542,6.55293677243518,5.10713384608327,4.80672359864413,3.61945496233037,4.47253057165651,5.49321131951746,5.53759571340393,5.68222593019643,4.88317742640951,5.98596399767565,5.6786762987384,5.66448409894209,4.49753017763732,5.29311891674047,4.73928362209616,6.09678482213922,3.61231170874485,0.204981156305302,5.98630732137474,6.87202379760538,5.17301264046551,5.99076877629716,3.88415427078702,6.34933424167509,6.11677274565933,4.27565493392321,4.60975419115848,7.0451400353783,5.10791277423994,0,5.23369870453843,4.9475957641902,4.33833535806777,3.09251257443151,5.98743599488997,5.08877143918048,6.13064173492405,5.95787940650133,6.19163647804983,6.12686478340306,4.85160774045118,3.22336254535413,6.38042352737576,5.3644488412802,5.33058754609725,4.0991921720433,3.75001494936391,3.18730320083904,3.41445941418209,5.52586963723409,6.17611632109744,5.32892379137629,4.86243708058552,0,5.87889392527188,7.05523924287441,4.61585789706872,5.18308690400475,5.88954828338168,5.4321359491936,5.52448525853045,5.64918705593374,5.26546218880917,6.49046844698961,5.62788499674165,0,3.83762914950247,4.7108964361249,5.59255418864767,5.14677774332042,2.64124936253485,6.51723180799899,5.11674218932006,5.9954284870734,5.08513874511216,5.89658998284408,4.8106394816013,3.52195240849155,4.8242498081195,3.85324881615312,3.4122651229801,5.7444708851676,5.28286458834113,4.66001359068546,5.38992441044296,4.66363873646348,4.7333851038875,4.88189503407005,3.28358871915195,6.08609028886502,6.22646037008682,4.89223110690163,5.30320272002928,5.64387771216091,4.74196166611897,5.82871716754901,6.45366432125668,5.48391280479178,5.51571340925233,4.00066026926423,5.04234080446881,4.01702221646413,6.46633234506166,5.82384569517902,5.10573834761174,5.90012633983222,3.03891285118661,6.10946375736385,5.0619062068218,4.49645590999106,5.33288299288342,3.87009363279209,6.29763816561894,4.92304740228349,4.19010898044023,5.89157954192079,2.62449086490779,5.58460586869862,6.1151986483842,6.07353673366275,5.62188869674978,5.35858141867108,6.15108525295651,5.54459467729014,6.17083536257111,3.91233994130947,7.08747001621955,5.34533907886955,3.54349760495793,4.61961147046605,5.96811830581189,5.66050056262731,5.61209944523412,5.0700288524475,5.17989832381189,5.53013995615903,5.07065880854039,5.71318557048235,6.53868990580418,4.79810367839268,3.40144562031832,6.31105819732099,4.78359309573411,6.89165421108955,6.23720686093786,5.73717503566858,3.19204249291348,5.72847643494303,3.56291608521426,4.55343560270301,0,7.18098864043219,5.75749793466836,3.42027838184164,4.30258055266976,3.9208332038177,4.25000613901365,4.25045561899669,3.25047993208655,6.57458795377992,5.56583407301898,5.10045208393193,7.34913424673568,4.56071489734093,4.12588077852562,5.10512699978664,6.01789541921636,5.36871460891434,3.89877586181046,6.10307488728218,5.18323844591527,3.820358869227,5.4594585527149,5.35836092032991,5.19065765858427,5.47269569121462,5.46912717950326,6.85166690032018,4.81391687123704,5.29815895935387,0.313709760992731,4.93681412240115,4.44424742521765,3.5621321287673,4.81474891510169,4.89841854013979,5.58854609698307,6.36911686550464,5.67995160621232,5.43916157739077,4.30286552932444,6.20257848247305,0,3.76300612413993,4.85385438450766,5.3115720929465,4.90985546128055,5.30447937321954,7.32722746622137],[-1.16598017137238,-1.10122618605717,-1.40385533955486,-0.28009443586362,-1.08680784311975,-1.15343995547872,-1.38565369616853,-1.2196824350086,-1.06161148853927,-0.953873103342902,-1.52590039322585,-0.934455208378071,-0.902204642931141,-0.899418768314677,-0.907738426338814,-1.43079661850848,-1.90387976401738,-4.03017930115562,1.05426418645105,-1.05290460912197,-1.02907048878994,-0.974492681603662,-1.59089550730524,-0.895571305673436,-0.961201995576574,-0.96868357709588,-2.07609595084136,-1.1356261340252,-1.74624923247537,-0.869149423441337,-3.38984089212691,3.48117951514942,-0.868412916902632,-0.817363418887611,-1.17350850201386,-0.852754180302308,1.24777207413008,-0.825499053990022,-0.844396523527651,-2.46331937837278,-1.83005654953921,-0.765640472321636,-1.21460528794698,5.90589383165698,-1.06265645083473,-1.45276627499631,-2.13374082992035,-4.6960664167815,-0.80912256995677,-1.24732113863039,-0.800593371991471,-0.804255839220581,-0.783733489632185,-0.78651862334228,-1.46773176591053,1.62133308867736,-0.780297039981603,-0.990496655732466,-1.01142393464474,-2.3263345100121,-2.76523669466576,-4.25566912926649,-3.40025492530559,-0.879762667679784,-0.773244942795393,-1.00037799621238,0.837837988705209,3.42033040579529,-0.801819338179424,-0.712187563006956,0.877119926509802,-1.04433170504075,-0.784809015331316,-0.913626628060526,-0.85639625651186,-0.834887989924013,-0.985001853006584,-0.747179302756242,-0.84040888505338,4.03993583315403,1.19243570085134,-1.4487518310354,-0.856160816446862,-1.11706183393255,1.79812360349115,-0.739918667100909,-1.10099191060109,-0.761122362820172,-1.14839307188409,-0.76869453622152,-1.44707377230001,-3.03807439217742,-1.38676654774494,-2.48680299380449,-3.42612085853793,-0.803738937766166,-0.957370468424612,-1.62641404817396,-0.89769054242031,-1.49741608841674,0.834294826314109,-1.26663044190446,-3.59995716943093,-0.750010388982518,-0.737369053731978,-1.28482973053013,-0.931246384230521,-0.809203598226951,-1.48227607216484,-0.760756845691154,-0.726662755448932,-0.842081900239313,-0.822040976562849,-2.26521205737103,0.759113656537643,-2.95520292108942,-0.71589505630088,-0.75528036046106,-1.07462307437654,-0.743511413923536,-4.24726767760588,-0.725383770862514,-1.05819851697879,-1.78014387389258,-0.905671380711103,-2.30205381769227,-0.710701279283487,-1.19518681058983,-1.99841170573066,-0.7376830858055,-5.98296143404134,-0.790057666318257,-0.722645704939235,-0.715042946200233,-0.786547117353281,-0.873859372136971,-0.711809419356141,-0.792631801024765,-0.705276833504466,-2.27157540080928,-0.657478187663579,-0.865896940372108,-3.07150981078913,-1.56453893000753,-0.71379087338632,-0.764976461069153,-0.768272909876765,-1.00758998682727,-0.967755913203341,-0.788395808367029,-1.040901867982,-0.749999736461795,-0.685436889574981,-1.23634766026798,-3.04283442753773,-0.694966380635969,-1.29277586656777,-0.663974855204555,-0.687992305054442,-0.745419488739694,-3.23388405421556,-0.730934138282407,-2.70555293670546,-1.4567105464697,3.24137774793807,-0.630068476299606,-0.727729433843115,-3.27977358846849,-1.71288193875645,-2.15972396367804,-1.79519050800489,0.904899557883227,-3.18845701794314,-0.668767196190637,-0.771308428577609,0.719057087959332,-0.604776246958856,-1.47827938359713,0.954103845351257,-0.970321523474652,-0.684434114721715,-0.814193066969397,-2.19788183456361,-0.681525262217284,-0.88888634890911,1.08632809109661,-0.787740698495294,-0.818864619689695,-0.912890613072989,-0.76908977245844,-0.770920275166248,-0.642427091867821,-1.1910931992428,-0.83699068902523,2.87605620476209,-1.09067543143901,-1.5199674102932,-2.485334684937,-1.24145646663781,-1.12955024401564,-0.742645230538,0.636110890735067,-0.725022331179033,-0.773512241803745,-1.67149608223237,-0.674068156491873,3.45945558148222,-2.23959161988233,-1.13945511609893,-0.820531742153909,-1.08771139895341,-0.825141745538262,-0.593779489481506],[1.59563021901229e-10,5.91711743486767e-10,1.14314998059092e-09,3.16474448502457e-09,1.24079661228629e-08,3.26902355990866e-08,4.26663868071615e-08,4.66688234151033e-08,6.03953034309284e-08,6.38005438274336e-08,6.64847196911643e-08,6.74892920938578e-08,1.07348399810627e-07,1.66188489613693e-07,1.75622124455323e-07,2.46602222140303e-07,2.77784279497363e-07,4.04076401032092e-07,4.9661642302669e-07,5.87775471928299e-07,6.32499427494935e-07,6.42141529645042e-07,7.57570032585101e-07,8.03460102414458e-07,9.47375481313936e-07,9.88851703790294e-07,1.07611056945542e-06,1.17110085784096e-06,1.18955552124063e-06,1.19429612656608e-06,1.2525872885792e-06,1.55255070919795e-06,1.57440632723734e-06,1.57675811959909e-06,2.17533183172659e-06,2.27096572373875e-06,2.5656452662313e-06,2.638659617512e-06,2.66774934281463e-06,2.89651867244847e-06,3.50295384754658e-06,3.56087141080212e-06,4.17642981029701e-06,4.76222835676764e-06,4.99120343233272e-06,5.56912044572549e-06,6.05482836514482e-06,6.10991275219475e-06,6.75164311483931e-06,6.76873417110091e-06,6.8493346620743e-06,7.70052034086688e-06,7.83111382370712e-06,8.05332252365024e-06,8.17864210235635e-06,8.56593283068778e-06,8.62507726874874e-06,8.64305644746614e-06,8.71808940931603e-06,9.64808790542747e-06,1.06610900406325e-05,1.16926385432527e-05,1.24855893415647e-05,1.26087922925586e-05,1.30108699472149e-05,1.3209280412209e-05,1.32477498113437e-05,1.33574329254962e-05,1.3484462574377e-05,1.51904193147032e-05,1.58263699103963e-05,1.60294793536546e-05,1.63574722016942e-05,1.71601751757479e-05,1.75286703408205e-05,1.77853916235198e-05,1.78004930158869e-05,1.81242170358251e-05,1.81387781982084e-05,1.83667435589279e-05,1.85500200051719e-05,1.89939890599952e-05,1.91537478021653e-05,1.92404097482864e-05,1.93882673859699e-05,1.95436151394961e-05,1.97972789498997e-05,2.02624843851166e-05,2.07621016284351e-05,2.11200648156147e-05,2.11502166143874e-05,2.14514455698503e-05,2.16461805807565e-05,2.27836552072842e-05,2.29895378121299e-05,2.34470440310851e-05,2.36833610043433e-05,2.37570135783768e-05,2.48458127209851e-05,2.61988474410284e-05,2.65462024820587e-05,2.68192396123782e-05,2.7032109082933e-05,2.72162717988873e-05,2.72474248928018e-05,2.83734154119283e-05,2.85897034621371e-05,2.90155015056277e-05,2.95835944940182e-05,3.17560988561465e-05,3.33655378972027e-05,3.46169718750556e-05,3.47707881550972e-05,3.52211957139001e-05,3.52615445616157e-05,3.70377577393728e-05,3.74496013482321e-05,3.77543642346901e-05,3.78031260593835e-05,3.89254406389797e-05,3.89466898758336e-05,4.08135106488693e-05,4.12596572890649e-05,4.14273785879862e-05,4.33727934986984e-05,4.37595563842714e-05,4.37685823143914e-05,4.4831585010486e-05,4.55092157879761e-05,4.64583034031299e-05,4.77319895615589e-05,4.87857679275315e-05,4.89995900103249e-05,5.00655673991474e-05,5.08297178828788e-05,5.08660204648123e-05,5.23710072466352e-05,5.25533171182787e-05,5.4062758523204e-05,5.69657827910491e-05,5.70594420297675e-05,5.7297048685581e-05,5.9173745731885e-05,6.10586776943914e-05,6.42910498541163e-05,6.43575724166697e-05,6.49570743900818e-05,6.72426980331781e-05,6.79945589353725e-05,6.82544139326366e-05,6.89897370818812e-05,6.93951110555774e-05,6.94388569285804e-05,7.28304696206198e-05,7.52153665572142e-05,7.60268728857336e-05,7.69020727065308e-05,7.95550611603809e-05,7.99748892034465e-05,7.99960937490138e-05,8.39370460735314e-05,8.66898831695653e-05,9.20778641714965e-05,9.39394941534168e-05,9.60653520818618e-05,9.83536022493569e-05,9.92055413753508e-05,0.000100109676191797,0.000102429439306963,0.000103209537526178,0.000103343551206791,0.000103868458296399,0.000105424738530863,0.000105859179054573,0.000105861088269015,0.000109480871442685,0.000111928964563322,0.00011396637298707,0.000114620029584447,0.00011609404274432,0.000117069183172837,0.000117664822495133,0.000118050814979825,0.000118665738793892,0.00011896046623442,0.000120038239392897,0.000120167501190288,0.000120763828728311,0.000121517555045777,0.000124426089723833,0.000124596733519551,0.000125274730742329,0.000126561156171477,0.00012810581205259,0.000128174392625087,0.000129206490885994,0.000131342786230906,0.000131717572931286,0.000133199633714697,0.000133418154794155,0.000133430909453324,0.000134244952004054,0.00013531695198199,0.000135619422867631,0.000136575018068737,0.000137826331027708,0.000138847941574342,0.000142250841669778,0.000144765623952023,0.00014628843185399,0.000146604914227696,0.000147075376747752,0.000148507778965343],[1.13602489072799e-05,2.10637546446419e-05,2.71292353393837e-05,5.63292870889523e-05,0.00017667951121667,0.000387902335618762,0.000400413969992858,0.000400413969992858,0.000400413969992858,0.000400413969992858,0.000400413969992858,0.000400413969992858,0.000587905897916721,0.000833572851514747,0.000833572851514747,0.00109731823796881,0.00116336056253495,0.0015982568582156,0.00186090015020043,0.00207808674293675,0.00207808674293675,0.00207808674293675,0.00234504156695343,0.00238346439381249,0.00269797379070508,0.00270778022704053,0.00283430356756661,0.00283430356756661,0.00283430356756661,0.00283430356756661,0.00287674853540918,0.0033017315024405,0.0033017315024405,0.0033017315024405,0.00442499785976017,0.00449121321298066,0.00487007903105206,0.00487007903105206,0.00487007903105206,0.00515551358509103,0.00603618573722542,0.00603618573722542,0.00691500225055595,0.00770571841110065,0.00789674932374134,0.00861954563595374,0.00906252808969287,0.00906252808969287,0.00956167118825572,0.00956167118825572,0.00956167118825572,0.0105196977319368,0.0105196977319368,0.0105202219251808,0.0105202219251808,0.0105202219251808,0.0105202219251808,0.0105202219251808,0.0105202219251808,0.0114484211085802,0.0124430650251291,0.013426920866539,0.0139136202528311,0.0139136202528311,0.0139136202528311,0.0139136202528311,0.0139136202528311,0.0139136202528311,0.0139136202528311,0.0154499584789944,0.0158504835008722,0.0158504835008722,0.0159532409708468,0.0161793863194368,0.0161793863194368,0.0161793863194368,0.0161793863194368,0.0161793863194368,0.0161793863194368,0.0161793863194368,0.0161793863194368,0.0161793863194368,0.0161793863194368,0.0161793863194368,0.0161793863194368,0.0161793863194368,0.0162010008289317,0.0163932708895768,0.016547371671186,0.016547371671186,0.016547371671186,0.0165711986304037,0.0165711986304037,0.0172290856218148,0.0172290856218148,0.0172592279461848,0.0172592279461848,0.0172592279461848,0.0178679038634672,0.0184753110730277,0.0184753110730277,0.0184753110730277,0.0184753110730277,0.0184753110730277,0.0184753110730277,0.0190231077354235,0.0190231077354235,0.0191276633814321,0.019323243977946,0.0205537019469292,0.0214008363615247,0.021830268927033,0.021830268927033,0.021830268927033,0.021830268927033,0.0226170702766711,0.0226170702766711,0.0226170702766711,0.0226170702766711,0.0229161035735525,0.0229161035735525,0.0237859971447602,0.0237859971447602,0.0237859971447602,0.0245365983185465,0.0245365983185465,0.0245365983185465,0.0249361681750513,0.0251168536995407,0.025443425916071,0.0259414254108759,0.0262298857922939,0.0262298857922939,0.0266005084817142,0.0266283617133293,0.0266283617133293,0.0271129417793693,0.0271129417793693,0.0276910227037269,0.0287276104099903,0.0287276104099903,0.0287276104099903,0.02946107693096,0.0301884278967353,0.0313835734642275,0.0313835734642275,0.0314604344780698,0.0323122147574327,0.0323122147574327,0.0323122147574327,0.0323122147574327,0.0323122147574327,0.0323122147574327,0.0336703773708419,0.0345486015316608,0.0346974951408506,0.0348733755949947,0.0355962618159674,0.0355962618159674,0.0355962618159674,0.0371179002003176,0.0380985982848171,0.0402182553224163,0.0407811964984553,0.0414513261019408,0.0421830305165374,0.042293639064428,0.0424250506318522,0.0429942950980839,0.0429942950980839,0.0429942950980839,0.0429942950980839,0.0430679202308617,0.0430679202308617,0.0430679202308617,0.0442875007001898,0.0450220031697757,0.0455839881527384,0.0455893163480129,0.045733518883728,0.045733518883728,0.045733518883728,0.045733518883728,0.045733518883728,0.045733518883728,0.045733518883728,0.045733518883728,0.045733518883728,0.045775470100736,0.0464439216736018,0.0464439216736018,0.0464534360933897,0.0466872957242719,0.0467974567042855,0.0467974567042855,0.0469335985975471,0.0472624230320341,0.0472624230320341,0.0472624230320341,0.0472624230320341,0.0472624230320341,0.0473153643706961,0.0473311785808031,0.0473311785808031,0.0474321706654722,0.0476343857468383,0.0477556427455402,0.0486908217476997,0.0493145136980299,0.0493923515232686,0.0493923515232686,0.0493923515232686,0.0496392480338806],["Promoter (&lt;=1kb)","Promoter (&lt;=1kb)","Intron (ENST00000293261.8/55260, intron 6 of 7)","Promoter (&lt;=1kb)","Distal Intergenic","Promoter (1-2kb)","Intron (ENST00000428343.6/731220, intron 8 of 11)","Promoter (&lt;=1kb)","Promoter (&lt;=1kb)","Distal Intergenic","Distal Intergenic","Distal Intergenic","Exon (ENST00000637419.1/23199, exon 2 of 3)","Promoter (&lt;=1kb)","Promoter (&lt;=1kb)","Intron (ENST00000237536.9/140710, intron 2 of 14)","Distal Intergenic","Intron (ENST00000566228.6/92017, intron 14 of 20)","Promoter (&lt;=1kb)","3' UTR","Promoter (1-2kb)","Intron (ENST00000637419.1/23199, intron 2 of 2)","Exon (ENST00000664158.1/ENST00000664158.1, exon 1 of 3)","Intron (ENST00000544305.5/2048, intron 3 of 6)","Downstream (&lt;1kb)","Promoter (1-2kb)","Promoter (&lt;=1kb)","Distal Intergenic","3' UTR","Promoter (&lt;=1kb)","Promoter (1-2kb)","Promoter (&lt;=1kb)","Promoter (&lt;=1kb)","Promoter (&lt;=1kb)","Distal Intergenic","Exon (ENST00000565726.2/29800, exon 5 of 12)","Distal Intergenic","Promoter (&lt;=1kb)","Promoter (&lt;=1kb)","Distal Intergenic","Distal Intergenic","Promoter (&lt;=1kb)","Promoter (&lt;=1kb)","Promoter (&lt;=1kb)","Promoter (&lt;=1kb)","Promoter (&lt;=1kb)","Distal Intergenic","Promoter (1-2kb)","Promoter (&lt;=1kb)","Distal Intergenic","Promoter (&lt;=1kb)","Promoter (1-2kb)","Intron (ENST00000287878.9/51422, intron 3 of 15)","Promoter (&lt;=1kb)","Exon (ENST00000494954.1/ENST00000494954.1, exon 1 of 2)","Promoter (&lt;=1kb)","Promoter (&lt;=1kb)","Promoter (&lt;=1kb)","Distal Intergenic","Distal Intergenic","Distal Intergenic","Distal Intergenic","Downstream (1-2kb)","Exon (ENST00000570141.1/ENST00000570141.1, exon 1 of 1)","Promoter (&lt;=1kb)","Intron (ENST00000543471.5/7633, intron 5 of 5)","Promoter (&lt;=1kb)","Distal Intergenic","Promoter (&lt;=1kb)","Promoter (&lt;=1kb)","Promoter (&lt;=1kb)","Distal Intergenic","Promoter (1-2kb)","Exon (ENST00000414314.1/ENST00000414314.1, exon 2 of 2)","Promoter (1-2kb)","Exon (ENST00000474046.1/ENST00000474046.1, exon 2 of 5)","Distal Intergenic","Intron (ENST00000531066.6/144100, intron 3 of 26)","Promoter (&lt;=1kb)","Exon (ENST00000296795.7/7098, exon 3 of 5)","Distal Intergenic","Intron (ENST00000537098.7/80790, intron 1 of 20)","Exon (ENST00000382488.2/ENST00000382488.2, exon 1 of 4)","Promoter (&lt;=1kb)","Promoter (&lt;=1kb)","Distal Intergenic","Intron (ENST00000533752.1/25987, intron 1 of 1)","3' UTR","Distal Intergenic","Distal Intergenic","3' UTR","Intron (ENST00000377540.6/83538, intron 7 of 11)","Distal Intergenic","Distal Intergenic","Intron (ENST00000663166.1/ENST00000663166.1, intron 1 of 4)","Promoter (&lt;=1kb)","Distal Intergenic","Intron (ENST00000559755.1/ENST00000559755.1, intron 1 of 2)","Distal Intergenic","Distal Intergenic","Promoter (&lt;=1kb)","Promoter (&lt;=1kb)","Intron (ENST00000360655.8/89797, intron 11 of 37)","Promoter (&lt;=1kb)","Intron (ENST00000637419.1/23199, intron 2 of 2)","Intron (ENST00000356113.10/3990, intron 3 of 10)","Promoter (1-2kb)","Intron (ENST00000375512.3/23299, intron 1 of 7)","3' UTR","Intron (ENST00000311160.14/64759, intron 3 of 30)","Exon (ENST00000501164.2/105375650, exon 2 of 2)","Promoter (&lt;=1kb)","3' UTR","Intron (ENST00000569593.1/ENST00000569593.1, intron 1 of 4)","Distal Intergenic","Distal Intergenic","3' UTR","Promoter (&lt;=1kb)","Distal Intergenic","Promoter (&lt;=1kb)","Intron (ENST00000641611.1/ENST00000641611.1, intron 3 of 7)","Distal Intergenic","Intron (ENST00000468220.1/10686, intron 1 of 4)","Distal Intergenic","Promoter (&lt;=1kb)","Promoter (1-2kb)","Promoter (&lt;=1kb)","Intron (ENST00000468220.1/10686, intron 2 of 4)","Distal Intergenic","Intron (ENST00000513116.1/3925, intron 1 of 1)","Distal Intergenic","Promoter (1-2kb)","Distal Intergenic","Intron (ENST00000469019.1/9394, intron 1 of 2)","Distal Intergenic","Promoter (&lt;=1kb)","Intron (ENST00000643288.2/100130967, intron 3 of 4)","Exon (ENST00000361475.7/7052, exon 10 of 13)","Intron (ENST00000395491.6/5606, intron 2 of 12)","Intron (ENST00000246069.12/11034, intron 1 of 3)","3' UTR","Distal Intergenic","Promoter (1-2kb)","Promoter (1-2kb)","Promoter (&lt;=1kb)","Intron (ENST00000563298.1/ENST00000563298.1, intron 2 of 2)","Promoter (&lt;=1kb)","Intron (ENST00000637419.1/23199, intron 2 of 2)","Promoter (&lt;=1kb)","Distal Intergenic","Intron (ENST00000372189.7/2889, intron 11 of 23)","Exon (ENST00000243077.8/4035, exon 35 of 89)","Distal Intergenic","Intron (ENST00000531066.6/144100, intron 3 of 26)","Intron (ENST00000609514.1/ENST00000609514.1, intron 1 of 3)","Intron (ENST00000455833.7/126917, intron 1 of 8)","Intron (ENST00000409245.5/57217, intron 4 of 20)","Intron (ENST00000287878.9/51422, intron 3 of 15)","Promoter (&lt;=1kb)","Promoter (1-2kb)","Distal Intergenic","Distal Intergenic","Intron (ENST00000652145.1/ENST00000652145.1, intron 2 of 2)","3' UTR","Promoter (&lt;=1kb)","Promoter (&lt;=1kb)","Promoter (&lt;=1kb)","Downstream (2-3kb)","Intron (ENST00000409613.5/80303, intron 1 of 3)","Intron (ENST00000602377.1/81577, intron 1 of 2)","Distal Intergenic","Promoter (&lt;=1kb)","Intron (ENST00000396834.6/133396, intron 17 of 17)","Distal Intergenic","Intron (ENST00000360315.7/54815, intron 2 of 11)","Promoter (&lt;=1kb)","Promoter (1-2kb)","Promoter (&lt;=1kb)","Promoter (&lt;=1kb)","Intron (ENST00000287878.9/51422, intron 3 of 15)","Intron (ENST00000469019.1/9394, intron 1 of 2)","Distal Intergenic","Promoter (&lt;=1kb)","Promoter (1-2kb)","Intron (ENST00000262177.9/10049, intron 8 of 9)","Promoter (&lt;=1kb)","Intron (ENST00000297979.9/84909, intron 5 of 14)","Promoter (&lt;=1kb)","Distal Intergenic","Intron (ENST00000409613.5/80303, intron 1 of 3)","Promoter (1-2kb)","Promoter (&lt;=1kb)","Intron (ENST00000303694.6/50515, intron 2 of 2)","Intron (ENST00000647072.1/100303453, intron 7 of 7)","Promoter (1-2kb)","Promoter (1-2kb)","Distal Intergenic","Intron (ENST00000377540.6/83538, intron 7 of 11)","Distal Intergenic","Distal Intergenic","Promoter (&lt;=1kb)","Promoter (&lt;=1kb)","Promoter (&lt;=1kb)","Distal Intergenic","Distal Intergenic","Intron (ENST00000635379.1/196913, intron 1 of 11)","Promoter (1-2kb)","Intron (ENST00000461828.5/93979, intron 9 of 11)","Promoter (&lt;=1kb)","Promoter (1-2kb)","Distal Intergenic","Promoter (&lt;=1kb)","Promoter (&lt;=1kb)"],[16,4,19,19,15,1,2,21,13,9,17,2,16,20,14,20,1,16,11,10,20,16,12,1,22,17,2,5,2,2,1,1,16,16,11,16,10,19,13,7,6,14,17,20,21,3,11,2,7,2,9,2,7,13,2,6,12,1,5,4,8,19,1,1,4,9,9,23,12,19,7,8,11,5,5,1,5,11,14,4,6,16,4,11,5,1,11,22,1,10,9,17,2,9,1,12,19,15,12,14,2,11,11,9,16,15,14,9,12,7,8,10,22,1,2,2,20,3,2,6,1,1,3,6,14,1,4,3,2,1,5,9,9,2,3,7,6,20,17,20,8,13,17,12,19,15,9,16,13,10,9,12,9,11,10,1,2,7,19,17,2,4,13,23,7,18,12,17,2,16,1,6,5,9,19,5,2,11,16,7,2,2,19,2,7,22,9,10,3,2,6,4,12,1,17,9,9,17,16,9,2,3,19,2,2,14,3,7,9,17,1,7,22],[70687442,8473307,48333276,6213120,90808771,41375004,101421383,44958246,44401528,89701651,40929676,20204002,85306226,57168753,105486317,36828597,39955112,12129697,22193176,46297404,50275670,85555967,108622829,22800240,36467591,47816266,217284025,141862885,101345550,71466699,28531935,1064495,75095144,55655604,64449074,67394425,72274019,48472721,113584721,155301607,39299001,105472962,28247444,49280319,44958246,16802651,100687288,10330163,139025706,75646783,121326582,128268690,151557201,102799322,218323173,33162681,57187369,24357005,141653402,6716174,66494544,33299934,156404253,246724409,6687448,127448501,93058688,153418322,47747719,1576640,98291650,102805517,924894,142592178,150053291,164630981,141862885,16854894,49570984,186081611,37655723,81533902,8473516,75274200,168229584,212432991,76784148,21028718,10946475,95311773,124800874,41935298,189462484,129476946,177700524,47753916,33208664,100609547,131849835,102932380,158456964,75157071,20022556,130835254,85306226,58541748,105478592,92711363,122940207,47424159,95072914,71964395,30291990,175391428,128265480,64607335,38128461,49416822,48440598,154159828,56414935,212432991,190322541,10404502,105468109,29216037,8470926,190387872,62500218,25884181,39520416,129476946,37915898,128268690,193842811,76424950,158895217,38128461,21291469,17613678,22198416,109163902,55318953,110036215,57940833,75043286,72149351,85306226,73060579,114043866,131587736,57187369,89701651,16854894,110497907,18908291,46950421,151557201,1578445,79022814,219572310,152942983,110965704,105948438,5592816,75195113,52247918,41500982,232633604,67675900,119507198,17281705,55941523,89701651,19472410,172325000,128268690,119084866,22347755,151557201,128268690,191678068,41298490,119429901,157381821,30635781,94955946,110835178,14178817,232633604,106544584,61201258,104591633,231684752,27294346,114784652,89701651,41935298,66921679,34089412,112138385,184561785,48472352,75492318,161136908,50037595,185506262,130363441,70384597,69763677,91682426,96965419,45517345],[70700245,8475965,48342991,6216968,90815629,41375669,101435106,44976973,44405720,89719670,40936390,20223388,85306325,57266641,105488785,36839402,39969968,12527397,22283357,46310499,50279795,85654346,108632078,22896478,36481340,47816924,217336618,141866202,101387503,71686763,28535905,1066274,75105336,55702346,64451657,67396257,72274635,48476276,113633285,155303018,39314419,105479694,28248289,49280409,44976973,17011084,100993941,10427616,139036042,75647693,121332662,128290196,151735993,102875991,218346791,33192499,57192969,24413725,141682230,6717664,66496494,33302534,156456613,246768137,6690519,127448630,93085132,153426481,47751169,1585307,98401090,102809566,977193,142621342,150113372,164799889,141866202,17013342,49586376,186085024,37699306,81533966,8493531,75306709,168269415,212435033,76795932,21032549,10947870,95561414,124814885,41937041,189464211,129504274,177710330,47779171,33225850,100612512,131851332,103057549,158681052,75169241,20118603,130887675,85306325,58548572,105479293,92764812,122944672,47481285,95072993,72013558,30327046,175406364,128318868,64616556,38133760,49419026,48511468,154510114,56415966,212435033,190404930,10407928,105470207,29223549,8493531,190412143,62506195,25892607,39524708,129504274,38069227,128290196,193844024,76442069,158910352,38133760,21314965,17619817,22201482,109201483,55321143,110038006,57947706,75044623,72252223,85306325,73062542,114046904,131621838,57192969,89719670,17013342,110511533,18911992,47076137,151735993,1581737,79048247,219575711,152979696,110990579,105956593,5606655,75209139,52248925,41501911,232682776,67685612,119511602,17293030,55947594,89719670,19492429,172454308,128290196,119089739,22375090,151735993,128290196,191682487,41301646,119437599,157382743,30647893,95006200,110836258,14201122,232682776,106552314,62078335,104591716,231693935,27309255,114806039,89719670,41937041,66925536,34093779,112188218,184582408,48475148,75569722,161236187,50041229,185552588,130368730,70414624,69903000,91906335,97003554,45518786],[12804,2659,9716,3849,6859,666,13724,18728,4193,18020,6715,19387,100,97889,2469,10806,14857,397701,90182,13096,4126,98380,9250,96239,13750,659,52594,3318,41954,220065,3971,1780,10193,46743,2584,1833,617,3556,48565,1412,15419,6733,846,91,18728,208434,306654,97454,10337,911,6081,21507,178793,76670,23619,29819,5601,56721,28829,1491,1951,2601,52361,43729,3072,130,26445,8160,3451,8668,109441,4050,52300,29165,60082,168909,3318,158449,15393,3414,43584,65,20016,32510,39832,2043,11785,3832,1396,249642,14012,1744,1728,27329,9807,25256,17187,2966,1498,125170,224089,12171,96048,52422,100,6825,702,53450,4466,57127,80,49164,35057,14937,53389,9222,5300,2205,70871,350287,1032,2043,82390,3427,2099,7513,22606,24272,5978,8427,4293,27329,153330,21507,1214,17120,15136,5300,23497,6140,3067,37582,2191,1792,6874,1338,102873,100,1964,3039,34103,5601,18020,158449,13627,3702,125717,178793,3293,25434,3402,36714,24876,8156,13840,14027,1008,930,49173,9713,4405,11326,6072,18020,20020,129309,21507,4874,27336,178793,21507,4420,3157,7699,923,12113,50255,1081,22306,49173,7731,877078,84,9184,14910,21388,18020,1744,3858,4368,49834,20624,2797,77405,99280,3635,46327,5290,30028,139324,223910,38136,1442],[2,1,2,2,1,2,2,1,2,1,2,2,2,2,1,2,1,1,1,1,1,1,2,1,2,2,2,2,2,1,1,1,1,1,1,2,1,1,1,1,2,1,1,1,1,1,1,1,2,1,1,2,2,1,1,2,1,2,2,1,1,2,2,1,2,2,1,1,2,2,2,1,1,2,2,1,2,2,2,1,2,1,1,2,2,1,1,2,2,2,1,1,1,1,1,1,2,1,1,2,1,1,1,1,2,1,1,2,2,2,1,1,2,2,2,1,2,2,1,2,1,1,1,1,1,2,1,1,2,2,1,1,2,2,2,1,1,2,1,2,1,2,1,1,2,1,1,2,1,1,2,1,1,2,1,2,1,2,2,1,1,1,1,1,1,2,1,2,1,2,1,1,2,1,1,2,2,1,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,2,2,1,1,1,2,1,2,2,1,2,1,2,2,1],["55697","152992","55260","4298","641","101929901","731220","85395","400128","100129066","25984","6382","100847022","655","1396","140710","84879","92017","203859","195977","100506115","23199","6404","2048","25828","114881","729582","5097","200407","8291","1104","100288175","84937","6530","100996455","29800","54541","9266","7027","3638","89822","1397","23614","100113393","85395","23228","143872","3241","92092","9801","2934","9394","51422","100533467","25953","1302","4035","90529","64411","55330","254778","1050","10485","51097","339988","26783","203328","139735","10411","53615","55971","401472","161","2246","1436","5087","5097","144100","6235","7098","266727","102465840","152992","408","101927862","29937","25987","6545","148345","10580","169611","83538","84128","100506190","101928778","55652","56301","140460","4326","9578","8502","11309","89797","25","100847022","3990","1397","23299","23457","64759","100422964","9469","83874","7143","9394","339807","7052","275","129285","154043","105378744","29937","10686","109729173","9112","51102","152992","10686","200728","3925","101926940","100506190","6461","9394","105374285","7784","100130967","7052","5606","6238","649","100885782","3131","88455","10172","60490","9615","100847022","688","153","2889","4035","100129066","144100","1847","126917","57217","51422","53615","114897","3623","85462","104355135","203447","6624","284273","3855","3860","80303","81577","3283","221662","3572","100129066","54815","285590","9394","3145","1039","51422","9394","64859","11100","140738","10049","339665","84909","282996","27258","80303","202","23284","100500843","27185","26118","9966","100129066","83538","6236","25853","129804","2049","9266","84141","10010","196913","200879","93979","687","101928122","7049","285987","2192"],["ENST00000536184.6","ENST00000511149.1","ENST00000600816.1","ENST00000585588.1","ENST00000560821.1","ENST00000429109.1","ENST00000492238.1","ENST00000479127.5","ENST00000660135.1","ENST00000444374.1","ENST00000584517.1","ENST00000482879.5","ENST00000583199.1","ENST00000395863.8","ENST00000496700.5","ENST00000463491.1","ENST00000420632.6","ENST00000564791.5","ENST00000324559.8","ENST00000614267.1","ENST00000622604.4","ENST00000635906.1","ENST00000228463.6","ENST00000465676.1","ENST00000403313.5","ENST00000580808.1","ENST00000654616.1","ENST00000511044.1","ENST00000324768.6","ENST00000410020.8","ENST00000429051.1","ENST00000433695.1","ENST00000579084.1","ENST00000568943.5","ENST00000316124.3","ENST00000566075.1","ENST00000471240.1","ENST00000467412.1","ENST00000475254.5","ENST00000468307.1","ENST00000373231.9","ENST00000483017.7","ENST00000583761.1","ENST00000410433.1","ENST00000479127.5","ENST00000460467.1","ENST00000298815.13","ENST00000622018.4","ENST00000275766.2","ENST00000493686.1","ENST00000373806.1","ENST00000463963.1","ENST00000652075.1","ENST00000639132.1","ENST00000258362.7","ENST00000374708.8","ENST00000554118.1","ENST00000003583.12","ENST00000239440.9","ENST00000320776.5","ENST00000488582.1","ENST00000498907.3","ENST00000673141.1","ENST00000366510.4","ENST00000499502.2","ENST00000364432.1","ENST00000617293.4","ENST00000338647.6","ENST00000495465.6","ENST00000592012.5","ENST00000005260.9","ENST00000522715.1","ENST00000529818.5","ENST00000359370.10","ENST00000286301.7","ENST00000482110.5","ENST00000511044.1","ENST00000529213.1","ENST00000396020.7","ENST00000512264.1","ENST00000515437.5","ENST00000620068.1","ENST00000511366.2","ENST00000532525.1","ENST00000655017.1","ENST00000472389.1","ENST00000525167.1","ENST00000403586.5","ENST00000468348.1","ENST00000306402.10","ENST00000288815.5","ENST00000585530.1","ENST00000498365.1","ENST00000653047.1","ENST00000427173.1","ENST00000548498.5","ENST00000253188.8","ENST00000561192.1","ENST00000535271.1","ENST00000361246.7","ENST00000426248.7","ENST00000527180.5","ENST00000533917.5","ENST00000318560.6","ENST00000583199.1","ENST00000560664.1","ENST00000551738.1","ENST00000375512.3","ENST00000545373.1","ENST00000415929.5","ENST00000636546.1","ENST00000373115.5","ENST00000215790.11","ENST00000422274.2","ENST00000259241.7","ENST00000417695.2","ENST00000469269.1","ENST00000636188.1","ENST00000431614.5","ENST00000673182.1","ENST00000451914.2","ENST00000472389.1","ENST00000468220.1","ENST00000645232.1","ENST00000426567.5","ENST00000464915.1","ENST00000531038.5","ENST00000264734.2","ENST00000335390.6","ENST00000513116.1","ENST00000604954.6","ENST00000653047.1","ENST00000377707.4","ENST00000463963.1","ENST00000445168.1","ENST00000394857.8","ENST00000608817.2","ENST00000469269.1","ENST00000613338.4","ENST00000468428.1","ENST00000522332.1","ENST00000439299.1","ENST00000575307.1","ENST00000553246.1","ENST00000282308.4","ENST00000564953.1","ENST00000238018.8","ENST00000583199.1","ENST00000476859.1","ENST00000369295.4","ENST00000414781.1","ENST00000554118.1","ENST00000444374.1","ENST00000529213.1","ENST00000369583.4","ENST00000355609.8","ENST00000409825.5","ENST00000652075.1","ENST00000589901.2","ENST00000578229.5","ENST00000243786.3","ENST00000260008.3","ENST00000440735.2","ENST00000540278.1","ENST00000382361.8","ENST00000322342.4","ENST00000549638.1","ENST00000475217.1","ENST00000264059.8","ENST00000602627.1","ENST00000531340.5","ENST00000509686.5","ENST00000523039.5","ENST00000444374.1","ENST00000473184.1","ENST00000636523.1","ENST00000463963.1","ENST00000536185.5","ENST00000567406.5","ENST00000652075.1","ENST00000463963.1","ENST00000491331.5","ENST00000600493.1","ENST00000409826.1","ENST00000486247.1","ENST00000343605.5","ENST00000451893.5","ENST00000465774.2","ENST00000306024.4","ENST00000264059.8","ENST00000487681.1","ENST00000512091.6","ENST00000585192.1","ENST00000602600.1","ENST00000584114.1","ENST00000374045.5","ENST00000444374.1","ENST00000585530.1","ENST00000420652.5","ENST00000466402.1","ENST00000331203.7","ENST00000330394.3","ENST00000595765.2","ENST00000233712.5","ENST00000259075.6","ENST00000554129.1","ENST00000296252.9","ENST00000479492.1","ENST00000377126.3","ENST00000587241.1","ENST00000370399.6","ENST00000659765.1","ENST00000450975.1"],[0,0,3285,0,10649,1071,22740,0,528,51190,19451,36492,-50441,0,0,6953,-17891,80127,0,10134,-1248,-36739,2539,26802,14547,1947,0,29426,-22345,0,-1017,0,0,0,-28959,-2584,23250,771,0,11502,34293,0,0,-335,848,-103,-51797,1115,0,-32677,-412,1722,38533,0,-5384,0,807,0,-32577,6947,26867,34752,-4980,-40209,0,10178,0,-6469,0,0,0,-36159,-1941,-4687,1093,10158,48681,24875,0,-2573,-5736,-9239,32954,0,0,51674,2358,3270,43511,-3191,12590,7186,21049,-4366,-110961,0,-26777,118999,17767,-10755,0,39,-3416,0,-63477,-13632,1287,24832,14464,-3065,-3461,0,-5209,97560,-3148,15227,6367,0,-19822,0,-224362,30493,22932,-22365,0,-1618,152,-15277,123896,2166,105293,1639,-126685,-11461,-63362,0,15417,-3785,5396,24295,9832,-41257,1606,1956,0,65794,0,-59520,767,-83060,12109,-2430,54424,31579,-42560,-14718,13230,49150,0,-1373,3609,53139,-14854,-39108,-75,0,0,3802,-12175,-8684,-26787,0,28653,43405,13887,0,-1604,0,0,42525,3518,-40520,-700,-1682,18280,-218,-3918,399,23497,-8943,1871,0,80227,18408,1705,1307,47170,4765,-2236,20100,0,0,0,-8983,-167787,-18920,-1591,2609,875,-1526,-9048,597,-403],["ENSG00000103043","ENSG00000155275","ENSG00000161558","ENSG00000130382","ENSG00000197299","ENSG00000229901","ENSG00000196460","ENSG00000160256","ENSG00000237361","ENSG00000237372","ENSG00000108244","ENSG00000115884","ENSG00000266307","ENSG00000101144","ENSG00000213145","ENSG00000149639","ENSG00000168389","ENSG00000048471","ENSG00000171714","ENSG00000274209","ENSG00000224397","ENSG00000131149","ENSG00000110876","ENSG00000133216","ENSG00000100348","ENSG00000006025",null,"ENSG00000156453","ENSG00000175874","ENSG00000135636","ENSG00000180198","ENSG00000217801","ENSG00000186187","ENSG00000103546","ENSG00000181908","ENSG00000159714","ENSG00000168209","ENSG00000105443","ENSG00000198176","ENSG00000186480","ENSG00000124780","ENSG00000182809","ENSG00000265060","ENSG00000222365","ENSG00000160256","ENSG00000154822","ENSG00000165895","ENSG00000115756","ENSG00000146858","ENSG00000115364","ENSG00000148180","ENSG00000136720","ENSG00000106617","ENSG00000270181","ENSG00000127838","ENSG00000204248","ENSG00000123384","ENSG00000001460","ENSG00000120318","ENSG00000186222","ENSG00000169085","ENSG00000245848","ENSG00000125462","ENSG00000143653","ENSG00000246526","ENSG00000201302","ENSG00000157303","ENSG00000189420","ENSG00000079337","ENSG00000071655","ENSG00000006453",null,"ENSG00000183020","ENSG00000113578","ENSG00000182578","ENSG00000185630","ENSG00000156453","ENSG00000166689","ENSG00000213741","ENSG00000164342","ENSG00000112139","ENSG00000277255","ENSG00000155275","ENSG00000137486","ENSG00000253978","ENSG00000117691","ENSG00000182704","ENSG00000099960","ENSG00000175262","ENSG00000095637","ENSG00000185585","ENSG00000204815","ENSG00000115368",null,"ENSG00000236720","ENSG00000211584","ENSG00000130876","ENSG00000183475","ENSG00000198598","ENSG00000198752","ENSG00000144283","ENSG00000137491","ENSG00000166833","ENSG00000097007","ENSG00000266307","ENSG00000166035","ENSG00000182809","ENSG00000185963","ENSG00000150967","ENSG00000136205","ENSG00000283522","ENSG00000122863","ENSG00000099992","ENSG00000116147","ENSG00000136720","ENSG00000233694","ENSG00000198959","ENSG00000145020","ENSG00000162869","ENSG00000153721","ENSG00000223956","ENSG00000117691","ENSG00000113946","ENSG00000285278","ENSG00000182979","ENSG00000116353","ENSG00000155275","ENSG00000113946","ENSG00000186889","ENSG00000117632","ENSG00000271334",null,"ENSG00000107338","ENSG00000136720",null,"ENSG00000188372","ENSG00000203711","ENSG00000198959","ENSG00000034152","ENSG00000125844","ENSG00000168487","ENSG00000236242","ENSG00000108924","ENSG00000076513","ENSG00000152454","ENSG00000138621","ENSG00000119125","ENSG00000266307","ENSG00000102554","ENSG00000043591","ENSG00000107263","ENSG00000123384","ENSG00000237372","ENSG00000166689","ENSG00000138166","ENSG00000169991","ENSG00000068724","ENSG00000106617","ENSG00000071655","ENSG00000173918","ENSG00000123999","ENSG00000137460",null,"ENSG00000123572","ENSG00000075618","ENSG00000180011","ENSG00000135480","ENSG00000171401","ENSG00000115468","ENSG00000141098","ENSG00000203857","ENSG00000112183","ENSG00000134352","ENSG00000237372","ENSG00000167491","ENSG00000174705","ENSG00000136720","ENSG00000256269","ENSG00000140743","ENSG00000106617","ENSG00000136720","ENSG00000173559","ENSG00000105323","ENSG00000171227","ENSG00000105993","ENSG00000100036","ENSG00000148120","ENSG00000203867","ENSG00000170860","ENSG00000115468","ENSG00000112297","ENSG00000150471","ENSG00000264295","ENSG00000162946","ENSG00000109046","ENSG00000181634","ENSG00000237372","ENSG00000204815","ENSG00000166592","ENSG00000198876","ENSG00000144152","ENSG00000182580","ENSG00000105443","ENSG00000115363","ENSG00000136560",null,"ENSG00000163898","ENSG00000158525","ENSG00000119138","ENSG00000227517","ENSG00000069702",null,"ENSG00000077942"],["VAC14","TRMT44","TMEM143","MLLT1","BLM","FOXO6-AS1","RFX8","FAM207A","TUSC8","UNQ6494","KRT23","SDC1","MIR5093","BMP7","CRIP1","SOGA1","MFSD2A","SNX29","ANO5","ANTXRL","PELATON","GSE1","SELPLG","EPHB2","TXN2","OSBPL7","DIRC3","PCDH1","CREG2","DYSF","RCC1","LOC100288175","ZNRF1","SLC6A2","LINC02724","ZDHHC1","DDIT4","CYTH2","TFDP1","INSIG1","KCNK17","CRIP2","PPY2P","SNORD12B","FAM207A","PLCL2","ARHGAP42","HPCAL1","ZC3HAV1L","MRPL19","GSN","HS6ST1","PRKAG2","BIVM-ERCC5","PNKD","COL11A2","LRP1","STPG1","ARAP3","BLOC1S4","VXN","CEBPA","MIR9-1HG","SCCPDH","LINC02481","SNORA65","SUSD3","ZFP92","RAPGEF3","MBD3","BAIAP2L1","GASAL1","AP2A2","FGF1","CSF1R","PBX1","PCDH1","PLEKHA7","RPS29","TLR3","MDGA1","MIR7854","TRMT44","ARRB1","CTB-178M22.2","NENF","TSKU","SLC7A4","C1orf127","SORBS1","OLFML2A","TTC25","WDR75","LINC00963","LINC01741","SLC48A1","SLC7A10","ASB7","MMP17","CDC42BPB","PKP4","SLCO2B1","NAV2","ABL1","MIR5093","LIPC","CRIP2","BICD2","ABCB9","TNS3","MIR3150A","CHST3","TBC1D10A","TNR","HS6ST1","LINC02579","TGM2","AMT","PPP1R21","CNKSR3","LINC01767","NENF","CLDN16","TFAP2A-AS2","MTA1","MECR","TRMT44","CLDN16","TMEM17","STMN1","LINC02104","LINC00963","SHB","HS6ST1","LINC02038","ZP3","C6orf99","TGM2","MAP2K3","RRBP1","BMP1","MYO16-AS1","HLF","ANKRD13A","ZNF256","PPCDC","GDA","MIR5093","KLF5","ADRB1","RAPGEF1","LRP1","UNQ6494","PLEKHA7","DUSP5","IFFO2","TTC7A","PRKAG2","MBD3","C1QTNF1","INHA","FHDC1","LINC00431","NRK","FSCN1","ZADH2","KRT7","KRT13","EFHD1","GFOD2","HSD3B1","RBM24","IL6ST","UNQ6494","GATAD2A","SH3PXD2B","HS6ST1","HMBS","CDR2","PRKAG2","HS6ST1","NABP1","HNRNPUL1","TMEM37","DNAJB6","SLC35E4","AOPEP","RBM20","LSM3","EFHD1","CRYBG1","ADGRL3","MIR3922","DISC1","WSB1","TNFSF15","UNQ6494","TTC25","RRAD","DCAF12","FBLN7","EPHB3","CYTH2","EVA1A","TANK","LINC01599","LIPH","CPA5","KLF9","LINC01483","TGFBR3","DLX6-AS1","FBLN1"],["VAC14 component of PIKFYVE complex","tRNA methyltransferase 44 homolog","transmembrane protein 143","MLLT1 super elongation complex subunit","BLM RecQ like helicase","FOXO6 antisense RNA 1","regulatory factor X8","family with sequence similarity 207 member A","tumor suppressor candidate 8","uncharacterized LOC100129066","keratin 23","syndecan 1","microRNA 5093","bone morphogenetic protein 7","cysteine rich protein 1","suppressor of glucose, autophagy associated 1","major facilitator superfamily domain containing 2A","sorting nexin 29","anoctamin 5","ANTXR like","plaque enriched lncRNA in atherosclerotic and inflammatory bowel macrophage regulation","Gse1 coiled-coil protein","selectin P ligand","EPH receptor B2","thioredoxin 2","oxysterol binding protein like 7","disrupted in renal carcinoma 3","protocadherin 1","cellular repressor of E1A stimulated genes 2","dysferlin","regulator of chromosome condensation 1","uncharacterized LOC100288175","zinc and ring finger 1","solute carrier family 6 member 2","long intergenic non-protein coding RNA 2724","zinc finger DHHC-type containing 1","DNA damage inducible transcript 4","cytohesin 2","transcription factor Dp-1","insulin induced gene 1","potassium two pore domain channel subfamily K member 17","cysteine rich protein 2","pancreatic polypeptide 2, pseudogene","small nucleolar RNA, C/D box 12B","family with sequence similarity 207 member A","phospholipase C like 2","Rho GTPase activating protein 42","hippocalcin like 1","zinc finger CCCH-type containing, antiviral 1 like","mitochondrial ribosomal protein L19","gelsolin","heparan sulfate 6-O-sulfotransferase 1","protein kinase AMP-activated non-catalytic subunit gamma 2","BIVM-ERCC5 readthrough","PNKD metallo-beta-lactamase domain containing","collagen type XI alpha 2 chain","LDL receptor related protein 1","sperm tail PG-rich repeat containing 1","ArfGAP with RhoGAP domain, ankyrin repeat and PH domain 3","biogenesis of lysosomal organelles complex 1 subunit 4","vexin","CCAAT enhancer binding protein alpha","MIR9-1 host gene","saccharopine dehydrogenase (putative)","long intergenic non-protein coding RNA 2481","small nucleolar RNA, H/ACA box 65","sushi domain containing 3","ZFP92 zinc finger protein","Rap guanine nucleotide exchange factor 3","methyl-CpG binding domain protein 3","BAR/IMD domain containing adaptor protein 2 like 1","growth arrest associated lncRNA 1","adaptor related protein complex 2 subunit alpha 2","fibroblast growth factor 1","colony stimulating factor 1 receptor","PBX homeobox 1","protocadherin 1","pleckstrin homology domain containing A7","ribosomal protein S29","toll like receptor 3","MAM domain containing glycosylphosphatidylinositol anchor 1","microRNA 7854","tRNA methyltransferase 44 homolog","arrestin beta 1","uncharacterized LOC101927862","neudesin neurotrophic factor","tsukushi, small leucine rich proteoglycan","solute carrier family 7 member 4","chromosome 1 open reading frame 127","sorbin and SH3 domain containing 1","olfactomedin like 2A","tetratricopeptide repeat domain 25","WD repeat domain 75","long intergenic non-protein coding RNA 963","long intergenic non-protein coding RNA 1741","solute carrier family 48 member 1","solute carrier family 7 member 10","ankyrin repeat and SOCS box containing 7","matrix metallopeptidase 17","CDC42 binding protein kinase beta","plakophilin 4","solute carrier organic anion transporter family member 2B1","neuron navigator 2","ABL proto-oncogene 1, non-receptor tyrosine kinase","microRNA 5093","lipase C, hepatic type","cysteine rich protein 2","BICD cargo adaptor 2","ATP binding cassette subfamily B member 9","tensin 3","microRNA 3150a","carbohydrate sulfotransferase 3","TBC1 domain family member 10A","tenascin R","heparan sulfate 6-O-sulfotransferase 1","long intergenic non-protein coding RNA 2579","transglutaminase 2","aminomethyltransferase","protein phosphatase 1 regulatory subunit 21","CNKSR family member 3","long intergenic non-protein coding RNA 1767","neudesin neurotrophic factor","claudin 16","TFAP2A antisense RNA 2","metastasis associated 1","mitochondrial trans-2-enoyl-CoA reductase","tRNA methyltransferase 44 homolog","claudin 16","transmembrane protein 17","stathmin 1","long intergenic non-protein coding RNA 2104","long intergenic non-protein coding RNA 963","SH2 domain containing adaptor protein B","heparan sulfate 6-O-sulfotransferase 1","long intergenic non-protein coding RNA 2038","zona pellucida glycoprotein 3","chromosome 6 putative open reading frame 99","transglutaminase 2","mitogen-activated protein kinase kinase 3","ribosome binding protein 1","bone morphogenetic protein 1","MYO16 antisense RNA 1","HLF transcription factor, PAR bZIP family member","ankyrin repeat domain 13A","zinc finger protein 256","phosphopantothenoylcysteine decarboxylase","guanine deaminase","microRNA 5093","Kruppel like factor 5","adrenoceptor beta 1","Rap guanine nucleotide exchange factor 1","LDL receptor related protein 1","uncharacterized LOC100129066","pleckstrin homology domain containing A7","dual specificity phosphatase 5","intermediate filament family orphan 2","tetratricopeptide repeat domain 7A","protein kinase AMP-activated non-catalytic subunit gamma 2","methyl-CpG binding domain protein 3","C1q and TNF related 1","inhibin subunit alpha","FH2 domain containing 1","long intergenic non-protein coding RNA 431","Nik related kinase","fascin actin-bundling protein 1","zinc binding alcohol dehydrogenase domain containing 2","keratin 7","keratin 13","EF-hand domain family member D1","glucose-fructose oxidoreductase domain containing 2","hydroxy-delta-5-steroid dehydrogenase, 3 beta- and steroid delta-isomerase 1","RNA binding motif protein 24","interleukin 6 signal transducer","uncharacterized LOC100129066","GATA zinc finger domain containing 2A","SH3 and PX domains 2B","heparan sulfate 6-O-sulfotransferase 1","hydroxymethylbilane synthase","cerebellar degeneration related protein 2","protein kinase AMP-activated non-catalytic subunit gamma 2","heparan sulfate 6-O-sulfotransferase 1","nucleic acid binding protein 1","heterogeneous nuclear ribonucleoprotein U like 1","transmembrane protein 37","DnaJ heat shock protein family (Hsp40) member B6","solute carrier family 35 member E4","aminopeptidase O (putative)","RNA binding motif protein 20","LSM3 homolog, U6 small nuclear RNA and mRNA degradation associated","EF-hand domain family member D1","crystallin beta-gamma domain containing 1","adhesion G protein-coupled receptor L3","microRNA 3922","DISC1 scaffold protein","WD repeat and SOCS box containing 1","TNF superfamily member 15","uncharacterized LOC100129066","tetratricopeptide repeat domain 25","RRAD, Ras related glycolysis inhibitor and calcium channel regulator","DDB1 and CUL4 associated factor 12","fibulin 7","EPH receptor B3","cytohesin 2","eva-1 homolog A, regulator of programmed cell death","TRAF family member associated NFKB activator","long intergenic non-protein coding RNA 1599","lipase H","carboxypeptidase A5","Kruppel like factor 9","long intergenic non-protein coding RNA 1483","transforming growth factor beta receptor 3","DLX6 antisense RNA 1","fibulin 1"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Chr<\/th>\n      <th>start<\/th>\n      <th>end<\/th>\n      <th>width<\/th>\n      <th>strand<\/th>\n      <th>Conc<\/th>\n      <th>Conc_MD<\/th>\n      <th>Conc_MV<\/th>\n      <th>Fold<\/th>\n      <th>p.value<\/th>\n      <th>FDR<\/th>\n      <th>annotation<\/th>\n      <th>geneChr<\/th>\n      <th>geneStart<\/th>\n      <th>geneEnd<\/th>\n      <th>geneLength<\/th>\n      <th>geneStrand<\/th>\n      <th>geneId<\/th>\n      <th>transcriptId<\/th>\n      <th>distanceToTSS<\/th>\n      <th>ENSEMBL<\/th>\n      <th>SYMBOL<\/th>\n      <th>GENENAME<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"scrollX":true,"dom":"Bfrtip","buttons":["copy","csv","excel"],"columnDefs":[{"className":"dt-right","targets":[1,2,3,5,6,7,8,9,10,12,13,14,15,16,19]}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+<div class="figure" style="text-align: center"><span id="fig:plotMA-male-edgeR-fig1"></span>
+<img src="SLX-16110-16111_files/figure-html/plotMA-male-edgeR-fig1-1.png" alt="MA plot (edgeR)" width="672" />
+<p class="caption">
+Figure 5.9: MA plot (edgeR)
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:plotVol-male-edgeR-fig1"></span>
+<img src="SLX-16110-16111_files/figure-html/plotVol-male-edgeR-fig1-1.png" alt="Volcano plot (edgeR)" width="672" />
+<p class="caption">
+Figure 5.10: Volcano plot (edgeR)
+</p>
+</div>
+</div>
+</div>
+<div id="normalisation-parameters" class="section level2" number="5.5">
+<h2><span class="header-section-number">5.5</span> Normalisation parameters</h2>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="diffbind.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(li.diff[[<span class="st">&#39;bg&#39;</span>]], dba.normalize, <span class="at">bRetrieve=</span>T,<span class="at">method=</span>DBA_ALL_METHODS)</span></code></pre></div>
+<pre><code>## $female
+## $female$edgeR
+## $female$edgeR$background
+## [1] TRUE
+## 
+## $female$edgeR$norm.method
+## [1] &quot;TMM&quot;
+## 
+## $female$edgeR$norm.factors
+##  [1] 1.0037253 1.0178863 0.9796488 1.0187121 1.0037716 1.0066757 1.0061241 1.0289548 0.9727954 0.9637627
+## 
+## $female$edgeR$lib.method
+## [1] &quot;background&quot;
+## 
+## $female$edgeR$lib.sizes
+##  [1] 14406659 14313568  9052547  8273839 10782259 10634010  7783031  8816437 10163025 15059456
+## 
+## $female$edgeR$control.subtract
+## [1] TRUE
+## 
+## $female$edgeR$filter.value
+## [1] 1
+## 
+## 
+## $female$DESeq2
+## $female$DESeq2$background
+## [1] TRUE
+## 
+## $female$DESeq2$norm.method
+## [1] &quot;RLE&quot;
+## 
+## $female$DESeq2$norm.factors
+##   F1V-K27   F1D-K27   F2V-K27   F2D-K27   F3V-K27   F3D-K27   F4V-K27   F4D-K27   F5V-K27   F5D-K27 
+## 1.3711165 1.3802589 0.8437394 0.7962241 1.0251811 1.0144064 0.7400174 0.8575304 0.9419272 1.3851355 
+## 
+## $female$DESeq2$lib.method
+## [1] &quot;background&quot;
+## 
+## $female$DESeq2$lib.sizes
+##  [1] 14406659 14313568  9052547  8273839 10782259 10634010  7783031  8816437 10163025 15059456
+## 
+## $female$DESeq2$control.subtract
+## [1] TRUE
+## 
+## $female$DESeq2$filter.value
+## [1] 1
+## 
+## 
+## $female$background
+## $female$background$binned
+## class: RangedSummarizedExperiment 
+## dim: 188762 10 
+## metadata(6): spacing width ... param final.ext
+## assays(1): counts
+## rownames: NULL
+## rowData names(0):
+## colnames(10): F1V-K27 F1D-K27 ... F5V-K27 F5D-K27
+## colData names(4): bam.files totals ext rlen
+## 
+## $female$background$bin.size
+## [1] 15000
+## 
+## $female$background$back.calc
+## [1] &quot;Background bins&quot;
+## 
+## 
+## 
+## $male
+## $male$edgeR
+## $male$edgeR$background
+## [1] TRUE
+## 
+## $male$edgeR$norm.method
+## [1] &quot;TMM&quot;
+## 
+## $male$edgeR$norm.factors
+##  [1] 1.0475833 1.0580352 0.9403566 0.9527507 1.0195866 1.0227243 0.9939970 1.0574761 0.9178885 0.9608961 1.0178277
+## [12] 1.0234355
+## 
+## $male$edgeR$lib.method
+## [1] &quot;background&quot;
+## 
+## $male$edgeR$lib.sizes
+##  [1]  7842803  6256923  7620403 45662054 16275364 12003441 13043263 14752067 14301167 13951545 10101914  5878181
+## 
+## $male$edgeR$control.subtract
+## [1] TRUE
+## 
+## $male$edgeR$filter.value
+## [1] 1
+## 
+## 
+## $male$DESeq2
+## $male$DESeq2$background
+## [1] TRUE
+## 
+## $male$DESeq2$norm.method
+## [1] &quot;RLE&quot;
+## 
+## $male$DESeq2$norm.factors
+##   M1V-K27   M1D-K27   M2V-K27   M2D-K27   M3V-K27   M3D-K27   M4V-K27   M4D-K27   M5V-K27   M5D-K27   M6V-K27 
+## 0.6945813 0.5609957 0.6119628 3.7079627 1.4081663 1.0398274 1.1014219 1.3339729 1.1196840 1.1447977 0.8711595 
+##   M6D-K27 
+## 0.5085670 
+## 
+## $male$DESeq2$lib.method
+## [1] &quot;background&quot;
+## 
+## $male$DESeq2$lib.sizes
+##  [1]  7842803  6256923  7620403 45662054 16275364 12003441 13043263 14752067 14301167 13951545 10101914  5878181
+## 
+## $male$DESeq2$control.subtract
+## [1] TRUE
+## 
+## $male$DESeq2$filter.value
+## [1] 1
+## 
+## 
+## $male$background
+## $male$background$binned
+## class: RangedSummarizedExperiment 
+## dim: 189298 12 
+## metadata(6): spacing width ... param final.ext
+## assays(1): counts
+## rownames: NULL
+## rowData names(0):
+## colnames(12): M1V-K27 M1D-K27 ... M6V-K27 M6D-K27
+## colData names(4): bam.files totals ext rlen
+## 
+## $male$background$bin.size
+## [1] 15000
+## 
+## $male$background$back.calc
+## [1] &quot;Background bins&quot;</code></pre>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="peak-annotations.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["SLX-16110-16111.pdf", "SLX-16110-16111.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

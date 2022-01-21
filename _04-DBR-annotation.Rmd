@@ -1,0 +1,102 @@
+# DBR Annotation
+
+> package: [`ChIPseeker`](https://www.bioconductor.org/packages/release/bioc/html/ChIPseeker.html)
+
+> DBR called by edgeR
+
+## No. of genes enrichred in DBR by sex
+```{r dbr-anno-stat1, fig.cap="Venn diagram showing the number of DBR by sex"}
+sapply(gl.dbr.edgeR,length)
+sapply(li.peakAnno[['dbr']][['edgeR']],length)
+li.genes= lapply(li.peakAnno[['dbr']][['edgeR']], function(i) as.data.table(i)[,.N,geneId]$geneId)
+if(length(li.genes)>1){vennplot(li.genes,by="Vennerable")}
+```
+
+## Genomic features
+```{r dbr-cs1}
+# li.peakAnno from DiffBind.Rmd
+knitr::kable(
+    lapply(names(li.peakAnno[['dbr']][['edgeR']]), function(i) 
+            data.table(li.peakAnno[['dbr']][['edgeR']][[i]]@annoStat)[,sex:=i]) 
+                %>% rbindlist %>% dcast.data.table(Feature~sex,value.var="Frequency")
+    , caption="% of genomic features by sex"
+) %>% kable_styling(full_width = F)
+```
+
+```{r dbr-cs2, fig.cap="Genomic features of DBR"}
+plotAnnoBar(li.peakAnno[['dbr']][['edgeR']])
+```
+
+## Distance to TSS
+```{r dbr-cs3, fig.cap="Distance to TSS"}
+plotDistToTSS(li.peakAnno[['dbr']][['edgeR']])
+```
+
+<!--## Peak frequency over TSS
+```{r dbr-peak-freq1}
+plotAvgProf2(gl.dbr.edgeR, TxDb=txdb, upstream=2e3,downstream=2e3, facet="none",verbose=F,conf=0.95)
+```
+
+## Peak heatmap over TSS
+```{r dbr-peak-heatmap1, fig.cap="Peak heatmap"}
+peakHeatmap(gl.dbr.edgeR, TxDb=txdb, upstream=2e3,downstream=2e3,verbose=F)
+```
+
+## Pathway analysis
+
+### KEGG
+```{r dbr-pathway-kegg1, fig.cap="KEGG pathway enrichment analysis"}
+names(li.genes) = sub("_", "\n", names(li.genes))
+compKEGG <- clusterProfiler::compareCluster(geneCluster   = li.genes,
+                         fun           = "clusterProfiler::enrichKEGG",
+                         organism = "hsa",
+                         pvalueCutoff  = 0.05,
+                         pAdjustMethod = "BH")
+dotplot(compKEGG, showCategory = 15)
+```
+
+```{r dbr-pathway-kegg2}
+DT::datatable(
+             data.table(compKEGG@compareClusterResult)[,-"geneID"]
+             ,extensions="Buttons"
+             ,caption="Enriched list of Reactome pathway"
+             )
+```
+
+### Reactome 
+```{r dbr-pathway-reactome1, fig.cap="Reactome pathway enrichment analysis"}
+
+compReactome<- clusterProfiler::compareCluster(geneCluster   = li.genes,
+                         fun           = "ReactomePA::enrichPathway",
+                         pvalueCutoff  = 0.05,
+                         pAdjustMethod = "BH")
+ReactomePA::dotplot(compReactome, showCategory = 15)
+```
+```{r dbr-pathway-reactome2}
+DT::datatable(
+             data.table(compReactome@compareClusterResult)[,-"geneID"]
+              ,extensions="Buttons"
+             ,caption="Enriched list of Reactome pathway"
+             )
+```
+
+## Gene Ontology
+
+```{r dbr-go1, fig.cap="GO enrichment analysis"}
+compGO<- clusterProfiler::compareCluster(geneCluster   = li.genes,
+                         fun           = "clusterProfiler::enrichGO",
+                         OrgDb="org.Hs.eg.db",
+                         ont="ALL",
+                         pvalueCutoff  = 0.05,
+                         pAdjustMethod = "BH")
+ReactomePA::dotplot(compGO, showCategory = 15)
+```
+
+```{r dbr-go2}
+DT::datatable(
+             data.table(compGO@compareClusterResult)[,-"geneID"]
+              ,extensions="Buttons"
+             ,caption="GO analysis"
+             )
+
+```-->

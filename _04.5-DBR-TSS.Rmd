@@ -1,0 +1,111 @@
+# Differential Binding Region (TSS only) {#diffbind-TSS}
+
+```{r dbr-tss-prep1, echo=F}
+    my.RData<-file.path('RData/dbo.cnt.promo.RData.minOverlap2')
+    if(file.exists(my.RData)){
+        message(paste("loading",my.RData))
+        attach(my.RData)
+    }else{
+        gr.promo<-makeGRangesFromDataFrame(dl.peakAnno[['merged']][grepl("Promo",annotation)],keep.extra.columns=T)
+        dbo.cnt.promo<-dba.count(dbo.cnt, peaks=gr.promo)
+        save(dbo.cnt.promo,file="RData/dbo.cnt.promo.RData.minOverlap2")
+    }
+
+    # run core DiffBind
+    li.diff.tss<-list() # list of DBA
+    li.diff.tss[["female"]]<-dba(dbo.cnt.promo, dbo.cnt.promo$masks$F) # isa DBA
+    li.diff.tss[["male"]]<- dba(dbo.cnt.promo, dbo.cnt.promo$masks$M) # isa DBA
+    li.diff.tss<-lapply(li.diff.tss, dba.contrast)
+    li.diff.tss<-lapply(li.diff.tss, dba.analyze,method=DBA_ALL_METHODS)
+
+```
+
+> Based on `r dbo.cnt.promo$totalMerged` consensus peaks in the promoter regions (a subset of `r dbo.cnt$totalMerge` consensus peaks described [earlier](#consensus_peak))
+>
+> Software package used: [DiffBind](https://bioconductor.org/packages/release/bioc/html/DiffBind.html)
+
+## No. of DBR
+### adjutedd P-val<0.05
+```{r diff-bind-tss-num1}
+knitr::kable(
+    rbind(
+        dba.show(li.diff.tss[[1]],bContrasts=T),
+        dba.show(li.diff.tss[[2]],bContrasts=T)
+        )
+    ,caption="Number of differential binding regions (TSS only)"
+)
+```
+
+```{r diff-bind-tss-venn1, fig.cap="DBR between edgeR & DESeq2 (MV vs MD)"}
+print(li.diff.res.tss<-lapply(li.diff.tss, dba.report,method=DBA_ALL_METHODS,bDB=TRUE,bAll=TRUE)) # isa DBA
+dba.plotVenn(li.diff.res.tss[["male"]],1:2, main="",sub="")
+```
+
+```{r diff-bind-tss-pca1, fig.cap="PCA based on DBR (MV vs MD)"}
+dba.plotPCA(li.diff.tss[["male"]], attributes=DBA_FACTOR, label=DBA_ID) 
+```
+
+```{r diff-bind-tss-pca2, fig.cap="PCA based on DBR (FV vs FD)"}
+dba.plotPCA(li.diff.tss[["female"]], attributes=DBA_FACTOR, label=DBA_ID) 
+```
+
+### adjutedd P-val<0.01:
+```{r diff-bind-tss-num2}
+knitr::kable(
+    rbind(
+        dba.show(li.diff.tss[[1]],bContrasts=T,th=.01),
+        dba.show(li.diff.tss[[2]],bContrasts=T,th=.01)
+        )
+    ,caption="Number of differential binding regions (TSS only)"
+)
+```
+
+## List of DBR (edgeR)
+```{r dbr-tss-annotation1}
+gl.dbr.tss<-lapply(li.diff.tss, dba.report, method=DBA_EDGER, DataType=DBA_DATA_GRANGES)
+li.peakAnno[['dbr.tss']][['edgeR']]<-lapply(gl.dbr.tss, ChIPseeker::annotatePeak, tssRegion=c(-2e3, 2e3), TxDb=txdb, annoDb="org.Hs.eg.db", verbose=F) # list of 'csAnno'
+```
+
+### Female (FV vs FD)
+
+```{r diff-bind-tss-list-f}
+DT::datatable(
+              #data.frame(as.GRanges(li.peakAnno[['female']])),
+              data.frame(li.peakAnno[['dbr.tss']][['edgeR']][['female']]@anno),
+              extensions="Buttons",
+              rownames=F,
+              colnames=c('Chr'='seqnames'),
+              caption="DBR of FV vs FD (edgeR; FDR<0.05)",
+              options=list(pageLength=5)
+)
+```
+
+```{r tss-plotMA-female-edgeR-fig1, fig.cap="MA plot (edgeR)"}
+dba.plotMA(li.diff.tss[["female"]], method=DBA_EDGER,th=0.05,bXY=F,bSmooth=F,dotSize=1.5) 
+```
+
+```{r tss-plotVol-female-edgeR-fig1, fig.cap="Volcano plot (edgeR)"}
+dba.plotVolcano(li.diff.tss[["female"]], method=DBA_EDGER,dotSize=1.5, th=0.05, fold=log2(2))
+```
+
+### Male (MV vs MD)
+```{r diff-bind-tss-list-m}
+DT::datatable(
+              #data.frame(as.GRanges(li.peakAnno[['male']])),
+              data.frame(li.peakAnno[['dbr.tss']][['edgeR']][['male']]@anno),
+              extensions="Buttons",
+              rownames=F,
+              colnames=c('Chr'='seqnames'),
+              caption="DBR of MV vs MD (edgeR; FDR<0.05)",
+              options=list(pageLength=5)
+)
+```
+
+```{r tss-plotMA-male-edgeR-fig1, fig.cap="MA plot (edgeR)"}
+dba.plotMA(li.diff.tss[["male"]], method=DBA_EDGER,th=0.05,bXY=F,bSmooth=F,dotSize=1.5,bNormalized=T)
+```
+
+```{r tss-plotVol-male-edgeR-fig1, fig.cap="Volcano plot (edgeR)"}
+dba.plotVolcano(li.diff.tss[["male"]], method=DBA_EDGER, dotSize=1.5, th=0.05, fold=log2(2))
+```
+

@@ -1,0 +1,8 @@
+`r if (knitr::is_html_output()) '
+# References {-}
+'`
+
+## sessionInfo
+```{r session-info, echo=T}
+sessionInfo()
+```

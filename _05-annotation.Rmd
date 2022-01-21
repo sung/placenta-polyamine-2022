@@ -1,0 +1,93 @@
+# Gene annotation
+
+- more to follow (beyond DBR)
+
+```{r eval=F}
+library(ChIPseeker)
+library(TxDb.Hsapiens.UCSC.hg38.knownGene)
+txdb<-TxDb.Hsapiens.UCSC.hg38.knownGene
+
+GenomeInfoDb::seqlevelsStyle(txdb)
+GenomeInfoDb::seqlevelsStyle(txdb)="NCBI"
+promoter <- getPromoters(TxDb=txdb, upstream=config$promoter$up, downstream=config$promoter$down)
+
+################
+# Annotate DBR #
+################
+gl.dbr<-lapply(li.diff, dba.report, method=DBA_EDGER, DataType=DBA_DATA_GRANGES)
+
+peakAnno <- annotatePeak(gl.dbr[['female']], tssRegion=c(-3000, 3000), TxDb=txdb, annoDb="org.Hs.eg.db") # level='transcript'
+peakAnno.gene <- annotatePeak(gl.dbr[['female']], level="gene", tssRegion=c(-3000, 3000), TxDb=txdb, annoDb="org.Hs.eg.db")
+
+as.GRanges(peakAnno.gene)
+as.GRanges(peakAnno)
+plotAnnoPie(peakAnno)
+vennpie(peakAnno)
+
+gl.peak<-list()
+########################
+# GRangesList from DBA #
+########################
+# 1. per-sample (n=22)
+gl.peak[["sample"]]<-lapply(dbo$peaks,makeGRangesFromDataFrame,keep.extra.columns=T)
+sapply(gl.peak[["sample"]],length)
+dba.show(dbo)$ID
+names(gl.peak[["sample"]])<-substr(dba.show(dbo)$ID, 1, 3)
+gl.peak[["sample"]][[1]]
+
+# 2. per-sample (based on affinity, i.e. read count)
+gl.peak[["sample.cnt"]]<-lapply(dbo.cnt$peaks,makeGRangesFromDataFrame,keep.extra.columns=T)
+sapply(gl.peak[["sample.cnt"]],length)
+names(gl.peak[["sample.cnt"]])<-substr(dba.show(dbo)$ID, 1, 3)
+gl.peak[["sample.cnt"]][1]
+gl.peak[["sample.cnt"]][2]
+
+# 3. per-factor (sex+condition; n=4)
+data.table(dbo.con$peaks[[1]])
+gl.peak[["factor"]]<-lapply(dbo.con$peaks,makeGRangesFromDataFrame,keep.extra.columns=T,
+                            seqnames.field="V1",start.field="V2",end.field="V3")
+dba.show(dbo.con)$Factor
+names(gl.peak[["factor"]])<-dba.show(dbo.con)$Factor
+gl.peak[["factor"]][[1]]
+
+#############
+#peak freq  #
+#############
+peakHeatmap(gl.peak[['sample']][[1]],TxDb=txdb)
+plotAvgProf2(gl.peak[['sample']][[1]],TxDb=txdb,weightCol='X.log10.pvalue.')
+
+plotAvgProf2(gl.peak[['sample']][c('M1V','M1D')], TxDb=txdb, upstream=1e3,downstream=1e3, facet="none")
+plotAvgProf2(gl.peak[['sample.cnt']][c('M1V','M1D')], TxDb=txdb, upstream=1e3,downstream=1e3)
+plotAvgProf2(gl.peak[['sample.cnt']][c('M1V','M1D')], TxDb=txdb, upstream=1e3,downstream=1e3, weightCol="RPKM")
+
+plotAvgProf2(gl.peak[['sample']][c('M2V','M2D')], TxDb=txdb)
+plotAvgProf2(gl.peak[['sample.cnt']][c('M2V','M2D')], TxDb=txdb, weightCol="Score")
+
+plotAvgProf2(gl.peak[['sample']][c('M3V','M3D')], TxDb=txdb, upstream=1e3,downstream=1e3, facet="none")
+plotAvgProf2(gl.peak[['sample']][c('M4V','M4D')], TxDb=txdb, upstream=1e3,downstream=1e3, facet="none")
+plotAvgProf2(gl.peak[['sample']][c('M5V','M5D')], TxDb=txdb, upstream=1e3,downstream=1e3, facet="none")
+plotAvgProf2(gl.peak[['sample']][c('M6V','M6D')], TxDb=txdb, upstream=1e3,downstream=1e3, facet="none")
+
+plotAvgProf2(gl.peak[['sample']][c('F1V','F1D')], TxDb=txdb, upstream=1e3,downstream=1e3, facet="none")
+plotAvgProf2(gl.peak[['sample']][c('F2V','F2D')], TxDb=txdb, upstream=1e3,downstream=1e3, facet="none")
+plotAvgProf2(gl.peak[['sample']][c('F3V','F3D')], TxDb=txdb, upstream=1e3,downstream=1e3, facet="none")
+plotAvgProf2(gl.peak[['sample']][c('F4V','F4D')], TxDb=txdb, upstream=1e3,downstream=1e3, facet="none")
+
+# per-group
+plotAvgProf2(gl.peak[['factor']][c("FV","FD")], TxDb=txdb, upstream=2e3,downstream=2e3)
+plotAvgProf2(gl.peak[['factor']][c("FV","FD")], TxDb=txdb, upstream=2e3,downstream=2e3, weightCol="V4")
+
+plotAvgProf2(gl.peak[['factor']][c("MV","MD")], TxDb=txdb, upstream=2e3,downstream=2e3)
+plotAvgProf2(gl.peak[['factor']][c("MV","MD")], TxDb=txdb, upstream=2e3,downstream=2e3, weightCol="V4")
+
+##
+## peak location annotation
+##
+
+# per-group
+li.peakAnno[['factor']]<-lapply(gl.peak[["factor"]], ChIPseeker::annotatePeak, tssRegion=c(-2e3, 2e3), TxDb=txdb, annoDb="org.Hs.eg.db", verbose=F) # list of 'csAnno'
+
+plotAnnoBar(li.peakAnno[['factor']])
+
+```
+

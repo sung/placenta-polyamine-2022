@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>5 Differential Binding Region | SLX-16110-16111 Run Report (ChIP-Seq)</title>
+  <meta name="description" content="This is a report for Irving Aye’s `r params$seq_type’ results" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="5 Differential Binding Region | SLX-16110-16111 Run Report (ChIP-Seq)" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a report for Irving Aye’s `r params$seq_type’ results" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="5 Differential Binding Region | SLX-16110-16111 Run Report (ChIP-Seq)" />
+  
+  <meta name="twitter:description" content="This is a report for Irving Aye’s `r params$seq_type’ results" />
+  
+
+
+
+<meta name="date" content="2021-02-08" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="peak-annotations.html"/>
+<link rel="next" href="diffbind-md-vs-mv-n-10.html"/>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="libs/jquery-3.5.1/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.17/datatables.js"></script>
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="libs/jszip-1.10.20/jszip.min.js"></script>
+<link href="libs/dt-ext-buttons-1.10.20/css/buttons.dataTables.min.css" rel="stylesheet" />
+<script src="libs/dt-ext-buttons-1.10.20/js/dataTables.buttons.min.js"></script>
+<script src="libs/dt-ext-buttons-1.10.20/js/buttons.flash.min.js"></script>
+<script src="libs/dt-ext-buttons-1.10.20/js/buttons.html5.min.js"></script>
+<script src="libs/dt-ext-buttons-1.10.20/js/buttons.colVis.min.js"></script>
+<script src="libs/dt-ext-buttons-1.10.20/js/buttons.print.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Run Report</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Samples</a></li>
+<li class="chapter" data-level="2" data-path="mapping.html"><a href="mapping.html"><i class="fa fa-check"></i><b>2</b> Mapping</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="mapping.html"><a href="mapping.html#table-of-mapping-statistic"><i class="fa fa-check"></i><b>2.1</b> Table of mapping statistic</a></li>
+<li class="chapter" data-level="2.2" data-path="mapping.html"><a href="mapping.html#boxplots-of-mapping-staststic"><i class="fa fa-check"></i><b>2.2</b> Boxplots of mapping staststic</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="mapping.html"><a href="mapping.html#no.-of-sequencing-reads"><i class="fa fa-check"></i><b>2.2.1</b> No. of sequencing reads</a></li>
+<li class="chapter" data-level="2.2.2" data-path="mapping.html"><a href="mapping.html#no.-of-uniquely-mapped-reads"><i class="fa fa-check"></i><b>2.2.2</b> No. of uniquely mapped reads</a></li>
+<li class="chapter" data-level="2.2.3" data-path="mapping.html"><a href="mapping.html#unique-mapping-rate"><i class="fa fa-check"></i><b>2.2.3</b> Unique mapping rate</a></li>
+<li class="chapter" data-level="2.2.4" data-path="mapping.html"><a href="mapping.html#multi-mapping-rate"><i class="fa fa-check"></i><b>2.2.4</b> Multi mapping rate</a></li>
+<li class="chapter" data-level="2.2.5" data-path="mapping.html"><a href="mapping.html#total-mapping-rate"><i class="fa fa-check"></i><b>2.2.5</b> Total mapping rate</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="mapping.html"><a href="mapping.html#bigwig-files"><i class="fa fa-check"></i><b>2.3</b> BigWig files</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="calling.html"><a href="calling.html"><i class="fa fa-check"></i><b>3</b> Peak Calling</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="calling.html"><a href="calling.html#no.-of-peaks"><i class="fa fa-check"></i><b>3.1</b> No. of peaks</a></li>
+<li class="chapter" data-level="3.2" data-path="calling.html"><a href="calling.html#no.-of-peaks-by-the-consensus-level"><i class="fa fa-check"></i><b>3.2</b> No. of peaks by the consensus level</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="calling.html"><a href="calling.html#all-samples-n22"><i class="fa fa-check"></i><b>3.2.1</b> All samples (n=22)</a></li>
+<li class="chapter" data-level="3.2.2" data-path="calling.html"><a href="calling.html#fv-n5"><i class="fa fa-check"></i><b>3.2.2</b> FV (n=5)</a></li>
+<li class="chapter" data-level="3.2.3" data-path="calling.html"><a href="calling.html#fd-n5"><i class="fa fa-check"></i><b>3.2.3</b> FD (n=5)</a></li>
+<li class="chapter" data-level="3.2.4" data-path="calling.html"><a href="calling.html#mv-n6"><i class="fa fa-check"></i><b>3.2.4</b> MV (n=6)</a></li>
+<li class="chapter" data-level="3.2.5" data-path="calling.html"><a href="calling.html#md-n6"><i class="fa fa-check"></i><b>3.2.5</b> MD (n=6)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="calling.html"><a href="calling.html#consensus_peak"><i class="fa fa-check"></i><b>3.3</b> Consensus peaks across factors of interests</a></li>
+<li class="chapter" data-level="3.4" data-path="calling.html"><a href="calling.html#fraction-of-read-in-peaks-frip"><i class="fa fa-check"></i><b>3.4</b> Fraction of Read in Peaks (FRiP)</a></li>
+<li class="chapter" data-level="3.5" data-path="calling.html"><a href="calling.html#heatmap"><i class="fa fa-check"></i><b>3.5</b> Heatmap</a></li>
+<li class="chapter" data-level="3.6" data-path="calling.html"><a href="calling.html#pca"><i class="fa fa-check"></i><b>3.6</b> PCA</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="peak-annotations.html"><a href="peak-annotations.html"><i class="fa fa-check"></i><b>4</b> Peak Annotations</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="peak-annotations.html"><a href="peak-annotations.html#no.-of-peaks-by-group"><i class="fa fa-check"></i><b>4.1</b> No. of peaks by group</a></li>
+<li class="chapter" data-level="4.2" data-path="peak-annotations.html"><a href="peak-annotations.html#no.-of-peaks-by-chromosome"><i class="fa fa-check"></i><b>4.2</b> No. of peaks by chromosome</a></li>
+<li class="chapter" data-level="4.3" data-path="peak-annotations.html"><a href="peak-annotations.html#no.-of-genes-enrichred-in-peaks"><i class="fa fa-check"></i><b>4.3</b> No. of genes enrichred in peaks</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="peak-annotations.html"><a href="peak-annotations.html#non-intergenic-peaks-only"><i class="fa fa-check"></i><b>4.3.1</b> Non-intergenic peaks only</a></li>
+<li class="chapter" data-level="4.3.2" data-path="peak-annotations.html"><a href="peak-annotations.html#peaks-in-tss-2kb"><i class="fa fa-check"></i><b>4.3.2</b> Peaks in TSS (&lt;2kb)</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="peak-annotations.html"><a href="peak-annotations.html#genomic-feature-of-peaks"><i class="fa fa-check"></i><b>4.4</b> Genomic feature of peaks</a></li>
+<li class="chapter" data-level="4.5" data-path="peak-annotations.html"><a href="peak-annotations.html#distance-to-tss"><i class="fa fa-check"></i><b>4.5</b> Distance to TSS</a></li>
+<li class="chapter" data-level="4.6" data-path="peak-annotations.html"><a href="peak-annotations.html#peak-frequency-over-tss"><i class="fa fa-check"></i><b>4.6</b> Peak frequency over TSS</a></li>
+<li class="chapter" data-level="4.7" data-path="peak-annotations.html"><a href="peak-annotations.html#peak-heatmap-over-tss"><i class="fa fa-check"></i><b>4.7</b> Peak heatmap over TSS</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="diffbind.html"><a href="diffbind.html"><i class="fa fa-check"></i><b>5</b> Differential Binding Region</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="diffbind.html"><a href="diffbind.html#no.-of-dbr"><i class="fa fa-check"></i><b>5.1</b> No. of DBR</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="diffbind.html"><a href="diffbind.html#adjutedd-p-val0.05"><i class="fa fa-check"></i><b>5.1.1</b> adjutedd P-val&lt;0.05</a></li>
+<li class="chapter" data-level="5.1.2" data-path="diffbind.html"><a href="diffbind.html#adjutedd-p-val0.01"><i class="fa fa-check"></i><b>5.1.2</b> adjutedd P-val&lt;0.01:</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="diffbind.html"><a href="diffbind.html#dbr-from-deseq2"><i class="fa fa-check"></i><b>5.2</b> DBR from DESeq2</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="diffbind.html"><a href="diffbind.html#normalisation-factors"><i class="fa fa-check"></i><b>5.2.1</b> Normalisation factors</a></li>
+<li class="chapter" data-level="5.2.2" data-path="diffbind.html"><a href="diffbind.html#male-md-vs-mv"><i class="fa fa-check"></i><b>5.2.2</b> Male (MD vs MV)</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="diffbind.html"><a href="diffbind.html#dbr-from-edger"><i class="fa fa-check"></i><b>5.3</b> DBR from edgeR</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="diffbind.html"><a href="diffbind.html#normalisation-factors-1"><i class="fa fa-check"></i><b>5.3.1</b> Normalisation factors</a></li>
+<li class="chapter" data-level="5.3.2" data-path="diffbind.html"><a href="diffbind.html#male-md-vs-mv-1"><i class="fa fa-check"></i><b>5.3.2</b> Male (MD vs MV)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="diffbind-md-vs-mv-n-10.html"><a href="diffbind-md-vs-mv-n-10.html"><i class="fa fa-check"></i><b>6</b> Differential Binding Region (MD vs MV)</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="diffbind-md-vs-mv-n-10.html"><a href="diffbind-md-vs-mv-n-10.html#no.-of-dbr-1"><i class="fa fa-check"></i><b>6.1</b> No. of DBR</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="diffbind-md-vs-mv-n-10.html"><a href="diffbind-md-vs-mv-n-10.html#adjutedd-p-val0.05-1"><i class="fa fa-check"></i><b>6.1.1</b> adjutedd P-val&lt;0.05</a></li>
+<li class="chapter" data-level="6.1.2" data-path="diffbind-md-vs-mv-n-10.html"><a href="diffbind-md-vs-mv-n-10.html#adjutedd-p-val0.01-1"><i class="fa fa-check"></i><b>6.1.2</b> adjutedd P-val&lt;0.01:</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="diffbind-md-vs-mv-n-10.html"><a href="diffbind-md-vs-mv-n-10.html#dbr-from-deseq2-1"><i class="fa fa-check"></i><b>6.2</b> DBR from DESeq2</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="diffbind-md-vs-mv-n-10.html"><a href="diffbind-md-vs-mv-n-10.html#normalisation-factors-2"><i class="fa fa-check"></i><b>6.2.1</b> Normalisation factors</a></li>
+<li class="chapter" data-level="6.2.2" data-path="diffbind-md-vs-mv-n-10.html"><a href="diffbind-md-vs-mv-n-10.html#male-md-vs-mv-2"><i class="fa fa-check"></i><b>6.2.2</b> Male (MD vs MV)</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="diffbind-md-vs-mv-n-10.html"><a href="diffbind-md-vs-mv-n-10.html#dbr-from-edger-1"><i class="fa fa-check"></i><b>6.3</b> DBR from edgeR</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="diffbind-md-vs-mv-n-10.html"><a href="diffbind-md-vs-mv-n-10.html#normalisation-factors-3"><i class="fa fa-check"></i><b>6.3.1</b> Normalisation factors</a></li>
+<li class="chapter" data-level="6.3.2" data-path="diffbind-md-vs-mv-n-10.html"><a href="diffbind-md-vs-mv-n-10.html#male-md-vs-mv-3"><i class="fa fa-check"></i><b>6.3.2</b> Male (MD vs MV)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="chipseqspikeinfree.html"><a href="chipseqspikeinfree.html"><i class="fa fa-check"></i><b>7</b> ChIPseqSpikeInFree</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="references.html"><a href="references.html#sessioninfo"><i class="fa fa-check"></i><b>7.1</b> sessionInfo</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">SLX-16110-16111 Run Report (ChIP-Seq)</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="diffbind" class="section level1" number="5">
+<h1><span class="header-section-number">5</span> Differential Binding Region</h1>
+<blockquote>
+<p>Based on 71258 consensus peaks (see <a href="calling.html#consensus_peak">here</a>)</p>
+<p>Software package used: <a href="https://bioconductor.org/packages/release/bioc/html/DiffBind.html">DiffBind</a></p>
+<p><a href="https://bioconductor.org/packages/3.12/bioc/vignettes/DiffBind/inst/doc/DiffBind.pdf#page=38"><code>Background normalisation</code></a> method using <code>DiffBind3</code></p>
+</blockquote>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="diffbind.html#cb11-1" aria-hidden="true" tabindex="-1"></a>li.diff<span class="ot">&lt;-</span><span class="fu">list</span>()</span>
+<span id="cb11-2"><a href="diffbind.html#cb11-2" aria-hidden="true" tabindex="-1"></a>li.diff[[<span class="st">&#39;bg&#39;</span>]][[<span class="st">&quot;female&quot;</span>]]<span class="ot">&lt;-</span><span class="fu">dba</span>(dbo.cnt,dbo.cnt<span class="sc">$</span>masks<span class="sc">$</span>F) <span class="co"># isa DBA</span></span>
+<span id="cb11-3"><a href="diffbind.html#cb11-3" aria-hidden="true" tabindex="-1"></a>li.diff[[<span class="st">&#39;bg&#39;</span>]][[<span class="st">&quot;male&quot;</span>]]<span class="ot">&lt;-</span> <span class="fu">dba</span>(dbo.cnt,dbo.cnt<span class="sc">$</span>masks<span class="sc">$</span>M) <span class="co"># isa DBA</span></span>
+<span id="cb11-4"><a href="diffbind.html#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="diffbind.html#cb11-5" aria-hidden="true" tabindex="-1"></a>li.diff[[<span class="st">&#39;bg&#39;</span>]]<span class="ot">&lt;-</span><span class="fu">lapply</span>(li.diff[[<span class="st">&#39;bg&#39;</span>]], dba.normalize, <span class="at">method=</span>DBA_ALL_METHODS,<span class="at">normalize=</span>DBA_NORM_NATIVE,<span class="at">library=</span>DBA_LIBSIZE_FULL,<span class="at">background=</span><span class="cn">TRUE</span>)</span>
+<span id="cb11-6"><a href="diffbind.html#cb11-6" aria-hidden="true" tabindex="-1"></a>li.diff[[<span class="st">&#39;bg&#39;</span>]]<span class="ot">&lt;-</span><span class="fu">lapply</span>(li.diff[[<span class="st">&#39;bg&#39;</span>]], dba.analyze, <span class="at">method=</span>DBA_ALL_METHODS,<span class="at">bBlacklist=</span>F,<span class="at">bGreylist=</span>F)</span>
+<span id="cb11-7"><a href="diffbind.html#cb11-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-8"><a href="diffbind.html#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(li.diff[[<span class="st">&#39;bg&#39;</span>]], dba.show, <span class="at">bContrasts=</span><span class="cn">TRUE</span>)</span>
+<span id="cb11-9"><a href="diffbind.html#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(li.diff[[<span class="st">&#39;bg&#39;</span>]], dba.normalize, <span class="at">bRetrieve=</span>T,<span class="at">method=</span>DBA_ALL_METHODS)[[<span class="st">&quot;female&quot;</span>]]</span></code></pre></div>
+<div id="no.-of-dbr" class="section level2" number="5.1">
+<h2><span class="header-section-number">5.1</span> No. of DBR</h2>
+<div id="adjutedd-p-val0.05" class="section level3" number="5.1.1">
+<h3><span class="header-section-number">5.1.1</span> adjutedd P-val&lt;0.05</h3>
+<table>
+<caption>
+<span id="tab:diff-bind-num1">Table 5.1: </span>Number of differential binding regions
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Factor
+</th>
+<th style="text-align:left;">
+Group
+</th>
+<th style="text-align:left;">
+Samples
+</th>
+<th style="text-align:left;">
+Group2
+</th>
+<th style="text-align:left;">
+Samples2
+</th>
+<th style="text-align:left;">
+DB.edgeR
+</th>
+<th style="text-align:left;">
+DB.DESeq2
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Factor
+</td>
+<td style="text-align:left;">
+FD
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+FV
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Factor
+</td>
+<td style="text-align:left;">
+MD
+</td>
+<td style="text-align:left;">
+6
+</td>
+<td style="text-align:left;">
+MV
+</td>
+<td style="text-align:left;">
+6
+</td>
+<td style="text-align:left;">
+6
+</td>
+<td style="text-align:left;">
+33
+</td>
+</tr>
+</tbody>
+</table>
+<pre><code>## $male
+## 2 Samples, 33 sites in matrix:
+##    Contrast Direction DB Method Intervals
+## 1 MD vs. MV       All DB  edgeR         6
+## 2 MD vs. MV       All DB DESeq2        33</code></pre>
+<div class="figure" style="text-align: center"><span id="fig:diff-bind-venn1"></span>
+<img src="SLX-16110-16111_files/figure-html/diff-bind-venn1-1.png" alt="DBR between edgeR &amp; DESeq2 (MD vs MV)" width="672" />
+<p class="caption">
+Figure 5.1: DBR between edgeR &amp; DESeq2 (MD vs MV)
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:diff-bind-pca1"></span>
+<img src="SLX-16110-16111_files/figure-html/diff-bind-pca1-1.png" alt="PCA based on DBR (MD vs MV)" width="672" />
+<p class="caption">
+Figure 5.2: PCA based on DBR (MD vs MV)
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:diff-bind-pca2"></span>
+<img src="SLX-16110-16111_files/figure-html/diff-bind-pca2-1.png" alt="PCA based on DBR (FD vs FV)" width="672" />
+<p class="caption">
+Figure 5.3: PCA based on DBR (FD vs FV)
+</p>
+</div>
+</div>
+<div id="adjutedd-p-val0.01" class="section level3" number="5.1.2">
+<h3><span class="header-section-number">5.1.2</span> adjutedd P-val&lt;0.01:</h3>
+<table>
+<caption>
+<span id="tab:diff-bind-num2">Table 5.2: </span>Number of differential binding regions
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Factor
+</th>
+<th style="text-align:left;">
+Group
+</th>
+<th style="text-align:left;">
+Samples
+</th>
+<th style="text-align:left;">
+Group2
+</th>
+<th style="text-align:left;">
+Samples2
+</th>
+<th style="text-align:left;">
+DB.edgeR
+</th>
+<th style="text-align:left;">
+DB.DESeq2
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Factor
+</td>
+<td style="text-align:left;">
+FD
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+FV
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Factor
+</td>
+<td style="text-align:left;">
+MD
+</td>
+<td style="text-align:left;">
+6
+</td>
+<td style="text-align:left;">
+MV
+</td>
+<td style="text-align:left;">
+6
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+11
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="dbr-from-deseq2" class="section level2" number="5.2">
+<h2><span class="header-section-number">5.2</span> DBR from DESeq2</h2>
+<div id="normalisation-factors" class="section level3" number="5.2.1">
+<h3><span class="header-section-number">5.2.1</span> Normalisation factors</h3>
+<div class="figure" style="text-align: center"><span id="fig:dbr-norm-factor-deseq2"></span>
+<img src="SLX-16110-16111_files/figure-html/dbr-norm-factor-deseq2-1.png" alt="Normalisation factors by group" width="672" />
+<p class="caption">
+Figure 5.4: Normalisation factors by group
+</p>
+</div>
+</div>
+<div id="male-md-vs-mv" class="section level3" number="5.2.2">
+<h3><span class="header-section-number">5.2.2</span> Male (MD vs MV)</h3>
+<div id="htmlwidget-9f3b2b83e552f3c4c9a3" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-9f3b2b83e552f3c4c9a3">{"x":{"filter":"none","extensions":["Buttons"],"caption":"<caption>DBR of MD vs MV (DESeq2; FDR&lt;0.05)<\/caption>","data":[["10","13","16","1","19","2","1","2","2","1","9","3","5","1","1","2","3","4","17","1","7","12","1","2","2","12","11","9","5","5","19","3","15"],[30420253,110950340,12209824,234535736,48338600,10331278,177589220,217335920,101411159,31385588,129472056,128320796,55918594,156461593,28530543,101409848,196130776,6723121,72713143,39936237,3456880,100148907,56190295,75612753,219575919,108628540,76589637,124134499,168268723,672143,33267355,32843627,100734882],[30420531,110950850,12210236,234535904,48339706,10331800,177589563,217336666,101412366,31385850,129472580,128321388,55918941,156462014,28530918,101410663,196131007,6723841,72713417,39937221,3457215,100149149,56190573,75614106,219576163,108629539,76590329,124134996,168269483,672293,33267782,32843919,100735258],[279,511,413,169,1107,523,344,747,1208,263,525,593,348,422,376,816,232,721,275,985,336,243,279,1354,245,1000,693,498,761,151,428,293,377],["*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*"],[2.2328795458522,2.91139265333697,3.02907037070602,1.99659731620768,4.92961035163336,2.45978554820499,2.57161339379543,3.84966815987692,4.84058961728353,1.93189661194591,3.32723697575943,3.9293515579648,2.41996864244897,2.6203102682642,2.95571799250406,4.28315993672518,2.4672072087952,3.61722027106181,2.05538673510535,4.26593663879383,1.94055559580053,1.44887899534909,2.31235145625413,4.61798704457617,2.52047783552761,4.42496794893542,3.44181724688442,3.37721126455475,3.89822554026051,1.94824577786208,2.49707976855052,2.34054875129589,3.17620226449119],[0,0.289498048041413,0.642621433315849,0,3.98641980806616,0,0,2.31189781935104,3.8998736417737,0,1.38016329786927,2.86159036540931,0,0.234197450704111,0.51671325721168,3.04906236295287,0.329332918763099,1.96602689951769,0,3.12241178714984,0,2.44887899534909,0,3.7793517952288,0.180860863423015,3.45762991281481,2.02707092282259,2.13627570295789,4.5585677915695,0,0.0873562249081566,0.0312500478666923,1.73008956927899],[3.2328795458522,3.78917282275523,3.88406133514446,2.99659731620768,5.49512813895603,3.43001187692939,3.48236780525976,4.5770072083364,5.40523676886801,2.89256550874333,4.12686996564425,4.53621186008487,3.31461723328381,3.4752656876274,3.816155782736,4.93841253407968,3.29322533626852,4.36707484164983,2.97213174078358,4.89573406802536,2.88405963807627,0,3.24391509090343,5.14488488628356,3.37042685161462,4.99887671282545,4.14218976239822,4.03430408902154,2.64511436826448,2.86247047100162,3.35450992533468,3.1871355431476,3.88371911373179],[-4.1994550015887,-2.76368183289509,-2.47941705306874,-3.49874483496722,-1.37291383005751,-2.97049014242938,-2.88910261007816,-1.78114960049077,-1.36038190368778,-2.77899048787556,-1.93820665075013,-1.48681448560048,-2.37179426794158,-2.11074602753555,-2.0905686266631,-1.51707350621817,-2.08914289469068,-1.72482105871173,-2.09232651689514,-1.45179616334584,-1.97029897354832,1.74313467765031,-1.90533088770172,-1.19510057943899,-1.84676088251307,-1.33690891386876,-1.59720382888582,-1.50470227448964,1.57631018502227,-1.69782121367335,-1.78072639086407,-1.77746511368726,-1.63195342731084],[4.56105411526105e-09,5.9118446383085e-08,1.25047690192997e-07,1.34551054221873e-07,1.8281407097049e-07,1.89513376093767e-07,2.80991632510316e-07,4.73255963986296e-07,6.41373100506111e-07,8.19988850617453e-07,1.23512084476736e-06,2.02792147210704e-06,2.38337382745638e-06,2.73451204973319e-06,3.02332456178954e-06,5.59378126512146e-06,6.11102516548232e-06,6.40143773707079e-06,6.84978138131657e-06,7.50343716555689e-06,9.26722778758509e-06,1.0887912314794e-05,1.33497202619954e-05,1.37957858237909e-05,1.61284261472697e-05,1.6196412224409e-05,1.63631117590776e-05,1.64035538638781e-05,1.79739432152585e-05,1.84993688663807e-05,2.13143245775539e-05,2.14532613434963e-05,2.29810832826588e-05],[0.000318571385734523,0.00206459350303648,0.00220612521110754,0.00220612521110754,0.00220612521110754,0.00220612521110754,0.00280373450918794,0.00413187950757335,0.00497748284199442,0.00572729412602266,0.00784256822942008,0.011803516928399,0.0128053175655783,0.0136424806161189,0.0140778084895168,0.0244189528902296,0.0248397122324137,0.0248397122324137,0.0251805173873388,0.0262042536132743,0.030822799621508,0.0345671419790501,0.0401491856936876,0.0401491856936876,0.040918665113444,0.040918665113444,0.040918665113444,0.040918665113444,0.0430702305947076,0.0430702305947076,0.0468257653686826,0.0468257653686826,0.048640507362442],["Distal Intergenic","Intron (ENST00000652145.1/ENST00000652145.1, intron 2 of 2)","Intron (ENST00000566228.6/92017, intron 14 of 20)","Distal Intergenic","Intron (ENST00000293261.8/55260, intron 6 of 7)","Promoter (1-2kb)","Intron (ENST00000663166.1/ENST00000663166.1, intron 1 of 4)","Promoter (&lt;=1kb)","Intron (ENST00000428343.6/731220, intron 8 of 11)","Distal Intergenic","Distal Intergenic","Intron (ENST00000254730.11/60678, intron 4 of 6)","Intron (ENST00000396834.6/133396, intron 17 of 17)","Downstream (1-2kb)","Promoter (1-2kb)","3' UTR","Distal Intergenic","Distal Intergenic","Intron (ENST00000255559.7/201266, intron 7 of 9)","Distal Intergenic","Intron (ENST00000404826.7/221935, intron 1 of 44)","Distal Intergenic","Intron (ENST00000641611.1/ENST00000641611.1, intron 3 of 7)","Distal Intergenic","Distal Intergenic","Exon (ENST00000664158.1/ENST00000664158.1, exon 1 of 3)","Distal Intergenic","Distal Intergenic","Promoter (&lt;=1kb)","Intron (ENST00000360578.7/11076, intron 2 of 3)","Distal Intergenic","Intron (ENST00000383763.6/131405, intron 1 of 3)","Intron (ENST00000559755.1/ENST00000559755.1, intron 1 of 2)"],[10,13,16,1,19,2,1,2,2,1,9,3,5,1,1,2,3,4,17,1,7,12,1,2,2,12,11,9,5,5,19,3,15],[30434021,110965704,12129697,234527906,48333276,10330163,177700524,217284025,101421383,31365891,129476946,128336904,55941523,156404253,28531935,101345550,196142525,6716174,72647109,39955112,3301587,100037072,56414935,75646783,219572310,108622829,76545948,124015397,168229584,659862,33299934,32817997,100849561],[30461833,110990579,12527397,234531803,48342991,10427616,177710330,217336618,101435106,31376850,129504274,128341788,55947594,156456613,28535905,101387503,196160405,6717664,72725614,39969968,4269000,100142874,56415966,75647693,219575711,108632078,76550006,124033301,168269415,693352,33302534,32897824,100860037],[27813,24876,397701,3898,9716,97454,9807,52594,13724,10960,27329,4885,6072,52361,3971,41954,17881,1491,78506,14857,967414,105803,1032,911,3402,9250,4059,17905,39832,33491,2601,79828,10477],[1,1,1,2,2,1,1,2,2,2,1,1,2,2,1,2,1,1,2,1,1,2,1,1,1,2,1,1,2,2,2,1,1],["1326","104355135","92017","100506795","55260","3241","101928778","729582","731220","2170","100506190","60678","3572","10485","1104","200407","401109","55330","201266","84879","221935","23074","105378744","9801","3623","6404","56946","9355","101927862","11076","1050","131405","105369201"],["ENST00000542547.5","ENST00000440735.2","ENST00000564791.5","ENST00000663964.1","ENST00000600816.1","ENST00000622018.4","ENST00000427173.1","ENST00000654616.1","ENST00000492238.1","ENST00000482018.1","ENST00000653047.1","ENST00000483569.1","ENST00000523039.5","ENST00000673141.1","ENST00000429051.1","ENST00000324768.6","ENST00000662916.1","ENST00000320776.5","ENST00000579988.1","ENST00000420632.6","ENST00000615806.4","ENST00000279907.12","ENST00000451914.2","ENST00000493686.1","ENST00000243786.3","ENST00000228463.6","ENST00000531793.1","ENST00000488674.2","ENST00000655017.1","ENST00000360578.7","ENST00000498907.3","ENST00000383763.6","ENST00000557962.1"],[-13490,-14854,80127,-3933,3285,1115,-110961,0,22740,-8738,-4366,-15516,28653,-4980,-1017,-22345,-11518,6947,12197,-17891,155293,-6033,-224362,-32677,3609,2539,43689,119102,0,21059,34752,25630,-114303],["ENSG00000107968",null,"ENSG00000048471","ENSG00000231768","ENSG00000161558","ENSG00000115756","ENSG00000236720",null,"ENSG00000196460","ENSG00000121769",null,"ENSG00000132394","ENSG00000134352","ENSG00000125462","ENSG00000180198","ENSG00000175874","ENSG00000224652","ENSG00000186222","ENSG00000133195","ENSG00000168389","ENSG00000146555","ENSG00000111647","ENSG00000223956","ENSG00000115364","ENSG00000123999","ENSG00000110876","ENSG00000158636","ENSG00000106689","ENSG00000253978","ENSG00000171368","ENSG00000245848","ENSG00000206557","ENSG00000272808"],["MAP3K8","LINC00431","SNX29","LINC01354","TMEM143","HPCAL1","LINC01741","DIRC3","RFX8","FABP3","LINC00963","EEFSEC","IL6ST","MIR9-1HG","RCC1","CREG2","LINC00885","BLOC1S4","SLC39A11","MFSD2A","SDK1","UHRF1BP1L","LINC01767","MRPL19","INHA","SELPLG","EMSY","LHX2","CTB-178M22.2","TPPP","CEBPA","TRIM71","LOC105369201"],["mitogen-activated protein kinase kinase kinase 8","long intergenic non-protein coding RNA 431","sorting nexin 29","long intergenic non-protein coding RNA 1354","transmembrane protein 143","hippocalcin like 1","long intergenic non-protein coding RNA 1741","disrupted in renal carcinoma 3","regulatory factor X8","fatty acid binding protein 3","long intergenic non-protein coding RNA 963","eukaryotic elongation factor, selenocysteine-tRNA specific","interleukin 6 signal transducer","MIR9-1 host gene","regulator of chromosome condensation 1","cellular repressor of E1A stimulated genes 2","long intergenic non-protein coding RNA 885","biogenesis of lysosomal organelles complex 1 subunit 4","solute carrier family 39 member 11","major facilitator superfamily domain containing 2A","sidekick cell adhesion molecule 1","UHRF1 binding protein 1 like","long intergenic non-protein coding RNA 1767","mitochondrial ribosomal protein L19","inhibin subunit alpha","selectin P ligand","EMSY transcriptional repressor, BRCA2 interacting","LIM homeobox 2","uncharacterized LOC101927862","tubulin polymerization promoting protein","CCAAT enhancer binding protein alpha","tripartite motif containing 71","uncharacterized LOC105369201"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Chr<\/th>\n      <th>start<\/th>\n      <th>end<\/th>\n      <th>width<\/th>\n      <th>strand<\/th>\n      <th>Conc<\/th>\n      <th>Conc_MD<\/th>\n      <th>Conc_MV<\/th>\n      <th>Fold<\/th>\n      <th>p.value<\/th>\n      <th>FDR<\/th>\n      <th>annotation<\/th>\n      <th>geneChr<\/th>\n      <th>geneStart<\/th>\n      <th>geneEnd<\/th>\n      <th>geneLength<\/th>\n      <th>geneStrand<\/th>\n      <th>geneId<\/th>\n      <th>transcriptId<\/th>\n      <th>distanceToTSS<\/th>\n      <th>ENSEMBL<\/th>\n      <th>SYMBOL<\/th>\n      <th>GENENAME<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"scrollX":true,"dom":"Bfrtip","buttons":["copy","csv","excel"],"columnDefs":[{"className":"dt-right","targets":[1,2,3,5,6,7,8,9,10,12,13,14,15,16,19]}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+<div class="figure" style="text-align: center"><span id="fig:plotMA-male-deseq2-fig1"></span>
+<img src="SLX-16110-16111_files/figure-html/plotMA-male-deseq2-fig1-1.png" alt="MA plot (DESeq2)" width="672" />
+<p class="caption">
+Figure 5.5: MA plot (DESeq2)
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:plotVol-male-deseq2-fig1"></span>
+<img src="SLX-16110-16111_files/figure-html/plotVol-male-deseq2-fig1-1.png" alt="Volcano plot (DESeq2)" width="672" />
+<p class="caption">
+Figure 5.6: Volcano plot (DESeq2)
+</p>
+</div>
+</div>
+</div>
+<div id="dbr-from-edger" class="section level2" number="5.3">
+<h2><span class="header-section-number">5.3</span> DBR from edgeR</h2>
+<div id="normalisation-factors-1" class="section level3" number="5.3.1">
+<h3><span class="header-section-number">5.3.1</span> Normalisation factors</h3>
+<div class="figure" style="text-align: center"><span id="fig:dbr-norm-factor-edger"></span>
+<img src="SLX-16110-16111_files/figure-html/dbr-norm-factor-edger-1.png" alt="Normalisation factors by group" width="672" />
+<p class="caption">
+Figure 5.7: Normalisation factors by group
+</p>
+</div>
+</div>
+<div id="male-md-vs-mv-1" class="section level3" number="5.3.2">
+<h3><span class="header-section-number">5.3.2</span> Male (MD vs MV)</h3>
+<div id="htmlwidget-95442cab105ba4eed0f8" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-95442cab105ba4eed0f8">{"x":{"filter":"none","extensions":["Buttons"],"caption":"<caption>DBR of MD vs MV (edgeR; FDR&lt;0.05)<\/caption>","data":[["10","1","2","13","1","16"],[30420253,234535736,10331278,110950340,177589220,12209824],[30420531,234535904,10331800,110950850,177589563,12210236],[279,169,523,511,344,413],["*","*","*","*","*","*"],[2.15431254875258,1.94114568115558,2.49081854813281,2.89064867469564,2.55214465974184,3.0328824431534],[0,0,0,0.507712996778383,0,1.06740697980359],[3.15431254875258,2.94114568115558,3.40194880082814,3.74526765494587,3.45347763830385,3.83523714613495],[-6.44935266326894,-6.23860264900651,-4.25092243957193,-3.61910779380888,-4.07327676144343,-3.19250539039088],[1.10467285054705e-07,5.27185981734573e-07,6.01634128670028e-07,6.83470356141039e-07,1.48222854494256e-06,1.90792377140456e-06],[0.00786869518173171,0.0121710692345706,0.0121710692345706,0.0121710692345706,0.0211161242969607,0.0226505530268197],["Distal Intergenic","Distal Intergenic","Promoter (1-2kb)","Intron (ENST00000652145.1/ENST00000652145.1, intron 2 of 2)","Intron (ENST00000663166.1/ENST00000663166.1, intron 1 of 4)","Intron (ENST00000566228.6/92017, intron 14 of 20)"],[10,1,2,13,1,16],[30434021,234527906,10330163,110965704,177700524,12129697],[30461833,234531803,10427616,110990579,177710330,12527397],[27813,3898,97454,24876,9807,397701],[1,2,1,1,1,1],["1326","100506795","3241","104355135","101928778","92017"],["ENST00000542547.5","ENST00000663964.1","ENST00000622018.4","ENST00000440735.2","ENST00000427173.1","ENST00000564791.5"],[-13490,-3933,1115,-14854,-110961,80127],["ENSG00000107968","ENSG00000231768","ENSG00000115756",null,"ENSG00000236720","ENSG00000048471"],["MAP3K8","LINC01354","HPCAL1","LINC00431","LINC01741","SNX29"],["mitogen-activated protein kinase kinase kinase 8","long intergenic non-protein coding RNA 1354","hippocalcin like 1","long intergenic non-protein coding RNA 431","long intergenic non-protein coding RNA 1741","sorting nexin 29"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Chr<\/th>\n      <th>start<\/th>\n      <th>end<\/th>\n      <th>width<\/th>\n      <th>strand<\/th>\n      <th>Conc<\/th>\n      <th>Conc_MD<\/th>\n      <th>Conc_MV<\/th>\n      <th>Fold<\/th>\n      <th>p.value<\/th>\n      <th>FDR<\/th>\n      <th>annotation<\/th>\n      <th>geneChr<\/th>\n      <th>geneStart<\/th>\n      <th>geneEnd<\/th>\n      <th>geneLength<\/th>\n      <th>geneStrand<\/th>\n      <th>geneId<\/th>\n      <th>transcriptId<\/th>\n      <th>distanceToTSS<\/th>\n      <th>ENSEMBL<\/th>\n      <th>SYMBOL<\/th>\n      <th>GENENAME<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"scrollX":true,"dom":"Bfrtip","buttons":["copy","csv","excel"],"columnDefs":[{"className":"dt-right","targets":[1,2,3,5,6,7,8,9,10,12,13,14,15,16,19]}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+<div class="figure" style="text-align: center"><span id="fig:plotMA-male-edgeR-fig1"></span>
+<img src="SLX-16110-16111_files/figure-html/plotMA-male-edgeR-fig1-1.png" alt="MA plot (edgeR)" width="672" />
+<p class="caption">
+Figure 5.8: MA plot (edgeR)
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:plotVol-male-edgeR-fig1"></span>
+<img src="SLX-16110-16111_files/figure-html/plotVol-male-edgeR-fig1-1.png" alt="Volcano plot (edgeR)" width="672" />
+<p class="caption">
+Figure 5.9: Volcano plot (edgeR)
+</p>
+</div>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="peak-annotations.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="diffbind-md-vs-mv-n-10.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["SLX-16110-16111.pdf", "SLX-16110-16111.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
